@@ -1,0 +1,64 @@
+'use client';
+
+import { auth } from '@/firebase/config';
+import { GoogleAuthProvider, signInWithPopup, signOut, User } from 'firebase/auth';
+import { useState, useEffect } from 'react';
+
+export default function AuthButton() {
+    const [user, setUser] = useState<User | null>(null);
+
+    useEffect(() => {
+        if (!auth) return;
+        const unsubscribe = auth.onAuthStateChanged((u) => {
+            setUser(u);
+        });
+        return () => unsubscribe();
+    }, []);
+
+    const handleSignIn = async () => {
+        if (!auth) {
+            alert("Firebase設定が完了していません");
+            return;
+        }
+        const provider = new GoogleAuthProvider();
+        try {
+            await signInWithPopup(auth, provider);
+        } catch (error) {
+            console.error("Error signing in:", error);
+        }
+    };
+
+    const handleSignOut = async () => {
+        if (!auth) return;
+        try {
+            await signOut(auth);
+        } catch (error) {
+            console.error("Error signing out:", error);
+        }
+    };
+
+    if (user) {
+        return (
+            <div className="flex items-center gap-3">
+                {user.photoURL && (
+                    <img src={user.photoURL} alt={user.displayName || 'User'} className="w-8 h-8 rounded-full" />
+                )}
+                <button
+                    onClick={handleSignOut}
+                    className="text-sm text-gray-600 hover:text-gray-900 underline"
+                >
+                    ログアウト
+                </button>
+            </div>
+        );
+    }
+
+    return (
+        <button
+            onClick={handleSignIn}
+            className="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors shadow-sm"
+        >
+            Googleでログイン
+        </button>
+    );
+}

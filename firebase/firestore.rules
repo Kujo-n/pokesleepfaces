@@ -1,0 +1,31 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper function to check if user is authenticated
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // Helper function to check if user is accessing their own data
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // Pokemon Master Data (Read-only for authenticated users, Write denied for client)
+    match /pokemon/{pokemonId} {
+      allow read: if true; // Public read for now, or restrict to isAuthenticated()
+      allow write: if false; // Admin only (via Console or Admin SDK)
+    }
+
+    // User Collections
+    match /users/{userId}/collections/{pokemonId} {
+      allow read, write: if isOwner(userId);
+    }
+    
+    // User Progress/Metadata (if needed)
+    match /users/{userId} {
+      allow read, write: if isOwner(userId);
+    }
+  }
+}
