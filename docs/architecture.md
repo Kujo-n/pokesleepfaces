@@ -249,20 +249,20 @@ graph TB
 ```mermaid
 graph TB
     subgraph "State Management"
-        UserState[user: User | null]
-        CollectedState["collectedStyles: Set&lt;string&gt;"]
-        FilterState[selectedField: string]
+        UserState["user: User or null"]
+        CollectedState["collectedStyles: Set of string"]
+        FilterState["selectedField: string"]
     end
     
     subgraph "Effects"
-        AuthEffect[useEffect: Auth監視]
-        SyncEffect[useEffect: Firestore同期]
+        AuthEffect["useEffect: Auth監視"]
+        SyncEffect["useEffect: Firestore同期"]
     end
     
     subgraph "Actions"
-        Toggle[toggleStyle]
-        ToggleAll[toggleAllPokemonStyles]
-        ToggleGlobal[toggleGlobal]
+        Toggle["toggleStyle"]
+        ToggleAll["toggleAllPokemonStyles"]
+        ToggleGlobal["toggleGlobal"]
     end
     
     AuthEffect --> UserState
@@ -273,7 +273,7 @@ graph TB
     ToggleAll --> CollectedState
     ToggleGlobal --> CollectedState
     
-    FilterState --> UI[UI Rendering]
+    FilterState --> UI["UI Rendering"]
     CollectedState --> UI
     
     style UserState fill:#4285f4,color:#fff
