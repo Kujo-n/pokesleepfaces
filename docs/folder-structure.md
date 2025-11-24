@@ -25,7 +25,8 @@ pokesleepfaces/
 │   └── firestore.rules    # Firestoreセキュリティルール
 │
 ├── lib/                   # ユーティリティ・ヘルパー
-│   └── db.ts              # Firestore操作関数
+│   ├── db.ts              # Firestore操作関数
+│   └── localStorage.ts    # LocalStorage操作（ゲストユーザー用）
 │
 ├── public/                # 静的ファイル
 │   ├── file.svg
@@ -86,6 +87,14 @@ pokesleepfaces/
 - `toggleSleepStyle`: 個別スタイルの切り替え
 - `toggleAllStyles`: ポケモン単位の一括切り替え
 - `subscribeToUserCollection`: リアルタイム同期
+- `checkIfNewUser`: 新規ユーザー判定
+
+#### `lib/localStorage.ts`
+- ゲストユーザー用のLocalStorage操作
+- `saveToLocalStorage`: 未ログイン時のデータ保存
+- `loadFromLocalStorage`: 起動時のデータ読み込み
+- `migrateToFirestore`: 新規ユーザーログイン時の自動移行
+- `clearLocalStorage`: LocalStorageクリア
 
 ### Firebase設定
 

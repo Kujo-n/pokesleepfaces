@@ -5,13 +5,26 @@ import { MOCK_POKEMON, Pokemon, FIELD_NAMES } from '@/data/mockData';
 import PokemonCard from '@/components/PokemonCard';
 import AuthButton from '@/components/AuthButton';
 import { auth } from '@/firebase/config';
-import { subscribeToUserCollection, toggleSleepStyle, toggleAllStyles } from '@/lib/db';
+import { subscribeToUserCollection, toggleSleepStyle, toggleAllStyles, checkIfNewUser } from '@/lib/db';
 import { onAuthStateChanged, User } from 'firebase/auth';
+import { saveToLocalStorage, loadFromLocalStorage, migrateToFirestore } from '@/lib/localStorage';
 
 export default function Home() {
   const [collectedStyles, setCollectedStyles] = useState<Set<string>>(new Set());
   const [selectedField, setSelectedField] = useState<string>('all');
   const [user, setUser] = useState<User | null>(null);
+  const [isInitialized, setIsInitialized] = useState(false);
+
+  // Initialize from localStorage for guest users
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const localData = loadFromLocalStorage();
+      if (localData.size > 0) {
+        setCollectedStyles(localData);
+      }
+      setIsInitialized(true);
+    }
+  }, []);
 
   // Auth State Observer
   useEffect(() => {
@@ -22,16 +35,31 @@ export default function Home() {
     return () => unsubscribe();
   }, []);
 
-  // Firestore Subscription
+  // Firestore Subscription and Migration
   useEffect(() => {
-    if (!user) return;
+    if (!user || !isInitialized) return;
 
-    const unsubscribe = subscribeToUserCollection(user.uid, (newCollected) => {
-      setCollectedStyles(newCollected);
-    });
+    const handleUserLogin = async () => {
+      // LocalStorageにデータがある場合、新規ユーザーなら移行
+      const localData = loadFromLocalStorage();
+      if (localData.size > 0) {
+        await migrateToFirestore(user.uid, localData, toggleSleepStyle, MOCK_POKEMON, checkIfNewUser);
+      }
 
-    return () => unsubscribe();
-  }, [user]);
+      // Firestoreからデータを購読
+      const unsubscribe = subscribeToUserCollection(user.uid, (newCollected) => {
+        setCollectedStyles(newCollected);
+      });
+
+      return unsubscribe;
+    };
+
+    const unsubscribePromise = handleUserLogin();
+
+    return () => {
+      unsubscribePromise.then(unsub => unsub && unsub());
+    };
+  }, [user, isInitialized]);
 
   const toggleStyle = async (styleId: string) => {
     const isCollected = collectedStyles.has(styleId);
@@ -46,19 +74,20 @@ export default function Home() {
     setCollectedStyles(newSet);
 
     if (user) {
-      // Find pokemonId for this style
+      // Logged in: Save to Firestore
       const pokemon = MOCK_POKEMON.find(p => p.styles.some(s => s.id === styleId));
       if (pokemon) {
         try {
-          // Background save to Firestore
           await toggleSleepStyle(user.uid, pokemon.id, styleId, !isCollected);
         } catch (e) {
           console.error("Failed to toggle style", e);
-          // Rollback on error
           setCollectedStyles(collectedStyles);
           alert("保存に失敗しました");
         }
       }
+    } else {
+      // Guest user: Save to localStorage
+      saveToLocalStorage(newSet);
     }
   };
 
@@ -76,14 +105,15 @@ export default function Home() {
 
     if (user) {
       try {
-        // Background save to Firestore
         await toggleAllStyles(user.uid, pokemon, select);
       } catch (e) {
         console.error("Failed to toggle all styles", e);
-        // Rollback on error
         setCollectedStyles(collectedStyles);
         alert("保存に失敗しました");
       }
+    } else {
+      // Guest user: Save to localStorage
+      saveToLocalStorage(newSet);
     }
   };
 

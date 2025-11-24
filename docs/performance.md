@@ -103,6 +103,49 @@ Firestore保存（100-500ms）
 
 ---
 
+### 3. ゲストユーザー対応（LocalStorage）
+
+**目的**: 未ログイン時のデータ永続化
+
+**実装場所**: `lib/localStorage.ts`, `app/page.tsx`
+
+**機能**:
+- 未ログイン時にLocalStorageへ自動保存
+- ページリロード後もデータ保持
+- 新規ユーザーログイン時にFirestoreへ自動移行
+- 既存ユーザーログイン時はLocalStorageクリア
+
+**コード**:
+```typescript
+// 未ログイン時
+if (!user) {
+  saveToLocalStorage(newSet);
+}
+
+// ログイン時の自動移行
+const localData = loadFromLocalStorage();
+if (localData.size > 0) {
+  await migrateToFirestore(user.uid, localData, toggleSleepStyle, MOCK_POKEMON, checkIfNewUser);
+}
+```
+
+**効果**:
+- ✅ ゲストユーザーでも試用可能
+- ✅ データ損失なし（ページリロード対応）
+- ✅ 新規登録時にデータ引き継ぎ
+- ✅ 既存ユーザーはFirestoreデータ優先
+
+**動作フロー**:
+```
+未ログイン → LocalStorage保存
+    ↓
+新規ログイン → Firestoreに移行 → LocalStorageクリア
+    ↓
+既存ログイン → LocalStorageクリア → Firestoreから読み込み
+```
+
+---
+
 ## パフォーマンス比較
 
 ### 最適化前
@@ -171,6 +214,7 @@ Firestore保存（100-500ms）
 **実装した最適化**:
 1. ✅ ローカルキャッシュ（IndexedDB）
 2. ✅ 楽観的UI更新
+3. ✅ ゲストユーザー対応（LocalStorage）
 
 **効果**:
 - 体感速度: **100-500ms → 0ms**
@@ -181,4 +225,5 @@ Firestore保存（100-500ms）
 - ✅ 即座のフィードバック
 - ✅ オフライン時も使用可能
 - ✅ 高速なページ読み込み
+- ✅ ログインなしで試用可能
 - ❌ デメリットなし

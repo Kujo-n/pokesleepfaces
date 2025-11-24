@@ -1,5 +1,5 @@
 import { db } from '@/firebase/config';
-import { doc, setDoc, getDoc, updateDoc, arrayUnion, arrayRemove, onSnapshot, collection } from 'firebase/firestore';
+import { doc, setDoc, getDoc, updateDoc, arrayUnion, arrayRemove, onSnapshot, collection, getDocs } from 'firebase/firestore';
 import { Pokemon } from '@/data/mockData';
 
 // User Collection Structure:
@@ -63,4 +63,19 @@ export const subscribeToUserCollection = (userId: string, callback: (collected: 
         });
         callback(newCollected);
     });
+};
+
+export const checkIfNewUser = async (userId: string): Promise<boolean> => {
+    if (!db) return false;
+
+    try {
+        const collectionRef = collection(db as any, `users/${userId}/collections`);
+        const snapshot = await getDocs(collectionRef);
+
+        // コレクションが空 = 新規ユーザー
+        return snapshot.empty;
+    } catch (e) {
+        console.error('Failed to check if user is new', e);
+        return false; // エラー時は既存ユーザーとして扱う（安全側）
+    }
 };

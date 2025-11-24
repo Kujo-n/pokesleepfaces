@@ -9,7 +9,8 @@ graph TB
     subgraph "Client (Browser)"
         UI[Next.js App<br/>React Components]
         Auth[Auth State]
-        LocalState[Local State]
+        LocalState[Local State<br/>React]
+        LocalStorage[LocalStorage<br/>ゲストユーザー用]
     end
     
     subgraph "Firebase (GCP)"
@@ -22,12 +23,15 @@ graph TB
     UI --> Auth
     Auth --> FAuth
     UI --> LocalState
+    UI --> LocalStorage
     UI --> Firestore
     FAuth -.認証トークン.-> Firestore
+    LocalStorage -.新規ユーザーのみ.-> Firestore
     
     style UI fill:#4285f4,color:#fff
     style FAuth fill:#ffca28,color:#000
     style Firestore fill:#ff6f00,color:#fff
+    style LocalStorage fill:#34a853,color:#fff
 ```
 
 ## コンポーネント構成
@@ -46,6 +50,7 @@ graph LR
     subgraph "Data Layer"
         MockData[mockData.ts<br/>マスターデータ]
         DB[lib/db.ts<br/>Firestore操作]
+        LocalStore[lib/localStorage.ts<br/>ゲスト用保存]
     end
     
     subgraph "Firebase"
@@ -56,15 +61,18 @@ graph LR
     Page --> AuthBtn
     Page --> PokemonCard
     Page --> DB
+    Page --> LocalStore
     AuthBtn --> Config
     DB --> Config
     DB --> MockData
+    LocalStore -.新規ユーザー.-> DB
     Config -.適用.-> Rules
     
     style Page fill:#4285f4,color:#fff
     style AuthBtn fill:#34a853,color:#fff
     style PokemonCard fill:#34a853,color:#fff
     style DB fill:#ea4335,color:#fff
+    style LocalStore fill:#34a853,color:#fff
     style Config fill:#fbbc04,color:#000
 ```
 
