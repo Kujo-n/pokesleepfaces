@@ -36,50 +36,54 @@ export default function Home() {
   const toggleStyle = async (styleId: string) => {
     const isCollected = collectedStyles.has(styleId);
 
-    if (user) {
-      // Optimistic update (optional, but subscription is fast enough usually)
-      // For now relying on subscription to update UI
+    // Optimistic UI update - immediately update local state
+    const newSet = new Set(collectedStyles);
+    if (isCollected) {
+      newSet.delete(styleId);
+    } else {
+      newSet.add(styleId);
+    }
+    setCollectedStyles(newSet);
 
+    if (user) {
       // Find pokemonId for this style
       const pokemon = MOCK_POKEMON.find(p => p.styles.some(s => s.id === styleId));
       if (pokemon) {
         try {
+          // Background save to Firestore
           await toggleSleepStyle(user.uid, pokemon.id, styleId, !isCollected);
         } catch (e) {
           console.error("Failed to toggle style", e);
+          // Rollback on error
+          setCollectedStyles(collectedStyles);
           alert("保存に失敗しました");
         }
       }
-    } else {
-      // Local state only
-      const newSet = new Set(collectedStyles);
-      if (isCollected) {
-        newSet.delete(styleId);
-      } else {
-        newSet.add(styleId);
-      }
-      setCollectedStyles(newSet);
     }
   };
 
   const toggleAllPokemonStyles = async (pokemon: Pokemon, select: boolean) => {
+    // Optimistic UI update - immediately update local state
+    const newSet = new Set(collectedStyles);
+    pokemon.styles.forEach((style) => {
+      if (select) {
+        newSet.add(style.id);
+      } else {
+        newSet.delete(style.id);
+      }
+    });
+    setCollectedStyles(newSet);
+
     if (user) {
       try {
+        // Background save to Firestore
         await toggleAllStyles(user.uid, pokemon, select);
       } catch (e) {
         console.error("Failed to toggle all styles", e);
+        // Rollback on error
+        setCollectedStyles(collectedStyles);
         alert("保存に失敗しました");
       }
-    } else {
-      const newSet = new Set(collectedStyles);
-      pokemon.styles.forEach((style) => {
-        if (select) {
-          newSet.add(style.id);
-        } else {
-          newSet.delete(style.id);
-        }
-      });
-      setCollectedStyles(newSet);
     }
   };
 
