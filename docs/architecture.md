@@ -238,17 +238,13 @@ graph LR
 graph TB
     Dev[開発環境<br/>localhost:3000]
     Build[npm run build]
-    Vercel[Vercel<br/>本番環境]
-    FBHost[Firebase Hosting<br/>代替案]
+    FBHost[Firebase Hosting<br/>本番環境]
     
     Dev -->|ビルド| Build
-    Build -->|デプロイ| Vercel
-    Build -.代替.-> FBHost
+    Build -->|デプロイ| FBHost
     
-    Vercel --> Users[エンドユーザー]
-    FBHost -.-> Users
+    FBHost --> Users[エンドユーザー]
     
-    style Vercel fill:#000,color:#fff
     style FBHost fill:#ffca28,color:#000
 ```
 
