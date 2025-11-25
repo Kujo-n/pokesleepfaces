@@ -12,6 +12,7 @@ import { saveToLocalStorage, loadFromLocalStorage, migrateToFirestore } from '@/
 export default function Home() {
   const [collectedStyles, setCollectedStyles] = useState<Set<string>>(new Set());
   const [selectedField, setSelectedField] = useState<string>('all');
+  const [showUncollectedOnly, setShowUncollectedOnly] = useState<boolean>(false);
   const [user, setUser] = useState<User | null>(null);
   const [isInitialized, setIsInitialized] = useState(false);
 
@@ -147,9 +148,16 @@ export default function Home() {
   };
 
   // Filter Logic
-  const filteredPokemon = selectedField === 'all'
+  let filteredPokemon = selectedField === 'all'
     ? MOCK_POKEMON
     : MOCK_POKEMON.filter(p => p.fields.includes(selectedField));
+
+  // Apply uncollected filter (AND condition with field filter)
+  if (showUncollectedOnly) {
+    filteredPokemon = filteredPokemon.filter(p =>
+      p.styles.some(s => !collectedStyles.has(s.id))
+    );
+  }
 
   // Progress Calculation
   const calculateProgress = (pokemonList: Pokemon[]) => {
@@ -216,6 +224,17 @@ export default function Home() {
                   {field}
                 </button>
               ))}
+
+              {/* Uncollected Filter */}
+              <label className="flex items-center gap-2 px-3 py-1.5 rounded-full text-sm bg-orange-50 text-orange-700 hover:bg-orange-100 cursor-pointer transition-colors ml-2">
+                <input
+                  type="checkbox"
+                  checked={showUncollectedOnly}
+                  onChange={(e) => setShowUncollectedOnly(e.target.checked)}
+                  className="w-4 h-4 text-orange-600 bg-white border-orange-300 rounded focus:ring-orange-500 focus:ring-2 cursor-pointer"
+                />
+                <span>未収集のみ</span>
+              </label>
             </div>
 
             {/* Progress Bars */}
