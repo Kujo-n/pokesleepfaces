@@ -21,7 +21,8 @@ export const FIELD_NAMES = [
     "ウノハナ雪原",
     "ラピスラズリ湖畔",
     "ゴールド旧発電所",
-    "ワカクサ本島EX"
+    "ワカクサ本島EX",
+    "アンバー渓谷"
 ];
 
 export const MOCK_POKEMON: Pokemon[] = [
@@ -59,6 +60,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p2_フシギソウ",
         "dexNumber": 2,
@@ -93,6 +95,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p3_フシギバナ",
         "dexNumber": 3,
@@ -127,6 +130,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p4_ヒトカゲ",
         "dexNumber": 4,
@@ -161,6 +165,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p5_リザード",
         "dexNumber": 5,
@@ -195,6 +200,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p6_リザードン",
         "dexNumber": 6,
@@ -229,6 +235,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p7_ゼニガメ",
         "dexNumber": 7,
@@ -264,6 +271,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p8_カメール",
         "dexNumber": 8,
@@ -299,6 +307,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p9_カメックス",
         "dexNumber": 9,
@@ -334,6 +343,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p10_キャタピー",
         "dexNumber": 10,
@@ -369,6 +379,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p11_トランセル",
         "dexNumber": 11,
@@ -403,6 +414,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p12_バタフリー",
         "dexNumber": 12,
@@ -437,6 +449,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p19_コラッタ",
         "dexNumber": 19,
@@ -472,6 +485,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p20_ラッタ",
         "dexNumber": 20,
@@ -507,6 +521,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p23_アーボ",
         "dexNumber": 23,
@@ -544,6 +559,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p24_アーボック",
         "dexNumber": 24,
@@ -580,6 +596,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p25_ピカチュウ",
         "dexNumber": 25,
@@ -616,6 +633,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p25_ハロピカ",
         "dexNumber": 25,
@@ -638,6 +656,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p25_ホリピカ",
         "dexNumber": 25,
@@ -660,6 +679,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p26_ライチュウ",
         "dexNumber": 26,
@@ -694,6 +714,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p35_ピッピ",
         "dexNumber": 35,
@@ -732,6 +753,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p36_ピクシー",
         "dexNumber": 36,
@@ -770,6 +792,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p37_ロコン",
         "dexNumber": 37,
@@ -804,6 +827,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p37_ロコン（アローラのすがた）",
         "dexNumber": 37,
@@ -837,6 +861,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p38_キュウコン",
         "dexNumber": 38,
@@ -871,6 +896,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p38_キュウコン（アローラのすがた）",
         "dexNumber": 38,
@@ -904,6 +930,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p39_プリン",
         "dexNumber": 39,
@@ -940,6 +967,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p40_プクリン",
         "dexNumber": 40,
@@ -974,6 +1002,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p50_ディグダ",
         "dexNumber": 50,
@@ -1004,6 +1033,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p51_ダグトリオ",
         "dexNumber": 51,
@@ -1033,6 +1063,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p52_ニャース",
         "dexNumber": 52,
@@ -1067,6 +1098,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p53_ペルシアン",
         "dexNumber": 53,
@@ -1101,6 +1133,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p54_コダック",
         "dexNumber": 54,
@@ -1136,6 +1169,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p55_ゴルダック",
         "dexNumber": 55,
@@ -1168,6 +1202,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p56_マンキー",
         "dexNumber": 56,
@@ -1203,6 +1238,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p57_オコリザル",
         "dexNumber": 57,
@@ -1238,6 +1274,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p58_ガーディ",
         "dexNumber": 58,
@@ -1273,6 +1310,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p59_ウインディ",
         "dexNumber": 59,
@@ -1306,6 +1344,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p69_マダツボミ",
         "dexNumber": 69,
@@ -1341,6 +1380,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p70_ウツドン",
         "dexNumber": 70,
@@ -1375,6 +1415,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p71_ウツボット",
         "dexNumber": 71,
@@ -1408,6 +1449,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p74_イシツブテ",
         "dexNumber": 74,
@@ -1444,6 +1486,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p75_ゴローン",
         "dexNumber": 75,
@@ -1479,6 +1522,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p76_ゴローニャ",
         "dexNumber": 76,
@@ -1511,6 +1555,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p79_ヤドン",
         "dexNumber": 79,
@@ -1546,6 +1591,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p80_ヤドラン",
         "dexNumber": 80,
@@ -1581,6 +1627,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p81_コイル",
         "dexNumber": 81,
@@ -1610,6 +1657,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p82_レアコイル",
         "dexNumber": 82,
@@ -1639,6 +1687,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p83_カモネギ",
         "dexNumber": 83,
@@ -1674,6 +1723,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p84_ドードー",
         "dexNumber": 84,
@@ -1708,6 +1758,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p85_ドードリオ",
         "dexNumber": 85,
@@ -1742,6 +1793,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p92_ゴース",
         "dexNumber": 92,
@@ -1772,6 +1824,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p93_ゴースト",
         "dexNumber": 93,
@@ -1802,6 +1855,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p94_ゲンガー",
         "dexNumber": 94,
@@ -1836,6 +1890,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p95_イワーク",
         "dexNumber": 95,
@@ -1864,6 +1919,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p104_カラカラ",
         "dexNumber": 104,
@@ -1899,6 +1955,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p105_ガラガラ",
         "dexNumber": 105,
@@ -1934,6 +1991,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p113_ラッキー",
         "dexNumber": 113,
@@ -1969,6 +2027,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p115_ガルーラ",
         "dexNumber": 115,
@@ -2003,6 +2062,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p122_バリヤード",
         "dexNumber": 122,
@@ -2037,6 +2097,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p127_カイロス",
         "dexNumber": 127,
@@ -2071,6 +2132,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p132_メタモン",
         "dexNumber": 132,
@@ -2109,35 +2171,41 @@ export const MOCK_POKEMON: Pokemon[] = [
             {
                 "id": "p132_メタモン-5",
                 "name": "フシギダネ寝",
-                "rarity": 3
+                "rarity": 4
             },
             {
                 "id": "p132_メタモン-6",
                 "name": "ヒトカゲ寝",
-                "rarity": 3
+                "rarity": 4
             },
             {
                 "id": "p132_メタモン-7",
                 "name": "ゼニガメ寝",
-                "rarity": 3
-            },
-            {
-                "id": "p132_メタモン-8",
-                "name": "ゲンガー寝",
-                "rarity": 3
+                "rarity": 4
             },
             {
                 "id": "p132_メタモン-9",
-                "name": "カイリュー寝",
+                "name": "ゲンガー寝",
                 "rarity": 4
             },
             {
                 "id": "p132_メタモン-10",
+                "name": "カイリュー寝",
+                "rarity": 4
+            },
+            {
+                "id": "p132_メタモン-11",
+                "name": "???寝",
+                "rarity": 4
+            },
+            {
+                "id": "p132_メタモン-12",
                 "name": "グレイシア寝",
-                "rarity": 3
+                "rarity": 4
             }
         ]
     },
+    ,
     {
         "id": "p133_イーブイ",
         "dexNumber": 133,
@@ -2176,6 +2244,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p133_ホリデーイーブイ",
         "dexNumber": 133,
@@ -2198,6 +2267,31 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
+    {
+        "id": "p133_ハロウィンイーブイ",
+        "dexNumber": 133,
+        "name": "ハロウィンイーブイ",
+        "type": "ノーマル",
+        "sleepType": "すやすや",
+        "fields": [
+            "ワカクサ本島",
+            "ワカクサ本島EX"
+        ],
+        "styles": [
+            {
+                "id": "p133_ハロウィンイーブイ-1",
+                "name": "まるまり寝",
+                "rarity": 1
+            },
+            {
+                "id": "p133_ハロウィンイーブイ-2",
+                "name": "たれみみ寝",
+                "rarity": 2
+            }
+        ]
+    },
+    ,
     {
         "id": "p134_シャワーズ",
         "dexNumber": 134,
@@ -2232,6 +2326,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p135_サンダース",
         "dexNumber": 135,
@@ -2266,6 +2361,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p136_ブースター",
         "dexNumber": 136,
@@ -2300,6 +2396,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p147_ミニリュウ",
         "dexNumber": 147,
@@ -2332,6 +2429,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p148_ハクリュー",
         "dexNumber": 148,
@@ -2364,6 +2462,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p149_カイリュー",
         "dexNumber": 149,
@@ -2396,6 +2495,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p152_チコリータ",
         "dexNumber": 152,
@@ -2431,6 +2531,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p153_ベイリーフ",
         "dexNumber": 153,
@@ -2465,6 +2566,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p154_メガニウム",
         "dexNumber": 154,
@@ -2499,6 +2601,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p155_ヒノアラシ",
         "dexNumber": 155,
@@ -2533,6 +2636,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p156_マグマラシ",
         "dexNumber": 156,
@@ -2567,6 +2671,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p157_バクフーン",
         "dexNumber": 157,
@@ -2601,6 +2706,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p158_ワニノコ",
         "dexNumber": 158,
@@ -2635,6 +2741,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p159_アリゲイツ",
         "dexNumber": 159,
@@ -2669,6 +2776,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p160_オーダイル",
         "dexNumber": 160,
@@ -2703,6 +2811,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p172_ピチュー",
         "dexNumber": 172,
@@ -2738,6 +2847,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p173_ピィ",
         "dexNumber": 173,
@@ -2776,6 +2886,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p174_ププリン",
         "dexNumber": 174,
@@ -2811,6 +2922,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p175_トゲピー",
         "dexNumber": 175,
@@ -2846,6 +2958,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p176_トゲチック",
         "dexNumber": 176,
@@ -2880,6 +2993,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p177_ネイティ",
         "dexNumber": 177,
@@ -2914,6 +3028,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p178_ネイティオ",
         "dexNumber": 178,
@@ -2948,6 +3063,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p179_メリープ",
         "dexNumber": 179,
@@ -2983,6 +3099,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p180_モココ",
         "dexNumber": 180,
@@ -3018,6 +3135,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p181_デンリュウ",
         "dexNumber": 181,
@@ -3052,6 +3170,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p185_ウソッキー",
         "dexNumber": 185,
@@ -3087,6 +3206,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p194_ウパー",
         "dexNumber": 194,
@@ -3123,6 +3243,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p194_ウパー（パルデアのすがた）",
         "dexNumber": 194,
@@ -3157,6 +3278,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p195_ヌオー",
         "dexNumber": 195,
@@ -3193,6 +3315,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p196_エーフィ",
         "dexNumber": 196,
@@ -3228,6 +3351,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p197_ブラッキー",
         "dexNumber": 197,
@@ -3262,6 +3386,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p198_ヤミカラス",
         "dexNumber": 198,
@@ -3297,6 +3422,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p199_ヤドキング",
         "dexNumber": 199,
@@ -3329,6 +3455,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p202_ソーナンス",
         "dexNumber": 202,
@@ -3364,6 +3491,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p208_ハガネール",
         "dexNumber": 208,
@@ -3393,6 +3521,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p214_ヘラクロス",
         "dexNumber": 214,
@@ -3427,6 +3556,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p215_ニューラ",
         "dexNumber": 215,
@@ -3461,6 +3591,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p225_デリバード",
         "dexNumber": 225,
@@ -3495,6 +3626,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p228_デルビル",
         "dexNumber": 228,
@@ -3529,6 +3661,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p229_ヘルガー",
         "dexNumber": 229,
@@ -3562,6 +3695,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p242_ハピナス",
         "dexNumber": 242,
@@ -3597,6 +3731,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p243_ライコウ",
         "dexNumber": 243,
@@ -3626,6 +3761,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p244_エンテイ",
         "dexNumber": 244,
@@ -3655,6 +3791,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p245_スイクン",
         "dexNumber": 245,
@@ -3685,6 +3822,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p246_ヨーギラス",
         "dexNumber": 246,
@@ -3719,6 +3857,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p247_サナギラス",
         "dexNumber": 247,
@@ -3752,6 +3891,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p248_バンギラス",
         "dexNumber": 248,
@@ -3785,6 +3925,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p252_キモリ",
         "dexNumber": 252,
@@ -3821,6 +3962,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p253_ジュプトル",
         "dexNumber": 253,
@@ -3857,6 +3999,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p254_ジュカイン",
         "dexNumber": 254,
@@ -3893,6 +4036,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p255_アチャモ",
         "dexNumber": 255,
@@ -3928,6 +4072,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p256_ワカシャモ",
         "dexNumber": 256,
@@ -3963,6 +4108,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p257_バシャーモ",
         "dexNumber": 257,
@@ -3998,6 +4144,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p258_ミズゴロウ",
         "dexNumber": 258,
@@ -4033,6 +4180,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p259_ヌマクロー",
         "dexNumber": 259,
@@ -4068,6 +4216,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p260_ラグラージ",
         "dexNumber": 260,
@@ -4103,6 +4252,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p280_ラルトス",
         "dexNumber": 280,
@@ -4136,6 +4286,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p281_キルリア",
         "dexNumber": 281,
@@ -4169,6 +4320,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p282_サーナイト",
         "dexNumber": 282,
@@ -4202,6 +4354,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p287_ナマケロ",
         "dexNumber": 287,
@@ -4236,6 +4389,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p288_ヤルキモノ",
         "dexNumber": 288,
@@ -4270,6 +4424,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p289_ケッキング",
         "dexNumber": 289,
@@ -4304,6 +4459,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p302_ヤミラミ",
         "dexNumber": 302,
@@ -4337,6 +4493,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p303_クチート",
         "dexNumber": 303,
@@ -4372,6 +4529,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p304_ココドラ",
         "dexNumber": 304,
@@ -4406,6 +4564,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p305_コドラ",
         "dexNumber": 305,
@@ -4439,6 +4598,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p306_ボスゴドラ",
         "dexNumber": 306,
@@ -4472,6 +4632,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p311_プラスル",
         "dexNumber": 311,
@@ -4506,6 +4667,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p312_マイナン",
         "dexNumber": 312,
@@ -4540,6 +4702,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p316_ゴクリン",
         "dexNumber": 316,
@@ -4575,6 +4738,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p317_マルノーム",
         "dexNumber": 317,
@@ -4609,6 +4773,109 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
+    {
+        "id": "p328_ナックラー",
+        "dexNumber": 328,
+        "name": "ナックラー",
+        "type": "ノーマル",
+        "sleepType": "ぐっすり",
+        "fields": [
+            "トープ洞窟",
+            "アンバー渓谷"
+        ],
+        "styles": [
+            {
+                "id": "p328_ナックラー-1",
+                "name": "ぺったり寝",
+                "rarity": 1
+            },
+            {
+                "id": "p328_ナックラー-2",
+                "name": "ストレッチ寝",
+                "rarity": 2
+            },
+            {
+                "id": "p328_ナックラー-3",
+                "name": "もぐり寝",
+                "rarity": 3
+            },
+            {
+                "id": "p328_ナックラー-4",
+                "name": "おなかのうえ寝",
+                "rarity": 4
+            }
+        ]
+    },
+    ,
+    {
+        "id": "p329_ビブラーバ",
+        "dexNumber": 329,
+        "name": "ビブラーバ",
+        "type": "ノーマル",
+        "sleepType": "ぐっすり",
+        "fields": [
+            "トープ洞窟",
+            "アンバー渓谷"
+        ],
+        "styles": [
+            {
+                "id": "p329_ビブラーバ-1",
+                "name": "はねやすめ寝",
+                "rarity": 1
+            },
+            {
+                "id": "p329_ビブラーバ-2",
+                "name": "2番目の寝顔",
+                "rarity": 2
+            },
+            {
+                "id": "p329_ビブラーバ-3",
+                "name": "3番目の寝顔",
+                "rarity": 3
+            },
+            {
+                "id": "p329_ビブラーバ-4",
+                "name": "おなかのうえ寝",
+                "rarity": 4
+            }
+        ]
+    },
+    ,
+    {
+        "id": "p330_フライゴン",
+        "dexNumber": 330,
+        "name": "フライゴン",
+        "type": "ノーマル",
+        "sleepType": "ぐっすり",
+        "fields": [
+            "トープ洞窟",
+            "アンバー渓谷"
+        ],
+        "styles": [
+            {
+                "id": "p330_フライゴン-1",
+                "name": "まるまり寝",
+                "rarity": 1
+            },
+            {
+                "id": "p330_フライゴン-2",
+                "name": "2番目の寝顔",
+                "rarity": 2
+            },
+            {
+                "id": "p330_フライゴン-3",
+                "name": "3番目の寝顔",
+                "rarity": 3
+            },
+            {
+                "id": "p330_フライゴン-4",
+                "name": "おなかのうえ寝",
+                "rarity": 4
+            }
+        ]
+    },
+    ,
     {
         "id": "p333_チルット",
         "dexNumber": 333,
@@ -4644,6 +4911,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p334_チルタリス",
         "dexNumber": 334,
@@ -4678,6 +4946,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p353_カゲボウズ",
         "dexNumber": 353,
@@ -4708,6 +4977,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p354_ジュペッタ",
         "dexNumber": 354,
@@ -4743,6 +5013,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p359_アブソル",
         "dexNumber": 359,
@@ -4777,6 +5048,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p360_ソーナノ",
         "dexNumber": 360,
@@ -4812,6 +5084,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p363_タマザラシ",
         "dexNumber": 363,
@@ -4847,6 +5120,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p364_トドグラー",
         "dexNumber": 364,
@@ -4880,6 +5154,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p365_トドゼルガ",
         "dexNumber": 365,
@@ -4913,6 +5188,106 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
+    {
+        "id": "p371_タツベイ",
+        "dexNumber": 371,
+        "name": "タツベイ",
+        "type": "ノーマル",
+        "sleepType": "うとうと",
+        "fields": [
+            "アンバー渓谷"
+        ],
+        "styles": [
+            {
+                "id": "p371_タツベイ-1",
+                "name": "そらとびたい寝",
+                "rarity": 1
+            },
+            {
+                "id": "p371_タツベイ-2",
+                "name": "おおあくび寝",
+                "rarity": 2
+            },
+            {
+                "id": "p371_タツベイ-3",
+                "name": "3番目の寝顔",
+                "rarity": 3
+            },
+            {
+                "id": "p371_タツベイ-4",
+                "name": "おなかのうえ寝",
+                "rarity": 4
+            }
+        ]
+    },
+    ,
+    {
+        "id": "p372_コモルー",
+        "dexNumber": 372,
+        "name": "コモルー",
+        "type": "ノーマル",
+        "sleepType": "うとうと",
+        "fields": [
+            "アンバー渓谷"
+        ],
+        "styles": [
+            {
+                "id": "p372_コモルー-1",
+                "name": "1番目の寝顔",
+                "rarity": 1
+            },
+            {
+                "id": "p372_コモルー-2",
+                "name": "2番目の寝顔",
+                "rarity": 2
+            },
+            {
+                "id": "p372_コモルー-3",
+                "name": "3番目の寝顔",
+                "rarity": 3
+            },
+            {
+                "id": "p372_コモルー-4",
+                "name": "おなかのうえ寝",
+                "rarity": 4
+            }
+        ]
+    },
+    ,
+    {
+        "id": "p373_ボーマンダ",
+        "dexNumber": 373,
+        "name": "ボーマンダ",
+        "type": "ノーマル",
+        "sleepType": "うとうと",
+        "fields": [
+            "アンバー渓谷"
+        ],
+        "styles": [
+            {
+                "id": "p373_ボーマンダ-1",
+                "name": "1番目の寝顔",
+                "rarity": 1
+            },
+            {
+                "id": "p373_ボーマンダ-2",
+                "name": "2番目の寝顔",
+                "rarity": 2
+            },
+            {
+                "id": "p373_ボーマンダ-3",
+                "name": "3番目の寝顔",
+                "rarity": 3
+            },
+            {
+                "id": "p373_ボーマンダ-4",
+                "name": "おなかのうえ寝",
+                "rarity": 4
+            }
+        ]
+    },
+    ,
     {
         "id": "p403_コリンク",
         "dexNumber": 403,
@@ -4947,6 +5322,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p404_ルクシオ",
         "dexNumber": 404,
@@ -4980,6 +5356,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p405_レントラー",
         "dexNumber": 405,
@@ -5013,6 +5390,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p425_フワンテ",
         "dexNumber": 425,
@@ -5042,6 +5420,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p426_フワライド",
         "dexNumber": 426,
@@ -5070,6 +5449,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p430_ドンカラス",
         "dexNumber": 430,
@@ -5105,6 +5485,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p438_ウソハチ",
         "dexNumber": 438,
@@ -5139,6 +5520,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p439_マネネ",
         "dexNumber": 439,
@@ -5173,6 +5555,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p440_ピンプク",
         "dexNumber": 440,
@@ -5208,6 +5591,44 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
+    {
+        "id": "p442_ミカルゲ",
+        "dexNumber": 442,
+        "name": "ミカルゲ",
+        "type": "ノーマル",
+        "sleepType": "うとうと",
+        "fields": [
+            "ワカクサ本島",
+            "ウノハナ雪原",
+            "ラピスラズリ湖畔",
+            "アンバー渓谷",
+            "ワカクサ本島EX"
+        ],
+        "styles": [
+            {
+                "id": "p442_ミカルゲ-1",
+                "name": "1番目の寝顔",
+                "rarity": 1
+            },
+            {
+                "id": "p442_ミカルゲ-2",
+                "name": "2番目の寝顔",
+                "rarity": 2
+            },
+            {
+                "id": "p442_ミカルゲ-3",
+                "name": "3番目の寝顔",
+                "rarity": 3
+            },
+            {
+                "id": "p442_ミカルゲ-4",
+                "name": "おなかのうえ寝",
+                "rarity": 4
+            }
+        ]
+    },
+    ,
     {
         "id": "p447_リオル",
         "dexNumber": 447,
@@ -5243,6 +5664,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p448_ルカリオ",
         "dexNumber": 448,
@@ -5275,6 +5697,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p453_グレッグル",
         "dexNumber": 453,
@@ -5310,6 +5733,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p454_ドクロッグ",
         "dexNumber": 454,
@@ -5345,6 +5769,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p459_ユキカブリ",
         "dexNumber": 459,
@@ -5378,6 +5803,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p460_ユキノオー",
         "dexNumber": 460,
@@ -5406,6 +5832,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p461_マニューラ",
         "dexNumber": 461,
@@ -5440,6 +5867,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p462_ジバコイル",
         "dexNumber": 462,
@@ -5469,6 +5897,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p468_トゲキッス",
         "dexNumber": 468,
@@ -5501,6 +5930,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p470_リーフィア",
         "dexNumber": 470,
@@ -5535,6 +5965,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p471_グレイシア",
         "dexNumber": 471,
@@ -5569,6 +6000,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p475_エルレイド",
         "dexNumber": 475,
@@ -5602,6 +6034,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p488_クレセリア",
         "dexNumber": 488,
@@ -5632,6 +6065,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p491_ダークライ",
         "dexNumber": 491,
@@ -5665,6 +6099,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p517_ムンナ",
         "dexNumber": 517,
@@ -5695,6 +6130,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p518_ムシャーナ",
         "dexNumber": 518,
@@ -5725,6 +6161,73 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
+    {
+        "id": "p557_イシズマイ",
+        "dexNumber": 557,
+        "name": "イシズマイ",
+        "type": "ノーマル",
+        "sleepType": "うとうと",
+        "fields": [
+            "アンバー渓谷"
+        ],
+        "styles": [
+            {
+                "id": "p557_イシズマイ-1",
+                "name": "からにこもる寝",
+                "rarity": 1
+            },
+            {
+                "id": "p557_イシズマイ-2",
+                "name": "こもらない寝",
+                "rarity": 2
+            },
+            {
+                "id": "p557_イシズマイ-3",
+                "name": "からだいじ寝",
+                "rarity": 3
+            },
+            {
+                "id": "p557_イシズマイ-4",
+                "name": "おなかのうえ寝",
+                "rarity": 4
+            }
+        ]
+    },
+    ,
+    {
+        "id": "p558_イワパレス",
+        "dexNumber": 558,
+        "name": "イワパレス",
+        "type": "ノーマル",
+        "sleepType": "うとうと",
+        "fields": [
+            "アンバー渓谷"
+        ],
+        "styles": [
+            {
+                "id": "p558_イワパレス-1",
+                "name": "1番目の寝顔",
+                "rarity": 1
+            },
+            {
+                "id": "p558_イワパレス-2",
+                "name": "2番目の寝顔",
+                "rarity": 2
+            },
+            {
+                "id": "p558_イワパレス-3",
+                "name": "3番目の寝顔",
+                "rarity": 3
+            },
+            {
+                "id": "p558_イワパレス-4",
+                "name": "おなかのうえ寝",
+                "rarity": 4
+            }
+        ]
+    },
+    ,
     {
         "id": "p627_ワシボン",
         "dexNumber": 627,
@@ -5760,6 +6263,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p628_ウォーグル",
         "dexNumber": 628,
@@ -5795,6 +6299,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p700_ニンフィア",
         "dexNumber": 700,
@@ -5828,6 +6333,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p702_デデンネ",
         "dexNumber": 702,
@@ -5863,6 +6369,79 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
+    {
+        "id": "p710_バケッチャ",
+        "dexNumber": 710,
+        "name": "バケッチャ",
+        "type": "ノーマル",
+        "sleepType": "うとうと",
+        "fields": [
+            "ワカクサ本島",
+            "ゴールド旧発電所",
+            "アンバー渓谷",
+            "ワカクサ本島EX"
+        ],
+        "styles": [
+            {
+                "id": "p710_バケッチャ-1",
+                "name": "うまり寝",
+                "rarity": 1
+            },
+            {
+                "id": "p710_バケッチャ-2",
+                "name": "うかびぱたぱた寝",
+                "rarity": 2
+            },
+            {
+                "id": "p710_バケッチャ-3",
+                "name": "ひかりてらし寝",
+                "rarity": 3
+            },
+            {
+                "id": "p710_バケッチャ-4",
+                "name": "おなかのうえ寝",
+                "rarity": 4
+            }
+        ]
+    },
+    ,
+    {
+        "id": "p711_パンプジン",
+        "dexNumber": 711,
+        "name": "パンプジン",
+        "type": "ノーマル",
+        "sleepType": "うとうと",
+        "fields": [
+            "ワカクサ本島",
+            "ゴールド旧発電所",
+            "アンバー渓谷",
+            "ワカクサ本島EX"
+        ],
+        "styles": [
+            {
+                "id": "p711_パンプジン-1",
+                "name": "だきしめ寝",
+                "rarity": 1
+            },
+            {
+                "id": "p711_パンプジン-2",
+                "name": "2番目の寝顔",
+                "rarity": 2
+            },
+            {
+                "id": "p711_パンプジン-3",
+                "name": "3番目の寝顔",
+                "rarity": 3
+            },
+            {
+                "id": "p711_パンプジン-4",
+                "name": "おなかのうえ寝",
+                "rarity": 4
+            }
+        ]
+    },
+    ,
     {
         "id": "p736_アゴジムシ",
         "dexNumber": 736,
@@ -5897,6 +6476,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p737_デンジムシ",
         "dexNumber": 737,
@@ -5930,6 +6510,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p738_クワガノン",
         "dexNumber": 738,
@@ -5963,6 +6544,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p759_ヌイコグマ",
         "dexNumber": 759,
@@ -5995,6 +6577,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p760_キテルグマ",
         "dexNumber": 760,
@@ -6027,6 +6610,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p764_キュワワー",
         "dexNumber": 764,
@@ -6062,6 +6646,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p778_ミミッキュ",
         "dexNumber": 778,
@@ -6096,6 +6681,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p845_ウッウ",
         "dexNumber": 845,
@@ -6131,6 +6717,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p848_エレズン",
         "dexNumber": 848,
@@ -6165,6 +6752,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p849_ストリンダー（ハイなすがた）",
         "dexNumber": 849,
@@ -6199,6 +6787,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p849_ストリンダー（ローなすがた）",
         "dexNumber": 849,
@@ -6233,6 +6822,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p906_ニャオハ",
         "dexNumber": 906,
@@ -6268,6 +6858,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p907_ニャローテ",
         "dexNumber": 907,
@@ -6303,6 +6894,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p908_マスカーニャ",
         "dexNumber": 908,
@@ -6338,6 +6930,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p909_ホゲータ",
         "dexNumber": 909,
@@ -6374,6 +6967,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p910_アチゲータ",
         "dexNumber": 910,
@@ -6409,6 +7003,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p911_ラウドボーン",
         "dexNumber": 911,
@@ -6444,6 +7039,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p912_クワッス",
         "dexNumber": 912,
@@ -6480,6 +7076,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p913_ウェルカモ",
         "dexNumber": 913,
@@ -6515,6 +7112,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p914_ウェーニバル",
         "dexNumber": 914,
@@ -6550,6 +7148,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p921_パモ",
         "dexNumber": 921,
@@ -6585,6 +7184,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p922_パモット",
         "dexNumber": 922,
@@ -6619,6 +7219,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p923_パーモット",
         "dexNumber": 923,
@@ -6653,6 +7254,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             }
         ]
     },
+    ,
     {
         "id": "p980_ドオー",
         "dexNumber": 980,
