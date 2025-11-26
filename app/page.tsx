@@ -14,6 +14,7 @@ export default function Home() {
   const [selectedField, setSelectedField] = useState<string>('all');
   const [showUncollectedOnly, setShowUncollectedOnly] = useState<boolean>(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isBulkActionOpen, setIsBulkActionOpen] = useState(false);
   const [user, setUser] = useState<User | null>(null);
   const [isInitialized, setIsInitialized] = useState(false);
 
@@ -229,21 +230,45 @@ export default function Home() {
                   </button>
                 </div>
 
-                <div className="flex flex-col gap-4">
-                  <h3 className="text-sm font-semibold text-gray-500">一括操作</h3>
-                  <div className="flex gap-2">
-                    <button
-                      onClick={() => toggleGlobal(true)}
-                      className="flex-1 px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors shadow-sm"
+                <div className="flex flex-col gap-2">
+                  <button
+                    onClick={() => setIsBulkActionOpen(!isBulkActionOpen)}
+                    className="flex justify-between items-center w-full py-2 text-left group"
+                  >
+                    <h3 className="text-sm font-semibold text-gray-500 group-hover:text-gray-700 transition-colors">一括操作</h3>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className={`text-gray-400 transition-transform duration-200 ${isBulkActionOpen ? 'rotate-180' : ''}`}
                     >
-                      表示中を全チェック
-                    </button>
-                    <button
-                      onClick={() => toggleGlobal(false)}
-                      className="flex-1 px-4 py-2 bg-white text-gray-700 text-sm font-medium rounded-lg border border-gray-300 hover:bg-gray-50 transition-colors shadow-sm"
-                    >
-                      全解除
-                    </button>
+                      <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                  </button>
+
+                  <div className={`grid transition-all duration-200 ease-in-out ${isBulkActionOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
+                    <div className="overflow-hidden">
+                      <div className="flex gap-2 pt-2">
+                        <button
+                          onClick={() => toggleGlobal(true)}
+                          className="flex-1 px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors shadow-sm"
+                        >
+                          表示中を全チェック
+                        </button>
+                        <button
+                          onClick={() => toggleGlobal(false)}
+                          className="flex-1 px-4 py-2 bg-white text-gray-700 text-sm font-medium rounded-lg border border-gray-300 hover:bg-gray-50 transition-colors shadow-sm"
+                        >
+                          全解除
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
