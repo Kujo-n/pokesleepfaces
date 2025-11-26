@@ -13,6 +13,7 @@ export default function Home() {
   const [collectedStyles, setCollectedStyles] = useState<Set<string>>(new Set());
   const [selectedField, setSelectedField] = useState<string>('all');
   const [showUncollectedOnly, setShowUncollectedOnly] = useState<boolean>(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [user, setUser] = useState<User | null>(null);
   const [isInitialized, setIsInitialized] = useState(false);
 
@@ -179,62 +180,113 @@ export default function Home() {
       <header className="bg-white border-b border-gray-200 sticky top-0 z-10 shadow-sm">
         <div className="max-w-4xl mx-auto px-4 py-4">
           <div className="flex flex-col gap-4">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-              <h1 className="text-xl font-bold text-gray-900">ポケモンスリープ寝顔図鑑</h1>
+            <div className="flex items-center justify-between gap-4">
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setIsMenuOpen(!isMenuOpen)}
+                  className="p-2 rounded-lg hover:bg-gray-100 transition-colors text-gray-600"
+                  aria-label="Menu"
+                >
+                  {isMenuOpen ? (
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="18" y1="6" x2="6" y2="18"></line>
+                      <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                  ) : (
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="3" y1="12" x2="21" y2="12"></line>
+                      <line x1="3" y1="6" x2="21" y2="6"></line>
+                      <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                  )}
+                </button>
+                <h1 className="text-xl font-bold text-gray-900">ポケモンスリープ寝顔図鑑</h1>
+              </div>
               <AuthButton />
             </div>
 
-            <div className="flex justify-between items-center">
-              <div className="flex gap-2">
-                <button
-                  onClick={() => toggleGlobal(true)}
-                  className="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors shadow-sm"
-                >
-                  表示中を全チェック
-                </button>
-                <button
-                  onClick={() => toggleGlobal(false)}
-                  className="px-4 py-2 bg-white text-gray-700 text-sm font-medium rounded-lg border border-gray-300 hover:bg-gray-50 transition-colors shadow-sm"
-                >
-                  全解除
-                </button>
+            {/* Navigation Drawer Overlay */}
+            {isMenuOpen && (
+              <div
+                className="fixed inset-0 bg-black/50 z-40 transition-opacity"
+                onClick={() => setIsMenuOpen(false)}
+              />
+            )}
+
+            {/* Navigation Drawer */}
+            <div className={`fixed top-0 left-0 h-full w-80 bg-white z-50 shadow-lg transform transition-transform duration-300 ease-in-out ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+              <div className="p-4 flex flex-col gap-6 h-full overflow-y-auto">
+                <div className="flex justify-between items-center">
+                  <h2 className="text-lg font-bold text-gray-900">フィルタ</h2>
+                  <button
+                    onClick={() => setIsMenuOpen(false)}
+                    className="p-2 rounded-lg hover:bg-gray-100 transition-colors text-gray-600"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="18" y1="6" x2="6" y2="18"></line>
+                      <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                  </button>
+                </div>
+
+                <div className="flex flex-col gap-4">
+                  <h3 className="text-sm font-semibold text-gray-500">一括操作</h3>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => toggleGlobal(true)}
+                      className="flex-1 px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors shadow-sm"
+                    >
+                      表示中を全チェック
+                    </button>
+                    <button
+                      onClick={() => toggleGlobal(false)}
+                      className="flex-1 px-4 py-2 bg-white text-gray-700 text-sm font-medium rounded-lg border border-gray-300 hover:bg-gray-50 transition-colors shadow-sm"
+                    >
+                      全解除
+                    </button>
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-4">
+                  <h3 className="text-sm font-semibold text-gray-500">フィールド</h3>
+                  <div className="flex flex-wrap gap-2">
+                    <button
+                      onClick={() => setSelectedField('all')}
+                      className={`px-3 py-1.5 rounded-full text-sm transition-colors ${selectedField === 'all'
+                        ? 'bg-gray-800 text-white'
+                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                        }`}
+                    >
+                      全て
+                    </button>
+                    {FIELD_NAMES.map(field => (
+                      <button
+                        key={field}
+                        onClick={() => setSelectedField(field)}
+                        className={`px-3 py-1.5 rounded-full text-sm transition-colors ${selectedField === field
+                          ? 'bg-green-600 text-white'
+                          : 'bg-green-50 text-green-700 hover:bg-green-100'
+                          }`}
+                      >
+                        {field}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-4">
+                  <h3 className="text-sm font-semibold text-gray-500">その他</h3>
+                  <label className="flex items-center gap-2 px-3 py-1.5 rounded-full text-sm bg-orange-50 text-orange-700 hover:bg-orange-100 cursor-pointer transition-colors w-fit">
+                    <input
+                      type="checkbox"
+                      checked={showUncollectedOnly}
+                      onChange={(e) => setShowUncollectedOnly(e.target.checked)}
+                      className="w-4 h-4 text-orange-600 bg-white border-orange-300 rounded focus:ring-orange-500 focus:ring-2 cursor-pointer"
+                    />
+                    <span>未収集のみ</span>
+                  </label>
+                </div>
               </div>
-            </div>
-
-            {/* Filter */}
-            <div className="flex flex-wrap items-center gap-2 pb-2">
-              <button
-                onClick={() => setSelectedField('all')}
-                className={`px-3 py-1.5 rounded-full text-sm transition-colors ${selectedField === 'all'
-                  ? 'bg-gray-800 text-white'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                  }`}
-              >
-                全て
-              </button>
-              {FIELD_NAMES.map(field => (
-                <button
-                  key={field}
-                  onClick={() => setSelectedField(field)}
-                  className={`px-3 py-1.5 rounded-full text-sm transition-colors ${selectedField === field
-                    ? 'bg-green-600 text-white'
-                    : 'bg-green-50 text-green-700 hover:bg-green-100'
-                    }`}
-                >
-                  {field}
-                </button>
-              ))}
-
-              {/* Uncollected Filter */}
-              <label className="flex items-center gap-2 px-3 py-1.5 rounded-full text-sm bg-orange-50 text-orange-700 hover:bg-orange-100 cursor-pointer transition-colors ml-2">
-                <input
-                  type="checkbox"
-                  checked={showUncollectedOnly}
-                  onChange={(e) => setShowUncollectedOnly(e.target.checked)}
-                  className="w-4 h-4 text-orange-600 bg-white border-orange-300 rounded focus:ring-orange-500 focus:ring-2 cursor-pointer"
-                />
-                <span>未収集のみ</span>
-              </label>
             </div>
 
             {/* Progress Bars */}
