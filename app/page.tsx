@@ -12,6 +12,7 @@ import { saveToLocalStorage, loadFromLocalStorage, migrateToFirestore } from '@/
 export default function Home() {
   const [collectedStyles, setCollectedStyles] = useState<Set<string>>(new Set());
   const [selectedField, setSelectedField] = useState<string>('all');
+  const [selectedSleepType, setSelectedSleepType] = useState<'all' | 'うとうと' | 'すやすや' | 'ぐっすり'>('all');
   const [showUncollectedOnly, setShowUncollectedOnly] = useState<boolean>(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isBulkActionOpen, setIsBulkActionOpen] = useState(false);
@@ -95,20 +96,27 @@ export default function Home() {
   };
 
   const toggleAllPokemonStyles = async (pokemon: Pokemon, select: boolean) => {
-    // Optimistic UI update - immediately update local state
+    // Filter styles based on selectedField
+    const targetStyles = selectedField === 'all'
+      ? pokemon.styles
+      : pokemon.styles.filter(s => s.locations.includes(selectedField));
+
+    const targetStyleIds = targetStyles.map(s => s.id);
+
+    // Optimistic UI update
     const newSet = new Set(collectedStyles);
-    pokemon.styles.forEach((style) => {
+    targetStyleIds.forEach((id) => {
       if (select) {
-        newSet.add(style.id);
+        newSet.add(id);
       } else {
-        newSet.delete(style.id);
+        newSet.delete(id);
       }
     });
     setCollectedStyles(newSet);
 
     if (user) {
       try {
-        await toggleAllStyles(user.uid, pokemon, select);
+        await toggleAllStyles(user.uid, pokemon.id, targetStyleIds, select);
       } catch (e) {
         console.error("Failed to toggle all styles", e);
         setCollectedStyles(collectedStyles);
@@ -121,52 +129,83 @@ export default function Home() {
   };
 
   const toggleGlobal = async (select: boolean) => {
+    // Prepare updates
+    const updates = filteredPokemon.map(p => {
+      const targetStyles = selectedField === 'all'
+        ? p.styles
+        : p.styles.filter(s => s.locations.includes(selectedField));
+      return {
+        pokemonId: p.id,
+        styleIds: targetStyles.map(s => s.id)
+      };
+    }).filter(u => u.styleIds.length > 0);
+
+    // Optimistic UI update
+    const newSet = new Set(collectedStyles);
+    updates.forEach(u => {
+      u.styleIds.forEach(id => {
+        if (select) {
+          newSet.add(id);
+        } else {
+          newSet.delete(id);
+        }
+      });
+    });
+    setCollectedStyles(newSet);
+
     if (user) {
-      // This might be heavy if many pokemon are displayed, but for now it's okay
-      // Ideally we should have a batch operation in backend or a single document for all progress if it's small enough
-      // Given the structure, we loop.
-      // To avoid spamming write ops, maybe warn user? Or just do it.
-      // For filtered list:
-      const promises = filteredPokemon.map(p => toggleAllStyles(user.uid, p, select));
+      const promises = updates.map(u => toggleAllStyles(user.uid, u.pokemonId, u.styleIds, select));
       try {
         await Promise.all(promises);
       } catch (e) {
         console.error("Failed to toggle global", e);
+        setCollectedStyles(collectedStyles); // Revert on error
         alert("一部の保存に失敗しました");
       }
     } else {
-      const newSet = new Set(collectedStyles);
-      filteredPokemon.forEach((pokemon) => {
-        pokemon.styles.forEach((style) => {
-          if (select) {
-            newSet.add(style.id);
-          } else {
-            newSet.delete(style.id);
-          }
-        });
-      });
-      setCollectedStyles(newSet);
+      saveToLocalStorage(newSet);
     }
   };
 
   // Filter Logic
-  let filteredPokemon = selectedField === 'all'
-    ? MOCK_POKEMON
-    : MOCK_POKEMON.filter(p => p.fields.includes(selectedField));
+  const filteredPokemon = MOCK_POKEMON.filter(p => {
+    // Sleep type filter
+    const matchesSleepType = selectedSleepType === 'all' || p.sleepType === selectedSleepType;
+    if (!matchesSleepType) return false;
 
-  // Apply uncollected filter (AND condition with field filter)
-  if (showUncollectedOnly) {
-    filteredPokemon = filteredPokemon.filter(p =>
-      p.styles.some(s => !collectedStyles.has(s.id))
-    );
-  }
+    // Field filter
+    const hasStylesInField = selectedField === 'all' || p.styles.some(s => s.locations.includes(selectedField));
+    const matchesField = hasStylesInField;
 
+    if (!matchesField) return false;
+
+    // Uncollected filter
+    if (showUncollectedOnly) {
+      const availableStyles = selectedField === 'all'
+        ? p.styles
+        : p.styles.filter(s => s.locations.includes(selectedField));
+      const hasUncollected = availableStyles.some(s => !collectedStyles.has(s.id));
+      return hasUncollected;
+    }
+
+    return true;
+  });
   // Progress Calculation
   const calculateProgress = (pokemonList: Pokemon[]) => {
-    const total = pokemonList.reduce((acc, p) => acc + p.styles.length, 0);
-    const collected = pokemonList.reduce((acc, p) => {
-      return acc + p.styles.filter(s => collectedStyles.has(s.id)).length;
+    const total = pokemonList.reduce((acc, p) => {
+      const availableStyles = selectedField === 'all'
+        ? p.styles
+        : p.styles.filter(s => s.locations.includes(selectedField));
+      return acc + availableStyles.length;
     }, 0);
+
+    const collected = pokemonList.reduce((acc, p) => {
+      const availableStyles = selectedField === 'all'
+        ? p.styles
+        : p.styles.filter(s => s.locations.includes(selectedField));
+      return acc + availableStyles.filter(s => collectedStyles.has(s.id)).length;
+    }, 0);
+
     return { total, collected, percentage: total === 0 ? 0 : Math.round((collected / total) * 100) };
   };
 
@@ -300,6 +339,48 @@ export default function Home() {
                 </div>
 
                 <div className="flex flex-col gap-4">
+                  <h3 className="text-sm font-semibold text-gray-500">睡眠タイプ</h3>
+                  <div className="flex flex-wrap gap-2">
+                    <button
+                      onClick={() => setSelectedSleepType('all')}
+                      className={`px-3 py-1.5 rounded-full text-sm transition-colors ${selectedSleepType === 'all'
+                        ? 'bg-gray-800 text-white'
+                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                        }`}
+                    >
+                      全て
+                    </button>
+                    <button
+                      onClick={() => setSelectedSleepType('うとうと')}
+                      className={`px-3 py-1.5 rounded-full text-sm transition-colors ${selectedSleepType === 'うとうと'
+                        ? 'bg-yellow-500 text-white'
+                        : 'bg-yellow-50 text-yellow-800 hover:bg-yellow-100'
+                        }`}
+                    >
+                      うとうと
+                    </button>
+                    <button
+                      onClick={() => setSelectedSleepType('すやすや')}
+                      className={`px-3 py-1.5 rounded-full text-sm transition-colors ${selectedSleepType === 'すやすや'
+                        ? 'bg-blue-500 text-white'
+                        : 'bg-blue-50 text-blue-800 hover:bg-blue-100'
+                        }`}
+                    >
+                      すやすや
+                    </button>
+                    <button
+                      onClick={() => setSelectedSleepType('ぐっすり')}
+                      className={`px-3 py-1.5 rounded-full text-sm transition-colors ${selectedSleepType === 'ぐっすり'
+                        ? 'bg-indigo-500 text-white'
+                        : 'bg-indigo-50 text-indigo-800 hover:bg-indigo-100'
+                        }`}
+                    >
+                      ぐっすり
+                    </button>
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-4">
                   <h3 className="text-sm font-semibold text-gray-500">その他</h3>
                   <label className="flex items-center gap-2 px-3 py-1.5 rounded-full text-sm bg-orange-50 text-orange-700 hover:bg-orange-100 cursor-pointer transition-colors w-fit">
                     <input
@@ -374,6 +455,7 @@ export default function Home() {
               collectedStyles={collectedStyles}
               onToggleStyle={toggleStyle}
               onToggleAll={toggleAllPokemonStyles}
+              selectedField={selectedField}
             />
           ))}
           {filteredPokemon.length === 0 && (
