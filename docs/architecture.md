@@ -256,6 +256,8 @@ graph TB
         UserState["user: User or null"]
         CollectedState["collectedStyles: Set of string"]
         FilterState["selectedField: string"]
+        SleepTypeState["selectedSleepType: string"]
+        UncollectedState["showUncollectedOnly: boolean"]
     end
     
     subgraph "Effects"
@@ -278,6 +280,8 @@ graph TB
     ToggleGlobal --> CollectedState
     
     FilterState --> UI["UI Rendering"]
+    SleepTypeState --> UI
+    UncollectedState --> UI
     CollectedState --> UI
     
     style UserState fill:#4285f4,color:#fff

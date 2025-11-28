@@ -177,7 +177,7 @@ jobs:
 ### Phase 3: ドキュメント（30分）
 
 - [ ] `README.md` に更新手順を追記
-- [ ] `setup_guide.md` を更新
+- [ ] `docs/setup_guide.md` を更新
 - [ ] コントリビューションガイドを作成（オプション）
 
 ### Phase 4: 検証（30分）

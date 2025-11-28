@@ -35,43 +35,6 @@ Firebase と連携するために環境変数の設定が必要です。
 `env.example` をコピーして `.env.local` を作成してください。
 
 ```powershell
-# 環境構築手順書 (Setup Guide)
-
-このドキュメントは、ポケモンスリープ寝顔図鑑管理アプリの開発環境を再現するための手順書です。
-
-## 前提条件
-- OS: Windows 10/11
-- 権限: 管理者権限 (Node.js インストール時)
-
-## 1. Node.js のインストール
-プロジェクトの実行には Node.js (LTS版推奨) が必要です。
-
-```powershell
-# winget を使用してインストールする場合
-winget install -e --id OpenJS.NodeJS.LTS --accept-source-agreements --accept-package-agreements
-```
-インストール後、ターミナルを再起動して `node -v` と `npm -v` が実行できることを確認してください。
-
-## 2. プロジェクトのセットアップ
-リポジトリをクローンした後、以下のコマンドで依存関係をインストールします。
-
-```powershell
-# 依存関係のインストール
-npm install
-```
-
-### 新規作成時の手順 (参考)
-本プロジェクトは以下のコマンドで初期化されました。
-```powershell
-npx -y create-next-app@latest . --typescript --eslint --tailwind --no-src-dir --app --import-alias "@/*"
-npm install firebase
-```
-
-## 3. 環境変数の設定
-Firebase と連携するために環境変数の設定が必要です。
-`env.example` をコピーして `.env.local` を作成してください。
-
-```powershell
 cp env.example .env.local
 ```
 `.env.local` 内の各項目に、Firebase コンソールから取得した値を設定してください。
@@ -108,3 +71,5 @@ npm run dev
 
 ブラウザで `http://localhost:3000` にアクセスします。
 Googleログインボタンが表示され、ログインすると収集状況がFirestoreに保存されるようになります。
+
+
