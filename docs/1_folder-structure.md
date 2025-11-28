@@ -36,16 +36,13 @@ pokesleepfaces/
 │   └── window.svg
 │
 ├── docs/                  # ドキュメント
-│   ├── architecture.md    # アーキテクチャ図
-│   ├── folder-structure.md # このファイル
-│   ├── future-auto-update.md # 自動更新の構想
-│   ├── gcp-costs.md       # GCPコスト試算
-│   ├── performance.md     # パフォーマンス最適化
-│   └── setup_guide.md     # 環境構築手順書
-│
-├── scripts/               # ユーティリティスクリプト（開発用）
-│
-├── reference/             # 参照用データ・資料
+│   ├── 1_folder-structure.md    # このファイル - プロジェクト構造
+│   ├── 2_setup_guide.md         # 環境構築手順書
+│   ├── 3_architecture.md        # アーキテクチャ図
+│   ├── 4_performance.md         # パフォーマンス最適化
+│   ├── 5_deployment.md          # デプロイ手順書
+│   ├── 6_gcp-costs.md           # GCPコスト試算
+│   └── 7_future-auto-update.md  # 自動更新の構想（内部資料）
 │
 ├── .gitignore             # Git除外設定
 ├── .next/                 # Next.jsビルド出力（自動生成）
@@ -137,7 +134,7 @@ pokesleepfaces/
 
 ### ドキュメント
 
-#### `docs/setup_guide.md`
+#### `docs/2_setup_guide.md`
 - 環境構築手順
 - Node.jsインストール
 - Firebase設定方法
@@ -187,4 +184,4 @@ NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
 NEXT_PUBLIC_FIREBASE_APP_ID=
 ```
 
-詳細は `docs/setup_guide.md` を参照してください。
+詳細は `docs/2_setup_guide.md` を参照してください。
