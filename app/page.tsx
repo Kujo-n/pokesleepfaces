@@ -240,7 +240,7 @@ export default function Home() {
                     </svg>
                   )}
                 </button>
-                <h1 className="text-xl font-bold text-gray-900">ポケモンスリープ寝顔図鑑</h1>
+                <h1 className="text-xl font-bold text-gray-900">ポケスリ寝顔チェッカー</h1>
               </div>
               <AuthButton />
             </div>
@@ -328,12 +328,12 @@ export default function Home() {
                         key={field}
                         onClick={() => setSelectedField(field)}
                         className={`px-3 py-1.5 rounded-full text-sm transition-colors ${selectedField === field
-                            ? field === 'イベント限定'
-                              ? 'bg-purple-600 text-white'
-                              : 'bg-green-600 text-white'
-                            : field === 'イベント限定'
-                              ? 'bg-purple-50 text-purple-700 hover:bg-purple-100'
-                              : 'bg-green-50 text-green-700 hover:bg-green-100'
+                          ? field === 'イベント限定'
+                            ? 'bg-purple-600 text-white'
+                            : 'bg-green-600 text-white'
+                          : field === 'イベント限定'
+                            ? 'bg-purple-50 text-purple-700 hover:bg-purple-100'
+                            : 'bg-green-50 text-green-700 hover:bg-green-100'
                           }`}
                       >
                         {field}
