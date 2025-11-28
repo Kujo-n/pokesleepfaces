@@ -25,37 +25,74 @@
 
 
 
-## Getting Started
+## 技術スタック
 
-First, run the development server:
+- **フロントエンド**: Next.js 16 (App Router), React 19, TypeScript
+- **スタイリング**: Tailwind CSS 4
+- **バックエンド**: Firebase (Authentication, Firestore)
+- **ホスティング**: Firebase Hosting
+- **開発ツール**: ESLint, PostCSS
+
+## 開発環境のセットアップ
+
+### 前提条件
+- Node.js (LTS版推奨)
+- npm または yarn
+
+### 1. 依存関係のインストール
+
+```bash
+npm install
+```
+
+### 2. 環境変数の設定
+
+```bash
+cp env.example .env.local
+```
+
+`.env.local` を編集して、Firebase の設定値を入力してください。
+
+詳細は [docs/2_setup_guide.md](docs/2_setup_guide.md) を参照してください。
+
+### 3. 開発サーバーの起動
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+ブラウザで [http://localhost:3000](http://localhost:3000) を開いてください。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## デプロイ
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Firebase Hosting へのデプロイ
 
-## Learn More
+```bash
+# ビルド
+npm run build
 
-To learn more about Next.js, take a look at the following resources:
+# デプロイ
+firebase deploy --only hosting
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+詳細な手順は [docs/5_deployment.md](docs/5_deployment.md) を参照してください。
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## ドキュメント
 
-## Deploy on Vercel
+初めての方は、以下の順番で読むことを推奨します：
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. [フォルダ構成](docs/1_folder-structure.md) - プロジェクト構造の説明
+2. [環境構築手順書](docs/2_setup_guide.md) - 開発環境のセットアップ
+3. [アーキテクチャ図](docs/3_architecture.md) - システム構成の詳細
+4. [パフォーマンス最適化](docs/4_performance.md) - 実装された最適化の説明
+5. [デプロイ手順書](docs/5_deployment.md) - Firebase Hosting へのデプロイ
+6. [GCP コスト試算](docs/6_gcp-costs.md) - 運用コストの見積もり
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## ライセンス
+
+このプロジェクトは [Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/) の下で公開されています。
+
+**商用利用は禁止されています。** 個人的な使用、学習、研究目的での使用は自由です。
+
+## 公開URL
+https://sleepingfaceschecker.web.app
