@@ -328,8 +328,12 @@ export default function Home() {
                         key={field}
                         onClick={() => setSelectedField(field)}
                         className={`px-3 py-1.5 rounded-full text-sm transition-colors ${selectedField === field
-                          ? 'bg-green-600 text-white'
-                          : 'bg-green-50 text-green-700 hover:bg-green-100'
+                            ? field === 'イベント限定'
+                              ? 'bg-purple-600 text-white'
+                              : 'bg-green-600 text-white'
+                            : field === 'イベント限定'
+                              ? 'bg-purple-50 text-purple-700 hover:bg-purple-100'
+                              : 'bg-green-50 text-green-700 hover:bg-green-100'
                           }`}
                       >
                         {field}
