@@ -28,19 +28,18 @@ export const toggleSleepStyle = async (userId: string, pokemonId: string, styleI
     }
 };
 
-export const toggleAllStyles = async (userId: string, pokemon: Pokemon, isSelected: boolean) => {
+export const toggleAllStyles = async (userId: string, pokemonId: string, styleIds: string[], isSelected: boolean) => {
     if (!db) throw new Error("Firebase not initialized");
-    const docRef = doc(db as any, `users/${userId}/collections/${pokemon.id}`);
-    const allStyleIds = pokemon.styles.map(s => s.id);
+    const docRef = doc(db as any, `users/${userId}/collections/${pokemonId}`);
 
     try {
         if (isSelected) {
             await setDoc(docRef, {
-                collectedStyles: allStyleIds
+                collectedStyles: arrayUnion(...styleIds)
             }, { merge: true });
         } else {
             await setDoc(docRef, {
-                collectedStyles: []
+                collectedStyles: arrayRemove(...styleIds)
             }, { merge: true });
         }
     } catch (error) {
