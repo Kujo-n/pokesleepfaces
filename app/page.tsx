@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { MOCK_POKEMON, Pokemon, FIELD_NAMES } from '@/data/mockData';
 import PokemonCard from '@/components/PokemonCard';
 import AuthButton from '@/components/AuthButton';
@@ -240,7 +241,14 @@ export default function Home() {
                     </svg>
                   )}
                 </button>
-                <h1 className="text-xl font-bold text-gray-900">ポケスリ寝顔チェッカー</h1>
+                <Image
+                  src="/icon.png"
+                  alt="ポケスリ寝顔チェッカー"
+                  width={40}
+                  height={40}
+                  className="rounded-lg"
+                />
+                <h1 className="text-2xl font-bold text-gray-900">ポケスリ寝顔チェッカー</h1>
               </div>
               <AuthButton />
             </div>
