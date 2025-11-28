@@ -16,6 +16,7 @@ export type Pokemon = {
 };
 
 export const FIELD_NAMES = [
+    "イベント限定",
     "ワカクサ本島",
     "シアンの砂浜",
     "トープ洞窟",
@@ -701,20 +702,20 @@ export const MOCK_POKEMON: Pokemon[] = [
         "type": "ノーマル",
         "sleepType": "すやすや",
         "fields": [
-            "ワカクサ本島"
+            "イベント限定"
         ],
         "styles": [
             {
                 "id": "p25_ハロピカ-1",
                 "name": "まるまり寝",
                 "rarity": 1,
-                "locations": []
+                "locations": ["イベント限定"]
             },
             {
                 "id": "p25_ハロピカ-2",
                 "name": "たれみみ寝",
                 "rarity": 2,
-                "locations": []
+                "locations": ["イベント限定"]
             }
         ]
     },
@@ -725,20 +726,20 @@ export const MOCK_POKEMON: Pokemon[] = [
         "type": "ノーマル",
         "sleepType": "すやすや",
         "fields": [
-            "ワカクサ本島"
+            "イベント限定"
         ],
         "styles": [
             {
                 "id": "p25_ホリピカ-1",
                 "name": "まるまり寝",
                 "rarity": 1,
-                "locations": []
+                "locations": ["イベント限定"]
             },
             {
                 "id": "p25_ホリピカ-2",
                 "name": "プレゼント寝",
                 "rarity": 2,
-                "locations": []
+                "locations": ["イベント限定"]
             }
         ]
     },
@@ -2455,20 +2456,20 @@ export const MOCK_POKEMON: Pokemon[] = [
         "type": "ノーマル",
         "sleepType": "すやすや",
         "fields": [
-            "ワカクサ本島"
+            "イベント限定"
         ],
         "styles": [
             {
                 "id": "p133_ホリデーイーブイ-1",
                 "name": "まるまり寝",
                 "rarity": 1,
-                "locations": []
+                "locations": ["イベント限定"]
             },
             {
                 "id": "p133_ホリデーイーブイ-2",
                 "name": "プレゼント寝",
                 "rarity": 2,
-                "locations": []
+                "locations": ["イベント限定"]
             }
         ]
     },
@@ -2479,21 +2480,20 @@ export const MOCK_POKEMON: Pokemon[] = [
         "type": "ノーマル",
         "sleepType": "すやすや",
         "fields": [
-            "ワカクサ本島",
-            "ワカクサ本島EX"
+            "イベント限定"
         ],
         "styles": [
             {
                 "id": "p133_ハロウィンイーブイ-1",
                 "name": "まるまり寝",
                 "rarity": 1,
-                "locations": ["ワカクサ本島", "ワカクサ本島EX"]
+                "locations": ["イベント限定"]
             },
             {
                 "id": "p133_ハロウィンイーブイ-2",
                 "name": "たれみみ寝",
                 "rarity": 2,
-                "locations": ["ワカクサ本島", "ワカクサ本島EX"]
+                "locations": ["イベント限定"]
             }
         ]
     },
@@ -6613,32 +6613,26 @@ export const MOCK_POKEMON: Pokemon[] = [
         "type": "ノーマル",
         "sleepType": "うとうと",
         "fields": [
-            "ワカクサ本島",
-            "シアンの砂浜",
-            "トープ洞窟",
-            "ウノハナ雪原",
-            "ラピスラズリ湖畔",
-            "ゴールド旧発電所",
-            "ワカクサ本島EX"
+            "イベント限定"
         ],
         "styles": [
             {
                 "id": "p491_ダークライ-1",
                 "name": "ふゆううでぐみ寝",
                 "rarity": 1,
-                "locations": ["ワカクサ本島", "シアンの砂浜", "トープ洞窟", "ウノハナ雪原", "ラピスラズリ湖畔", "ゴールド旧発電所", "ワカクサ本島EX"]
+                "locations": ["イベント限定"]
             },
             {
                 "id": "p491_ダークライ-2",
                 "name": "ふゆうかまえ寝",
                 "rarity": 2,
-                "locations": ["ワカクサ本島", "シアンの砂浜", "トープ洞窟", "ウノハナ雪原", "ラピスラズリ湖畔", "ゴールド旧発電所", "ワカクサ本島EX"]
+                "locations": ["イベント限定"]
             },
             {
                 "id": "p491_ダークライ-3",
                 "name": "ダークホール寝",
                 "rarity": 3,
-                "locations": ["ワカクサ本島", "シアンの砂浜", "トープ洞窟", "ウノハナ雪原", "ラピスラズリ湖畔", "ゴールド旧発電所", "ワカクサ本島EX"]
+                "locations": ["イベント限定"]
             }
         ]
     },
