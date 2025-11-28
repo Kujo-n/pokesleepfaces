@@ -215,16 +215,16 @@ export default function Home() {
   const slumberingProgress = calculateProgress(filteredPokemon.filter(p => p.sleepType === 'ぐっすり'));
 
   return (
-    <main className="min-h-screen bg-gray-50 pb-20">
+    <main className="min-h-screen bg-gray-50 pb-20 lg:pl-80 transition-all duration-300">
       {/* Header */}
       <header className="bg-white border-b border-gray-200 sticky top-0 z-10 shadow-sm">
-        <div className="max-w-4xl mx-auto px-4 py-4">
+        <div className="max-w-7xl mx-auto px-4 py-4">
           <div className="flex flex-col gap-4">
             <div className="flex items-center justify-between gap-4">
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  className="p-2 rounded-lg hover:bg-gray-100 transition-colors text-gray-600"
+                  className="p-2 rounded-lg hover:bg-gray-100 transition-colors text-gray-600 lg:hidden"
                   aria-label="Menu"
                 >
                   {isMenuOpen ? (
@@ -248,19 +248,19 @@ export default function Home() {
             {/* Navigation Drawer Overlay */}
             {isMenuOpen && (
               <div
-                className="fixed inset-0 bg-black/50 z-40 transition-opacity"
+                className="fixed inset-0 bg-black/50 z-40 transition-opacity lg:hidden"
                 onClick={() => setIsMenuOpen(false)}
               />
             )}
 
             {/* Navigation Drawer */}
-            <div className={`fixed top-0 left-0 h-full w-80 bg-white z-50 shadow-lg transform transition-transform duration-300 ease-in-out ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+            <div className={`fixed top-0 left-0 h-full w-80 bg-white z-50 shadow-lg transform transition-transform duration-300 ease-in-out ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 lg:shadow-none lg:border-r lg:border-gray-200`}>
               <div className="p-4 flex flex-col gap-6 h-full overflow-y-auto">
                 <div className="flex justify-between items-center">
                   <h2 className="text-lg font-bold text-gray-900">フィルタ</h2>
                   <button
                     onClick={() => setIsMenuOpen(false)}
-                    className="p-2 rounded-lg hover:bg-gray-100 transition-colors text-gray-600"
+                    className="p-2 rounded-lg hover:bg-gray-100 transition-colors text-gray-600 lg:hidden"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -446,8 +446,8 @@ export default function Home() {
       </header>
 
       {/* Content */}
-      <div className="max-w-4xl mx-auto px-4 py-6">
-        <div className="grid grid-cols-1 gap-4">
+      <div className="max-w-7xl mx-auto px-4 py-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
           {filteredPokemon.map((pokemon) => (
             <PokemonCard
               key={pokemon.id}
