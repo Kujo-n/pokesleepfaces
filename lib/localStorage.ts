@@ -2,6 +2,7 @@
 // LocalStorageでの一時保存ユーティリティ
 
 const STORAGE_KEY = 'pokesleep_temp_collection';
+import { Pokemon } from '@/data/mockData';
 
 export const saveToLocalStorage = (collectedStyles: Set<string>) => {
     try {
@@ -37,7 +38,7 @@ export const migrateToFirestore = async (
     userId: string,
     localData: Set<string>,
     toggleSleepStyle: (userId: string, pokemonId: string, styleId: string, isCollected: boolean) => Promise<void>,
-    MOCK_POKEMON: any[],
+    MOCK_POKEMON: Pokemon[],
     checkIfNewUser: (userId: string) => Promise<boolean>
 ) => {
     const isNewUser = await checkIfNewUser(userId);
@@ -52,7 +53,7 @@ export const migrateToFirestore = async (
     const promises: Promise<void>[] = [];
 
     localData.forEach((styleId) => {
-        const pokemon = MOCK_POKEMON.find((p: any) => p.styles.some((s: any) => s.id === styleId));
+        const pokemon = MOCK_POKEMON.find((p) => p.styles.some((s) => s.id === styleId));
         if (pokemon) {
             promises.push(toggleSleepStyle(userId, pokemon.id, styleId, true));
         }

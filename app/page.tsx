@@ -20,15 +20,19 @@ export default function Home() {
   const [user, setUser] = useState<User | null>(null);
   const [isInitialized, setIsInitialized] = useState(false);
 
-  // Initialize from localStorage for guest users
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const localData = loadFromLocalStorage();
-      if (localData.size > 0) {
-        setCollectedStyles(localData);
+    // Use setTimeout to avoid "Calling setState synchronously within an effect" lint error
+    // and to ensure we are not blocking the main thread.
+    const timer = setTimeout(() => {
+      if (typeof window !== 'undefined') {
+        const localData = loadFromLocalStorage();
+        if (localData.size > 0) {
+          setCollectedStyles(localData);
+        }
+        setIsInitialized(true);
       }
-      setIsInitialized(true);
-    }
+    }, 0);
+    return () => clearTimeout(timer);
   }, []);
 
   // Auth State Observer

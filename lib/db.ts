@@ -1,14 +1,12 @@
 import { db } from '@/firebase/config';
-import { doc, setDoc, getDoc, updateDoc, arrayUnion, arrayRemove, onSnapshot, collection, getDocs } from 'firebase/firestore';
-import { Pokemon } from '@/data/mockData';
-
+import { doc, setDoc, arrayUnion, arrayRemove, onSnapshot, collection, getDocs, Firestore } from 'firebase/firestore';
 // User Collection Structure:
 // users/{userId}/collections/{pokemonId}
 // Document contains: { collectedStyles: [styleId1, styleId2, ...] }
 
 export const toggleSleepStyle = async (userId: string, pokemonId: string, styleId: string, isCollected: boolean) => {
     if (!db) throw new Error("Firebase not initialized");
-    const docRef = doc(db as any, `users/${userId}/collections/${pokemonId}`);
+    const docRef = doc(db as Firestore, `users/${userId}/collections/${pokemonId}`);
 
     try {
         if (isCollected) {
@@ -30,7 +28,7 @@ export const toggleSleepStyle = async (userId: string, pokemonId: string, styleI
 
 export const toggleAllStyles = async (userId: string, pokemonId: string, styleIds: string[], isSelected: boolean) => {
     if (!db) throw new Error("Firebase not initialized");
-    const docRef = doc(db as any, `users/${userId}/collections/${pokemonId}`);
+    const docRef = doc(db as Firestore, `users/${userId}/collections/${pokemonId}`);
 
     try {
         if (isSelected) {
@@ -48,16 +46,27 @@ export const toggleAllStyles = async (userId: string, pokemonId: string, styleId
     }
 };
 
+interface UserCollection {
+    collectedStyles: string[];
+}
+
 export const subscribeToUserCollection = (userId: string, callback: (collected: Set<string>) => void) => {
     if (!db) return () => { };
-    const collectionRef = collection(db as any, `users/${userId}/collections`);
+
+    const collectionRef = collection(db as Firestore, `users/${userId}/collections`).withConverter({
+        toFirestore: (data: UserCollection) => data,
+        fromFirestore: (snapshot, options) => {
+            const data = snapshot.data(options);
+            return data as UserCollection;
+        }
+    });
 
     return onSnapshot(collectionRef, (snapshot) => {
         const newCollected = new Set<string>();
         snapshot.forEach((doc) => {
             const data = doc.data();
             if (data.collectedStyles && Array.isArray(data.collectedStyles)) {
-                data.collectedStyles.forEach((id: string) => newCollected.add(id));
+                data.collectedStyles.forEach((id) => newCollected.add(id));
             }
         });
         callback(newCollected);
@@ -68,7 +77,7 @@ export const checkIfNewUser = async (userId: string): Promise<boolean> => {
     if (!db) return false;
 
     try {
-        const collectionRef = collection(db as any, `users/${userId}/collections`);
+        const collectionRef = collection(db as Firestore, `users/${userId}/collections`);
         const snapshot = await getDocs(collectionRef);
 
         // コレクションが空 = 新規ユーザー

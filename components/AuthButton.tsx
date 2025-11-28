@@ -3,6 +3,7 @@
 import { auth } from '@/firebase/config';
 import { GoogleAuthProvider, signInWithPopup, signOut, User } from 'firebase/auth';
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 export default function AuthButton() {
     const [user, setUser] = useState<User | null>(null);
@@ -41,7 +42,13 @@ export default function AuthButton() {
         return (
             <div className="flex items-center gap-3">
                 {user.photoURL && (
-                    <img src={user.photoURL} alt={user.displayName || 'User'} className="w-8 h-8 rounded-full" />
+                    <Image
+                        src={user.photoURL}
+                        alt={user.displayName || 'User'}
+                        width={32}
+                        height={32}
+                        className="rounded-full"
+                    />
                 )}
                 <button
                     onClick={handleSignOut}
