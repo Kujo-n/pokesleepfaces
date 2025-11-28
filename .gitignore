@@ -30,8 +30,13 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
-.env*
+# environment variables (NEVER commit these!)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+# env.example should be committed as a template
 
 # vercel
 .vercel
@@ -42,13 +47,32 @@ next-env.d.ts
 
 # firebase
 .firebase/
+.firebaserc
 firebase-debug.log*
 firestore-debug.log*
 ui-debug.log*
 
-# windows
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
 Thumbs.db
 ehthumbs.db
 Desktop.ini
 
+# Internal documents (not for public)
+docs/7_future-auto-update.md
 
+# Development artifacts
+reference/
+scripts/
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
