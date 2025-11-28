@@ -8,13 +8,18 @@ type Props = {
     collectedStyles: Set<string>;
     onToggleStyle: (styleId: string) => void;
     onToggleAll: (pokemon: Pokemon, select: boolean) => void;
+    selectedField?: string;
 };
 
-export default function PokemonCard({ pokemon, collectedStyles, onToggleStyle, onToggleAll }: Props) {
+export default function PokemonCard({ pokemon, collectedStyles, onToggleStyle, onToggleAll, selectedField = 'all' }: Props) {
     const [isExpanded, setIsExpanded] = useState(true);
 
-    const collectedCount = pokemon.styles.filter((s) => collectedStyles.has(s.id)).length;
-    const totalStyles = pokemon.styles.length;
+    const availableStyles = selectedField === 'all'
+        ? pokemon.styles
+        : pokemon.styles.filter(s => s.locations.includes(selectedField));
+
+    const collectedCount = availableStyles.filter((s) => collectedStyles.has(s.id)).length;
+    const totalStyles = availableStyles.length;
 
     const getSleepTypeColor = (type: string) => {
         switch (type) {
@@ -76,7 +81,7 @@ export default function PokemonCard({ pokemon, collectedStyles, onToggleStyle, o
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                        {pokemon.styles.map((style) => {
+                        {availableStyles.map((style) => {
                             const isCollected = collectedStyles.has(style.id);
                             return (
                                 <button
