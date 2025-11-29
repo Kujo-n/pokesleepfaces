@@ -212,7 +212,7 @@ export default function Home() {
       return acc + availableStyles.filter(s => collectedStyles.has(s.id)).length;
     }, 0);
 
-    return { total, collected, percentage: total === 0 ? 0 : Math.round((collected / total) * 100) };
+    return { total, collected, percentage: total === 0 ? '0.0' : ((collected / total) * 100).toFixed(1) };
   };
 
   const totalProgress = calculateProgress(filteredPokemon);
@@ -236,7 +236,7 @@ export default function Home() {
       return acc + availableStyles.filter(s => s.rarity === rarity && collectedStyles.has(s.id)).length;
     }, 0);
 
-    return { total, collected, percentage: total === 0 ? 0 : Math.round((collected / total) * 100) };
+    return { total, collected, percentage: total === 0 ? '0.0' : ((collected / total) * 100).toFixed(1) };
   };
 
   const rarity1Progress = calculateRarityProgress(filteredPokemon, 1);
