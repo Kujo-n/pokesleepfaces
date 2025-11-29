@@ -8,12 +8,20 @@ type Props = {
     onToggleStyle: (styleId: string) => void;
     onToggleAll: (pokemon: Pokemon, select: boolean) => void;
     selectedField?: string;
+    showUncollectedOnly?: boolean;
+    filterBaseCollectedStyles?: Set<string>;
 };
 
-export default function PokemonCard({ pokemon, collectedStyles, onToggleStyle, onToggleAll, selectedField = 'all' }: Props) {
+export default function PokemonCard({ pokemon, collectedStyles, onToggleStyle, onToggleAll, selectedField = 'all', showUncollectedOnly = false, filterBaseCollectedStyles = new Set() }: Props) {
     const availableStyles = selectedField === 'all'
         ? pokemon.styles
         : pokemon.styles.filter(s => s.locations.includes(selectedField));
+
+    // 未収集のみフィルタが有効な場合、収集済みスタイルを除外
+    // 未収集のみフィルタが有効な場合、収集済みスタイルを除外
+    const displayStyles = showUncollectedOnly
+        ? availableStyles.filter(s => !filterBaseCollectedStyles.has(s.id))
+        : availableStyles;
 
     const collectedCount = availableStyles.filter((s) => collectedStyles.has(s.id)).length;
     const totalStyles = availableStyles.length;
@@ -70,7 +78,7 @@ export default function PokemonCard({ pokemon, collectedStyles, onToggleStyle, o
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-2">
-                    {availableStyles.map((style) => {
+                    {displayStyles.map((style) => {
                         const isCollected = collectedStyles.has(style.id);
                         return (
                             <button

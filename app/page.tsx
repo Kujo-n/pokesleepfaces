@@ -15,6 +15,7 @@ export default function Home() {
   const [selectedField, setSelectedField] = useState<string>('all');
   const [selectedSleepType, setSelectedSleepType] = useState<'all' | 'うとうと' | 'すやすや' | 'ぐっすり'>('all');
   const [showUncollectedOnly, setShowUncollectedOnly] = useState<boolean>(false);
+  const [filterBaseCollectedStyles, setFilterBaseCollectedStyles] = useState<Set<string>>(new Set());
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isBulkActionOpen, setIsBulkActionOpen] = useState(false);
   const [user, setUser] = useState<User | null>(null);
@@ -189,7 +190,7 @@ export default function Home() {
       const availableStyles = selectedField === 'all'
         ? p.styles
         : p.styles.filter(s => s.locations.includes(selectedField));
-      const hasUncollected = availableStyles.some(s => !collectedStyles.has(s.id));
+      const hasUncollected = availableStyles.some(s => !filterBaseCollectedStyles.has(s.id));
       return hasUncollected;
     }
 
@@ -402,7 +403,15 @@ export default function Home() {
                     <input
                       type="checkbox"
                       checked={showUncollectedOnly}
-                      onChange={(e) => setShowUncollectedOnly(e.target.checked)}
+                      onChange={(e) => {
+                        const checked = e.target.checked;
+                        setShowUncollectedOnly(checked);
+                        if (checked) {
+                          setFilterBaseCollectedStyles(new Set(collectedStyles));
+                        } else {
+                          setFilterBaseCollectedStyles(new Set());
+                        }
+                      }}
                       className="w-4 h-4 text-orange-600 bg-white border-orange-300 rounded focus:ring-orange-500 focus:ring-2 cursor-pointer"
                     />
                     <span>未収集のみ</span>
@@ -472,6 +481,8 @@ export default function Home() {
               onToggleStyle={toggleStyle}
               onToggleAll={toggleAllPokemonStyles}
               selectedField={selectedField}
+              showUncollectedOnly={showUncollectedOnly}
+              filterBaseCollectedStyles={filterBaseCollectedStyles}
             />
           ))}
           {filteredPokemon.length === 0 && (
