@@ -87,3 +87,38 @@ export const checkIfNewUser = async (userId: string): Promise<boolean> => {
         return false; // エラー時は既存ユーザーとして扱う（安全側）
     }
 };
+
+// Filter preferences
+export interface FilterPreferences {
+    selectedField: string;
+    selectedSleepType: string;
+    showUncollectedOnly: boolean;
+}
+
+export const saveFilterPreferences = async (userId: string, preferences: FilterPreferences) => {
+    if (!db) throw new Error("Firebase not initialized");
+    const docRef = doc(db as Firestore, `users/${userId}/preferences/filters`);
+
+    try {
+        await setDoc(docRef, preferences, { merge: true });
+    } catch (error) {
+        console.error("Error saving filter preferences:", error);
+        throw error;
+    }
+};
+
+export const loadFilterPreferences = async (userId: string): Promise<FilterPreferences | null> => {
+    if (!db) return null;
+
+    try {
+        const snapshot = await getDocs(collection(db as Firestore, `users/${userId}/preferences`));
+        const filterDoc = snapshot.docs.find(d => d.id === 'filters');
+        if (filterDoc && filterDoc.exists()) {
+            return filterDoc.data() as FilterPreferences;
+        }
+        return null;
+    } catch (error) {
+        console.error("Error loading filter preferences:", error);
+        return null;
+    }
+};

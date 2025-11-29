@@ -6,7 +6,7 @@ import { MOCK_POKEMON, Pokemon, FIELD_NAMES } from '@/data/mockData';
 import PokemonCard from '@/components/PokemonCard';
 import AuthButton from '@/components/AuthButton';
 import { auth } from '@/firebase/config';
-import { subscribeToUserCollection, toggleSleepStyle, toggleAllStyles, checkIfNewUser } from '@/lib/db';
+import { subscribeToUserCollection, toggleSleepStyle, toggleAllStyles, checkIfNewUser, saveFilterPreferences, loadFilterPreferences } from '@/lib/db';
 import { onAuthStateChanged, User } from 'firebase/auth';
 import { saveToLocalStorage, loadFromLocalStorage, migrateToFirestore } from '@/lib/localStorage';
 
@@ -170,6 +170,41 @@ export default function Home() {
       }
     } else {
       saveToLocalStorage(newSet);
+    }
+  };
+
+  // Load filter preferences on login
+  useEffect(() => {
+    if (user) {
+      loadFilterPreferences(user.uid).then(prefs => {
+        if (prefs) {
+          setSelectedField(prefs.selectedField);
+          setSelectedSleepType(prefs.selectedSleepType as 'all' | 'うとうと' | 'すやすや' | 'ぐっすり');
+          setShowUncollectedOnly(prefs.showUncollectedOnly);
+        }
+      });
+    }
+  }, [user]);
+
+  // Update snapshot when collectedStyles is loaded if filter is active
+  useEffect(() => {
+    if (showUncollectedOnly && collectedStyles.size > 0 && filterBaseCollectedStyles.size === 0) {
+      const timer = setTimeout(() => {
+        setFilterBaseCollectedStyles(new Set(collectedStyles));
+      }, 0);
+      return () => clearTimeout(timer);
+    }
+  }, [collectedStyles, showUncollectedOnly, filterBaseCollectedStyles.size]);
+
+  const updateFilterPreferences = (
+    updates: { field?: string; sleepType?: string; uncollectedOnly?: boolean }
+  ) => {
+    if (user) {
+      saveFilterPreferences(user.uid, {
+        selectedField: updates.field ?? selectedField,
+        selectedSleepType: updates.sleepType ?? selectedSleepType,
+        showUncollectedOnly: updates.uncollectedOnly ?? showUncollectedOnly
+      });
     }
   };
 
@@ -352,7 +387,10 @@ export default function Home() {
                   <h3 className="text-sm font-semibold text-gray-500">フィールド</h3>
                   <div className="flex flex-wrap gap-2">
                     <button
-                      onClick={() => setSelectedField('all')}
+                      onClick={() => {
+                        setSelectedField('all');
+                        updateFilterPreferences({ field: 'all' });
+                      }}
                       className={`px-3 py-1.5 rounded-full text-sm transition-colors ${selectedField === 'all'
                         ? 'bg-gray-800 text-white'
                         : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
@@ -363,7 +401,10 @@ export default function Home() {
                     {FIELD_NAMES.map(field => (
                       <button
                         key={field}
-                        onClick={() => setSelectedField(field)}
+                        onClick={() => {
+                          setSelectedField(field);
+                          updateFilterPreferences({ field });
+                        }}
                         className={`px-3 py-1.5 rounded-full text-sm transition-colors ${selectedField === field
                           ? field === 'イベント限定'
                             ? 'bg-purple-600 text-white'
@@ -383,7 +424,10 @@ export default function Home() {
                   <h3 className="text-sm font-semibold text-gray-500">睡眠タイプ</h3>
                   <div className="flex flex-wrap gap-2">
                     <button
-                      onClick={() => setSelectedSleepType('all')}
+                      onClick={() => {
+                        setSelectedSleepType('all');
+                        updateFilterPreferences({ sleepType: 'all' });
+                      }}
                       className={`px-3 py-1.5 rounded-full text-sm transition-colors ${selectedSleepType === 'all'
                         ? 'bg-gray-800 text-white'
                         : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
@@ -392,7 +436,10 @@ export default function Home() {
                       全て
                     </button>
                     <button
-                      onClick={() => setSelectedSleepType('うとうと')}
+                      onClick={() => {
+                        setSelectedSleepType('うとうと');
+                        updateFilterPreferences({ sleepType: 'うとうと' });
+                      }}
                       className={`px-3 py-1.5 rounded-full text-sm transition-colors ${selectedSleepType === 'うとうと'
                         ? 'bg-yellow-500 text-white'
                         : 'bg-yellow-50 text-yellow-800 hover:bg-yellow-100'
@@ -401,7 +448,10 @@ export default function Home() {
                       うとうと
                     </button>
                     <button
-                      onClick={() => setSelectedSleepType('すやすや')}
+                      onClick={() => {
+                        setSelectedSleepType('すやすや');
+                        updateFilterPreferences({ sleepType: 'すやすや' });
+                      }}
                       className={`px-3 py-1.5 rounded-full text-sm transition-colors ${selectedSleepType === 'すやすや'
                         ? 'bg-blue-500 text-white'
                         : 'bg-blue-50 text-blue-800 hover:bg-blue-100'
@@ -410,7 +460,10 @@ export default function Home() {
                       すやすや
                     </button>
                     <button
-                      onClick={() => setSelectedSleepType('ぐっすり')}
+                      onClick={() => {
+                        setSelectedSleepType('ぐっすり');
+                        updateFilterPreferences({ sleepType: 'ぐっすり' });
+                      }}
                       className={`px-3 py-1.5 rounded-full text-sm transition-colors ${selectedSleepType === 'ぐっすり'
                         ? 'bg-indigo-500 text-white'
                         : 'bg-indigo-50 text-indigo-800 hover:bg-indigo-100'
@@ -435,6 +488,7 @@ export default function Home() {
                         } else {
                           setFilterBaseCollectedStyles(new Set());
                         }
+                        updateFilterPreferences({ uncollectedOnly: checked });
                       }}
                       className="w-4 h-4 text-orange-600 bg-white border-orange-300 rounded focus:ring-orange-500 focus:ring-2 cursor-pointer"
                     />
