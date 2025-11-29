@@ -451,28 +451,28 @@ export default function Home() {
                   <span className="font-bold text-gray-700">全体</span>
                   <div className="flex items-baseline gap-1">
                     <span className="font-medium text-gray-900">{totalProgress.percentage}%</span>
-                    <span className="hidden sm:inline text-gray-900 text-xs">({totalProgress.collected}/{totalProgress.total})</span>
+                    <span className="text-gray-900 text-xs">({totalProgress.collected}/{totalProgress.total})</span>
                   </div>
                 </div>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-2 border-l border-gray-200">
                   <span className="font-bold text-yellow-600">うとうと</span>
                   <div className="flex items-baseline gap-1">
                     <span className="font-medium text-gray-900">{dozingProgress.percentage}%</span>
-                    <span className="hidden sm:inline text-gray-900 text-xs">({dozingProgress.collected}/{dozingProgress.total})</span>
+                    <span className="text-gray-900 text-xs">({dozingProgress.collected}/{dozingProgress.total})</span>
                   </div>
                 </div>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-2 border-l border-gray-200">
                   <span className="font-bold text-blue-600">すやすや</span>
                   <div className="flex items-baseline gap-1">
                     <span className="font-medium text-gray-900">{snoozingProgress.percentage}%</span>
-                    <span className="hidden sm:inline text-gray-900 text-xs">({snoozingProgress.collected}/{snoozingProgress.total})</span>
+                    <span className="text-gray-900 text-xs">({snoozingProgress.collected}/{snoozingProgress.total})</span>
                   </div>
                 </div>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-2 border-l border-gray-200">
                   <span className="font-bold text-indigo-600">ぐっすり</span>
                   <div className="flex items-baseline gap-1">
                     <span className="font-medium text-gray-900">{slumberingProgress.percentage}%</span>
-                    <span className="hidden sm:inline text-gray-900 text-xs">({slumberingProgress.collected}/{slumberingProgress.total})</span>
+                    <span className="text-gray-900 text-xs">({slumberingProgress.collected}/{slumberingProgress.total})</span>
                   </div>
                 </div>
               </div>
@@ -482,28 +482,28 @@ export default function Home() {
                   <span className="font-bold text-gray-500">★1</span>
                   <div className="flex items-baseline gap-1">
                     <span className="font-medium text-gray-900">{rarity1Progress.percentage}%</span>
-                    <span className="hidden sm:inline text-gray-900 text-xs">({rarity1Progress.collected}/{rarity1Progress.total})</span>
+                    <span className="text-gray-900 text-xs">({rarity1Progress.collected}/{rarity1Progress.total})</span>
                   </div>
                 </div>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-2 border-l border-gray-200">
                   <span className="font-bold text-emerald-600">★2</span>
                   <div className="flex items-baseline gap-1">
                     <span className="font-medium text-gray-900">{rarity2Progress.percentage}%</span>
-                    <span className="hidden sm:inline text-gray-900 text-xs">({rarity2Progress.collected}/{rarity2Progress.total})</span>
+                    <span className="text-gray-900 text-xs">({rarity2Progress.collected}/{rarity2Progress.total})</span>
                   </div>
                 </div>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-2 border-l border-gray-200">
                   <span className="font-bold text-pink-600">★3</span>
                   <div className="flex items-baseline gap-1">
                     <span className="font-medium text-gray-900">{rarity3Progress.percentage}%</span>
-                    <span className="hidden sm:inline text-gray-900 text-xs">({rarity3Progress.collected}/{rarity3Progress.total})</span>
+                    <span className="text-gray-900 text-xs">({rarity3Progress.collected}/{rarity3Progress.total})</span>
                   </div>
                 </div>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-2 border-l border-gray-200">
                   <span className="font-bold text-amber-600">★4</span>
                   <div className="flex items-baseline gap-1">
                     <span className="font-medium text-gray-900">{rarity4Progress.percentage}%</span>
-                    <span className="hidden sm:inline text-gray-900 text-xs">({rarity4Progress.collected}/{rarity4Progress.total})</span>
+                    <span className="text-gray-900 text-xs">({rarity4Progress.collected}/{rarity4Progress.total})</span>
                   </div>
                 </div>
               </div>
