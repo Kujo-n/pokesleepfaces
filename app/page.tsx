@@ -424,9 +424,9 @@ export default function Home() {
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs sm:text-sm">
               <div className="bg-gray-50 p-2 rounded border border-gray-100">
                 <div className="font-bold text-gray-700 mb-1">全体</div>
-                <div className="flex justify-between mb-1">
+                <div className="flex justify-between mb-1 text-gray-900">
                   <span>{totalProgress.percentage}%</span>
-                  <span className="text-gray-500">{totalProgress.collected}/{totalProgress.total}</span>
+                  <span>{totalProgress.collected}/{totalProgress.total}</span>
                 </div>
                 <div className="h-1.5 bg-gray-200 rounded-full overflow-hidden">
                   <div className="h-full bg-gray-800" style={{ width: `${totalProgress.percentage}%` }} />
