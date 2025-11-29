@@ -446,7 +446,7 @@ export default function Home() {
 
             {/* Progress Summary (Compact) */}
             <div className="space-y-0">
-              <div className="grid grid-cols-4 gap-1 text-xs sm:text-sm bg-gray-50 p-2 rounded-t border border-gray-100">
+              <div className="grid grid-cols-4 gap-1 text-xs sm:text-lg bg-gray-50 p-2 rounded-t border border-gray-100">
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-2">
                   <span className="font-bold text-gray-700">全体</span>
                   <div className="flex items-baseline gap-1">
@@ -477,7 +477,7 @@ export default function Home() {
                 </div>
               </div>
               {/* Rarity Progress (Compact) */}
-              <div className="grid grid-cols-4 gap-1 text-xs sm:text-sm bg-gray-50 p-2 rounded-b border-t-0 border border-gray-100">
+              <div className="grid grid-cols-4 gap-1 text-xs sm:text-lg bg-gray-50 p-2 rounded-b border-t-0 border border-gray-100">
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-2">
                   <span className="font-bold text-gray-500">★1</span>
                   <div className="flex items-baseline gap-1">
