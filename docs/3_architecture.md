@@ -128,16 +128,25 @@ graph TB
         Collections[collections/]
         PokemonDoc["{pokemonId}"]
         Data["collectedStyles: string[]"]
+        
+        Preferences[preferences/]
+        FiltersDoc["filters"]
+        FilterData["selectedField<br/>selectedSleepType<br/>showUncollectedOnly"]
     end
     
     Users --> UserDoc
     UserDoc --> Collections
+    UserDoc --> Preferences
     Collections --> PokemonDoc
     PokemonDoc --> Data
+    Preferences --> FiltersDoc
+    FiltersDoc --> FilterData
     
     style Users fill:#ff6f00,color:#fff
     style Collections fill:#ff6f00,color:#fff
     style Data fill:#4285f4,color:#fff
+    style Preferences fill:#ff6f00,color:#fff
+    style FilterData fill:#4285f4,color:#fff
 ```
 
 ### データ例
@@ -157,6 +166,13 @@ graph TB
           "collectedStyles": [
             "bulbasaur-1"
           ]
+        }
+      },
+      "preferences": {
+        "filters": {
+          "selectedField": "all",
+          "selectedSleepType": "all",
+          "showUncollectedOnly": false
         }
       }
     }
