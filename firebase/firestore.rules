@@ -27,5 +27,10 @@ service cloud.firestore {
     match /users/{userId} {
       allow read, write: if isOwner(userId);
     }
+
+    // User Preferences
+    match /users/{userId}/preferences/{document=**} {
+      allow read, write: if isOwner(userId);
+    }
   }
 }
