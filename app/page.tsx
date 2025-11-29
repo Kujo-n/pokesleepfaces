@@ -444,52 +444,36 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Progress Bars */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs sm:text-sm">
-              <div className="bg-gray-50 p-2 rounded border border-gray-100">
-                <div className="font-bold text-gray-700 mb-1">全体</div>
-                <div className="flex justify-between mb-1 text-gray-900">
-                  <span>{totalProgress.percentage}%</span>
-                  <span>{totalProgress.collected}/{totalProgress.total}</span>
-                </div>
-                <div className="h-1.5 bg-gray-200 rounded-full overflow-hidden">
-                  <div className="h-full bg-gray-800" style={{ width: `${totalProgress.percentage}%` }} />
+            {/* Progress Summary (Compact) */}
+            <div className="grid grid-cols-4 gap-1 text-xs sm:text-sm bg-gray-50 p-2 rounded border border-gray-100">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-2">
+                <span className="font-bold text-gray-700">全体</span>
+                <div className="flex items-baseline gap-1">
+                  <span className="font-medium text-gray-900">{totalProgress.percentage}%</span>
+                  <span className="hidden sm:inline text-gray-900 text-xs">({totalProgress.collected}/{totalProgress.total})</span>
                 </div>
               </div>
-
-              <div className="bg-yellow-50 p-2 rounded border border-yellow-100">
-                <div className="font-bold text-yellow-800 mb-1">うとうと</div>
-                <div className="flex justify-between mb-1 text-yellow-900">
-                  <span>{dozingProgress.percentage}%</span>
-                  <span>{dozingProgress.collected}/{dozingProgress.total}</span>
-                </div>
-                <div className="h-1.5 bg-yellow-200 rounded-full overflow-hidden">
-                  <div className="h-full bg-yellow-500" style={{ width: `${dozingProgress.percentage}%` }} />
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-2 border-l border-gray-200">
+                <span className="font-bold text-yellow-600">うとうと</span>
+                <div className="flex items-baseline gap-1">
+                  <span className="font-medium text-gray-900">{dozingProgress.percentage}%</span>
+                  <span className="hidden sm:inline text-gray-900 text-xs">({dozingProgress.collected}/{dozingProgress.total})</span>
                 </div>
               </div>
-
-              <div className="bg-blue-50 p-2 rounded border border-blue-100">
-                <div className="font-bold text-blue-800 mb-1">すやすや</div>
-                <div className="flex justify-between mb-1 text-blue-900">
-                  <span>{snoozingProgress.percentage}%</span>
-                  <span>{snoozingProgress.collected}/{snoozingProgress.total}</span>
-                </div>
-                <div className="h-1.5 bg-blue-200 rounded-full overflow-hidden">
-                  <div className="h-full bg-blue-500" style={{ width: `${snoozingProgress.percentage}%` }} />
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-2 border-l border-gray-200">
+                <span className="font-bold text-blue-600">すやすや</span>
+                <div className="flex items-baseline gap-1">
+                  <span className="font-medium text-gray-900">{snoozingProgress.percentage}%</span>
+                  <span className="hidden sm:inline text-gray-900 text-xs">({snoozingProgress.collected}/{snoozingProgress.total})</span>
                 </div>
               </div>
-
-              <div className="bg-indigo-50 p-2 rounded border border-indigo-100">
-                <div className="font-bold text-indigo-800 mb-1">ぐっすり</div>
-                <div className="flex justify-between mb-1 text-indigo-900">
-                  <span>{slumberingProgress.percentage}%</span>
-                  <span>{slumberingProgress.collected}/{slumberingProgress.total}</span>
-                </div>
-                <div className="h-1.5 bg-indigo-200 rounded-full overflow-hidden">
-                  <div className="h-full bg-indigo-500" style={{ width: `${slumberingProgress.percentage}%` }} />
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-2 border-l border-gray-200">
+                <span className="font-bold text-indigo-600">ぐっすり</span>
+                <div className="flex items-baseline gap-1">
+                  <span className="font-medium text-gray-900">{slumberingProgress.percentage}%</span>
+                  <span className="hidden sm:inline text-gray-900 text-xs">({slumberingProgress.collected}/{slumberingProgress.total})</span>
                 </div>
               </div>
-
             </div>
 
             {/* Rarity Progress (Compact) */}
