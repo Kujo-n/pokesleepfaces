@@ -5682,7 +5682,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             },
             {
                 "id": "p371_タツベイ-3",
-                "name": "3番目の寝顔",
+                "name": "おちたまま寝",
                 "rarity": 3,
                 "locations": ["アンバー渓谷"]
             },
@@ -5712,7 +5712,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             },
             {
                 "id": "p372_コモルー-2",
-                "name": "2番目の寝顔",
+                "name": "のび寝",
                 "rarity": 2,
                 "locations": ["アンバー渓谷"]
             },
