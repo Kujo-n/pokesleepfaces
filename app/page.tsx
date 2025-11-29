@@ -234,16 +234,26 @@ export default function Home() {
   // Progress Calculation
   const calculateProgress = (pokemonList: Pokemon[]) => {
     const total = pokemonList.reduce((acc, p) => {
-      const availableStyles = selectedField === 'all'
+      let availableStyles = selectedField === 'all'
         ? p.styles
         : p.styles.filter(s => s.locations.includes(selectedField));
+
+      if (showUncollectedOnly) {
+        availableStyles = availableStyles.filter(s => !filterBaseCollectedStyles.has(s.id));
+      }
+
       return acc + availableStyles.length;
     }, 0);
 
     const collected = pokemonList.reduce((acc, p) => {
-      const availableStyles = selectedField === 'all'
+      let availableStyles = selectedField === 'all'
         ? p.styles
         : p.styles.filter(s => s.locations.includes(selectedField));
+
+      if (showUncollectedOnly) {
+        availableStyles = availableStyles.filter(s => !filterBaseCollectedStyles.has(s.id));
+      }
+
       return acc + availableStyles.filter(s => collectedStyles.has(s.id)).length;
     }, 0);
 
@@ -258,16 +268,26 @@ export default function Home() {
   // Rarity Progress Calculation
   const calculateRarityProgress = (pokemonList: Pokemon[], rarity: number) => {
     const total = pokemonList.reduce((acc, p) => {
-      const availableStyles = selectedField === 'all'
+      let availableStyles = selectedField === 'all'
         ? p.styles
         : p.styles.filter(s => s.locations.includes(selectedField));
+
+      if (showUncollectedOnly) {
+        availableStyles = availableStyles.filter(s => !filterBaseCollectedStyles.has(s.id));
+      }
+
       return acc + availableStyles.filter(s => s.rarity === rarity).length;
     }, 0);
 
     const collected = pokemonList.reduce((acc, p) => {
-      const availableStyles = selectedField === 'all'
+      let availableStyles = selectedField === 'all'
         ? p.styles
         : p.styles.filter(s => s.locations.includes(selectedField));
+
+      if (showUncollectedOnly) {
+        availableStyles = availableStyles.filter(s => !filterBaseCollectedStyles.has(s.id));
+      }
+
       return acc + availableStyles.filter(s => s.rarity === rarity && collectedStyles.has(s.id)).length;
     }, 0);
 
