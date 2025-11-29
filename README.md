@@ -87,3 +87,11 @@ firebase deploy --only hosting
 
 ## 公開URL
 https://sleepingfaceschecker.web.app
+
+## バージョン管理
+
+このプロジェクトは [Semantic Versioning](https://semver.org/) に準拠しています。
+
+- **Major (X.y.z)**: 互換性のないAPI変更や大規模な機能追加
+- **Minor (x.Y.z)**: 後方互換性のある機能追加
+- **Patch (x.y.Z)**: 後方互換性のあるバグ修正
