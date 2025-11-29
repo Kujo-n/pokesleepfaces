@@ -220,6 +220,30 @@ export default function Home() {
   const snoozingProgress = calculateProgress(filteredPokemon.filter(p => p.sleepType === 'すやすや'));
   const slumberingProgress = calculateProgress(filteredPokemon.filter(p => p.sleepType === 'ぐっすり'));
 
+  // Rarity Progress Calculation
+  const calculateRarityProgress = (pokemonList: Pokemon[], rarity: number) => {
+    const total = pokemonList.reduce((acc, p) => {
+      const availableStyles = selectedField === 'all'
+        ? p.styles
+        : p.styles.filter(s => s.locations.includes(selectedField));
+      return acc + availableStyles.filter(s => s.rarity === rarity).length;
+    }, 0);
+
+    const collected = pokemonList.reduce((acc, p) => {
+      const availableStyles = selectedField === 'all'
+        ? p.styles
+        : p.styles.filter(s => s.locations.includes(selectedField));
+      return acc + availableStyles.filter(s => s.rarity === rarity && collectedStyles.has(s.id)).length;
+    }, 0);
+
+    return { total, collected, percentage: total === 0 ? 0 : Math.round((collected / total) * 100) };
+  };
+
+  const rarity1Progress = calculateRarityProgress(filteredPokemon, 1);
+  const rarity2Progress = calculateRarityProgress(filteredPokemon, 2);
+  const rarity3Progress = calculateRarityProgress(filteredPokemon, 3);
+  const rarity4Progress = calculateRarityProgress(filteredPokemon, 4);
+
   return (
     <main className="min-h-screen bg-gray-50 pb-20 lg:pl-80 transition-all duration-300">
       {/* Header */}
@@ -463,6 +487,39 @@ export default function Home() {
                 </div>
                 <div className="h-1.5 bg-indigo-200 rounded-full overflow-hidden">
                   <div className="h-full bg-indigo-500" style={{ width: `${slumberingProgress.percentage}%` }} />
+                </div>
+              </div>
+
+            </div>
+
+            {/* Rarity Progress (Compact) */}
+            <div className="mt-2 grid grid-cols-4 gap-1 text-xs sm:text-sm bg-gray-50 p-2 rounded border border-gray-100">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-2">
+                <span className="font-bold text-gray-500">★1</span>
+                <div className="flex items-baseline gap-1">
+                  <span className="font-medium text-gray-900">{rarity1Progress.percentage}%</span>
+                  <span className="hidden sm:inline text-gray-900 text-xs">({rarity1Progress.collected}/{rarity1Progress.total})</span>
+                </div>
+              </div>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-2 border-l border-gray-200">
+                <span className="font-bold text-emerald-600">★2</span>
+                <div className="flex items-baseline gap-1">
+                  <span className="font-medium text-gray-900">{rarity2Progress.percentage}%</span>
+                  <span className="hidden sm:inline text-gray-900 text-xs">({rarity2Progress.collected}/{rarity2Progress.total})</span>
+                </div>
+              </div>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-2 border-l border-gray-200">
+                <span className="font-bold text-pink-600">★3</span>
+                <div className="flex items-baseline gap-1">
+                  <span className="font-medium text-gray-900">{rarity3Progress.percentage}%</span>
+                  <span className="hidden sm:inline text-gray-900 text-xs">({rarity3Progress.collected}/{rarity3Progress.total})</span>
+                </div>
+              </div>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-2 border-l border-gray-200">
+                <span className="font-bold text-amber-600">★4</span>
+                <div className="flex items-baseline gap-1">
+                  <span className="font-medium text-gray-900">{rarity4Progress.percentage}%</span>
+                  <span className="hidden sm:inline text-gray-900 text-xs">({rarity4Progress.collected}/{rarity4Progress.total})</span>
                 </div>
               </div>
             </div>
