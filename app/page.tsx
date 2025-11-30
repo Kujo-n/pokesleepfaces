@@ -5,6 +5,8 @@ import Image from 'next/image';
 import { MOCK_POKEMON, Pokemon, FIELD_NAMES } from '@/data/mockData';
 import PokemonCard from '@/components/PokemonCard';
 import AuthButton from '@/components/AuthButton';
+import DataProtectionWarning from '@/components/DataProtectionWarning';
+import HelpModal from '@/components/HelpModal';
 import { auth } from '@/firebase/config';
 import { subscribeToUserCollection, toggleSleepStyle, toggleAllStyles, checkIfNewUser, saveFilterPreferences, loadFilterPreferences } from '@/lib/db';
 import { onAuthStateChanged, User } from 'firebase/auth';
@@ -20,6 +22,7 @@ export default function Home() {
   const [isBulkActionOpen, setIsBulkActionOpen] = useState(false);
   const [user, setUser] = useState<User | null>(null);
   const [isInitialized, setIsInitialized] = useState(false);
+  const [isHelpOpen, setIsHelpOpen] = useState(false);
 
   useEffect(() => {
     // Use setTimeout to avoid "Calling setState synchronously within an effect" lint error
@@ -361,6 +364,8 @@ export default function Home() {
                   </button>
                 </div>
 
+
+
                 <div className="flex flex-col gap-2">
                   <button
                     onClick={() => setIsBulkActionOpen(!isBulkActionOpen)}
@@ -515,6 +520,21 @@ export default function Home() {
                     <span>未収集のみ</span>
                   </label>
                 </div>
+
+                <button
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    setIsHelpOpen(true);
+                  }}
+                  className="flex items-center gap-3 px-4 py-3 bg-blue-50 text-blue-700 rounded-lg hover:bg-blue-100 transition-colors mt-auto"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                  </svg>
+                  <span className="font-medium">ヘルプ・よくある質問</span>
+                </button>
               </div>
             </div>
 
@@ -586,6 +606,8 @@ export default function Home() {
         </div>
       </header>
 
+      <DataProtectionWarning />
+
       {/* Content */}
       <div className="max-w-7xl mx-auto px-4 py-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
@@ -608,6 +630,7 @@ export default function Home() {
           )}
         </div>
       </div>
+      <HelpModal isOpen={isHelpOpen} onClose={() => setIsHelpOpen(false)} />
     </main>
   );
 }
