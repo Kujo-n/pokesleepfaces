@@ -11,6 +11,7 @@ import { auth } from '@/firebase/config';
 import { subscribeToUserCollection, toggleSleepStyle, toggleAllStyles, checkIfNewUser, saveFilterPreferences, loadFilterPreferences } from '@/lib/db';
 import { onAuthStateChanged, User } from 'firebase/auth';
 import { saveToLocalStorage, loadFromLocalStorage, migrateToFirestore } from '@/lib/localStorage';
+import { useSwipeable } from 'react-swipeable';
 
 export default function Home() {
   const [collectedStyles, setCollectedStyles] = useState<Set<string>>(new Set());
@@ -302,6 +303,11 @@ export default function Home() {
   const rarity3Progress = calculateRarityProgress(filteredPokemon, 3);
   const rarity4Progress = calculateRarityProgress(filteredPokemon, 4);
 
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: () => setIsMenuOpen(false),
+    trackMouse: true
+  });
+
   return (
     <main className="min-h-screen bg-gray-50 pb-20 lg:pl-80 transition-all duration-300">
       {/* Header */}
@@ -349,19 +355,19 @@ export default function Home() {
             )}
 
             {/* Navigation Drawer */}
-            <div className={`fixed top-0 left-0 h-full w-80 bg-white z-50 shadow-lg transform transition-transform duration-300 ease-in-out ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 lg:shadow-none lg:border-r lg:border-gray-200`}>
+            <div {...swipeHandlers} className={`fixed top-0 left-0 h-full w-80 bg-white z-50 shadow-lg transform transition-transform duration-300 ease-in-out ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 lg:shadow-none lg:border-r lg:border-gray-200`}>
               <div className="p-4 flex flex-col gap-6 h-full overflow-y-auto">
-                <div className="flex justify-between items-center">
-                  <h2 className="text-lg font-bold text-gray-900">フィルタ</h2>
+                <div className="flex items-center gap-4">
                   <button
                     onClick={() => setIsMenuOpen(false)}
                     className="p-2 rounded-lg hover:bg-gray-100 transition-colors text-gray-600 lg:hidden"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <line x1="18" y1="6" x2="6" y2="18"></line>
-                      <line x1="6" y1="6" x2="18" y2="18"></line>
+                      <line x1="19" y1="12" x2="5" y2="12"></line>
+                      <polyline points="12 19 5 12 12 5"></polyline>
                     </svg>
                   </button>
+                  <h2 className="text-lg font-bold text-gray-900">フィルタ</h2>
                 </div>
 
 

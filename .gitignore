@@ -76,3 +76,7 @@ scripts/
 *.tmp
 *.temp
 .cache/
+
+# Internal management
+internal_docs/
+
