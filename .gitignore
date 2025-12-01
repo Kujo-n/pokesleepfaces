@@ -63,19 +63,6 @@ ui-debug.log*
 .DS_Store
 Thumbs.db
 ehthumbs.db
-Desktop.ini
-
-# Internal documents (not for public)
-docs/7_future-auto-update.md
-
-# Development artifacts
-reference/
-scripts/
-
-# Temporary files
-*.tmp
-*.temp
-.cache/
 
 # Internal management
 internal_docs/
