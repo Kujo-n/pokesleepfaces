@@ -80,7 +80,8 @@ firebase deploy --only hosting
 3. [アーキテクチャ図](docs/3_architecture.md) - システム構成の詳細
 4. [パフォーマンス最適化](docs/4_performance.md) - 実装された最適化の説明
 5. [デプロイ手順書](docs/5_deployment.md) - Firebase Hosting へのデプロイ
-6. [GCP コスト試算](docs/6_gcp-costs.md) - 運用コストの見積もり
+6. [データ更新ガイド](docs/6_date-update_guide.md) - Google Sheetsでのデータ管理
+7. [GCP コスト試算](docs/gcp-costs.md) - 運用コストの見積もり
 
 ## ライセンス
 

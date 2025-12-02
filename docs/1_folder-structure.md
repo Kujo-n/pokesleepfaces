@@ -41,8 +41,8 @@ pokesleepfaces/
 │   ├── 3_architecture.md        # アーキテクチャ図
 │   ├── 4_performance.md         # パフォーマンス最適化
 │   ├── 5_deployment.md          # デプロイ手順書
-│   ├── 6_gcp-costs.md           # GCPコスト試算
-│   └── 7_future-auto-update.md  # 自動更新の構想（内部資料）
+│   ├── 6_date-update_guide.md   # データ更新ガイド
+│   └── gcp-costs.md             # GCPコスト試算
 │
 ├── .gitignore             # Git除外設定
 ├── .next/                 # Next.jsビルド出力（自動生成）
