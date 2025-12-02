@@ -197,8 +197,8 @@ export const MOCK_POKEMON: Pokemon[] = [
         "fields": [
             "ワカクサ本島",
             "トープ洞窟",
-            "ワカクサ本島EX",
-            "アンバー渓谷"
+            "アンバー渓谷",
+            "ワカクサ本島EX"
         ],
         "styles": [
             {
@@ -208,8 +208,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -219,8 +219,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -229,8 +229,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "rarity": 3,
                 "locations": [
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -240,8 +240,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             }
         ]
@@ -255,8 +255,8 @@ export const MOCK_POKEMON: Pokemon[] = [
         "fields": [
             "ワカクサ本島",
             "トープ洞窟",
-            "ワカクサ本島EX",
-            "アンバー渓谷"
+            "アンバー渓谷",
+            "ワカクサ本島EX"
         ],
         "styles": [
             {
@@ -266,8 +266,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -277,8 +277,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -287,8 +287,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "rarity": 3,
                 "locations": [
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -298,8 +298,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             }
         ]
@@ -313,8 +313,8 @@ export const MOCK_POKEMON: Pokemon[] = [
         "fields": [
             "ワカクサ本島",
             "トープ洞窟",
-            "ワカクサ本島EX",
-            "アンバー渓谷"
+            "アンバー渓谷",
+            "ワカクサ本島EX"
         ],
         "styles": [
             {
@@ -324,8 +324,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -335,8 +335,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -346,8 +346,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -357,8 +357,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             }
         ]
@@ -548,8 +548,8 @@ export const MOCK_POKEMON: Pokemon[] = [
             "ワカクサ本島",
             "シアンの砂浜",
             "ゴールド旧発電所",
-            "ワカクサ本島EX",
-            "アンバー渓谷"
+            "アンバー渓谷",
+            "ワカクサ本島EX"
         ],
         "styles": [
             {
@@ -560,8 +560,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ワカクサ本島",
                     "シアンの砂浜",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -572,8 +572,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ワカクサ本島",
                     "シアンの砂浜",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -583,8 +583,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "シアンの砂浜",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -595,8 +595,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ワカクサ本島",
                     "シアンの砂浜",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             }
         ]
@@ -610,8 +610,8 @@ export const MOCK_POKEMON: Pokemon[] = [
         "fields": [
             "ワカクサ本島",
             "ゴールド旧発電所",
-            "ワカクサ本島EX",
-            "アンバー渓谷"
+            "アンバー渓谷",
+            "ワカクサ本島EX"
         ],
         "styles": [
             {
@@ -621,8 +621,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -632,8 +632,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -643,8 +643,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -654,8 +654,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             }
         ]
@@ -669,8 +669,8 @@ export const MOCK_POKEMON: Pokemon[] = [
         "fields": [
             "ワカクサ本島",
             "ゴールド旧発電所",
-            "ワカクサ本島EX",
-            "アンバー渓谷"
+            "アンバー渓谷",
+            "ワカクサ本島EX"
         ],
         "styles": [
             {
@@ -680,8 +680,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -691,8 +691,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -702,8 +702,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -713,8 +713,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             }
         ]
@@ -847,8 +847,8 @@ export const MOCK_POKEMON: Pokemon[] = [
             "トープ洞窟",
             "ラピスラズリ湖畔",
             "ゴールド旧発電所",
-            "ワカクサ本島EX",
-            "アンバー渓谷"
+            "アンバー渓谷",
+            "ワカクサ本島EX"
         ],
         "styles": [
             {
@@ -915,8 +915,8 @@ export const MOCK_POKEMON: Pokemon[] = [
             "シアンの砂浜",
             "トープ洞窟",
             "ゴールド旧発電所",
-            "ワカクサ本島EX",
-            "アンバー渓谷"
+            "アンバー渓谷",
+            "ワカクサ本島EX"
         ],
         "styles": [
             {
@@ -1154,8 +1154,8 @@ export const MOCK_POKEMON: Pokemon[] = [
             "ウノハナ雪原",
             "ラピスラズリ湖畔",
             "ゴールド旧発電所",
-            "ワカクサ本島EX",
-            "アンバー渓谷"
+            "アンバー渓谷",
+            "ワカクサ本島EX"
         ],
         "styles": [
             {
@@ -1169,8 +1169,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ウノハナ雪原",
                     "ラピスラズリ湖畔",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -1184,8 +1184,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ウノハナ雪原",
                     "ラピスラズリ湖畔",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -1198,8 +1198,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ウノハナ雪原",
                     "ラピスラズリ湖畔",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -1213,8 +1213,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ウノハナ雪原",
                     "ラピスラズリ湖畔",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             }
         ]
@@ -1232,8 +1232,8 @@ export const MOCK_POKEMON: Pokemon[] = [
             "ウノハナ雪原",
             "ラピスラズリ湖畔",
             "ゴールド旧発電所",
-            "ワカクサ本島EX",
-            "アンバー渓谷"
+            "アンバー渓谷",
+            "ワカクサ本島EX"
         ],
         "styles": [
             {
@@ -1247,8 +1247,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ウノハナ雪原",
                     "ラピスラズリ湖畔",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -1262,8 +1262,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ウノハナ雪原",
                     "ラピスラズリ湖畔",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -1276,8 +1276,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ウノハナ雪原",
                     "ラピスラズリ湖畔",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -1291,8 +1291,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ウノハナ雪原",
                     "ラピスラズリ湖畔",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             }
         ]
@@ -1306,8 +1306,8 @@ export const MOCK_POKEMON: Pokemon[] = [
         "fields": [
             "ワカクサ本島",
             "トープ洞窟",
-            "ワカクサ本島EX",
-            "アンバー渓谷"
+            "アンバー渓谷",
+            "ワカクサ本島EX"
         ],
         "styles": [
             {
@@ -1317,8 +1317,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -1328,8 +1328,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -1338,8 +1338,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "rarity": 3,
                 "locations": [
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -1349,8 +1349,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             }
         ]
@@ -1413,8 +1413,8 @@ export const MOCK_POKEMON: Pokemon[] = [
         "fields": [
             "ワカクサ本島",
             "トープ洞窟",
-            "ワカクサ本島EX",
-            "アンバー渓谷"
+            "アンバー渓谷",
+            "ワカクサ本島EX"
         ],
         "styles": [
             {
@@ -1424,8 +1424,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -1435,8 +1435,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -1445,8 +1445,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "rarity": 3,
                 "locations": [
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -1456,8 +1456,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             }
         ]
@@ -3144,8 +3144,8 @@ export const MOCK_POKEMON: Pokemon[] = [
             "ワカクサ本島",
             "シアンの砂浜",
             "ウノハナ雪原",
-            "ワカクサ本島EX",
-            "アンバー渓谷"
+            "アンバー渓谷",
+            "ワカクサ本島EX"
         ],
         "styles": [
             {
@@ -3156,8 +3156,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ワカクサ本島",
                     "シアンの砂浜",
                     "ウノハナ雪原",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -3168,8 +3168,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ワカクサ本島",
                     "シアンの砂浜",
                     "ウノハナ雪原",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -3179,8 +3179,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "シアンの砂浜",
                     "ウノハナ雪原",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -3191,8 +3191,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ワカクサ本島",
                     "シアンの砂浜",
                     "ウノハナ雪原",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             }
         ]
@@ -3206,8 +3206,8 @@ export const MOCK_POKEMON: Pokemon[] = [
         "fields": [
             "ワカクサ本島",
             "シアンの砂浜",
-            "ワカクサ本島EX",
-            "アンバー渓谷"
+            "アンバー渓谷",
+            "ワカクサ本島EX"
         ],
         "styles": [
             {
@@ -3217,8 +3217,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "シアンの砂浜",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -3228,8 +3228,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "シアンの砂浜",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -3239,8 +3239,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "シアンの砂浜",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -3250,8 +3250,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "シアンの砂浜",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             }
         ]
@@ -3315,8 +3315,8 @@ export const MOCK_POKEMON: Pokemon[] = [
         "fields": [
             "ワカクサ本島",
             "シアンの砂浜",
-            "ワカクサ本島EX",
-            "アンバー渓谷"
+            "アンバー渓谷",
+            "ワカクサ本島EX"
         ],
         "styles": [
             {
@@ -3326,8 +3326,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "シアンの砂浜",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -3337,8 +3337,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "シアンの砂浜",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -3348,8 +3348,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "シアンの砂浜",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -3359,8 +3359,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "シアンの砂浜",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             }
         ]
@@ -3392,8 +3392,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ウノハナ雪原",
                     "ラピスラズリ湖畔",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -3407,8 +3407,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ウノハナ雪原",
                     "ラピスラズリ湖畔",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -3420,8 +3420,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "シアンの砂浜",
                     "ラピスラズリ湖畔",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -3435,8 +3435,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ウノハナ雪原",
                     "ラピスラズリ湖畔",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -3488,8 +3488,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "name": "ヨーギラス寝",
                 "rarity": 4,
                 "locations": [
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -3515,8 +3515,8 @@ export const MOCK_POKEMON: Pokemon[] = [
             "ウノハナ雪原",
             "ラピスラズリ湖畔",
             "ゴールド旧発電所",
-            "ワカクサ本島EX",
-            "アンバー渓谷"
+            "アンバー渓谷",
+            "ワカクサ本島EX"
         ],
         "styles": [
             {
@@ -3530,8 +3530,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ウノハナ雪原",
                     "ラピスラズリ湖畔",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -3545,8 +3545,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ウノハナ雪原",
                     "ラピスラズリ湖畔",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -3559,8 +3559,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ウノハナ雪原",
                     "ラピスラズリ湖畔",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -3574,8 +3574,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ウノハナ雪原",
                     "ラピスラズリ湖畔",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             }
         ]
@@ -4484,8 +4484,8 @@ export const MOCK_POKEMON: Pokemon[] = [
             "ウノハナ雪原",
             "ラピスラズリ湖畔",
             "ゴールド旧発電所",
-            "ワカクサ本島EX",
-            "アンバー渓谷"
+            "アンバー渓谷",
+            "ワカクサ本島EX"
         ],
         "styles": [
             {
@@ -4499,8 +4499,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ウノハナ雪原",
                     "ラピスラズリ湖畔",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -4514,8 +4514,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ウノハナ雪原",
                     "ラピスラズリ湖畔",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -4528,8 +4528,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ウノハナ雪原",
                     "ラピスラズリ湖畔",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -4543,8 +4543,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ウノハナ雪原",
                     "ラピスラズリ湖畔",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             }
         ]
@@ -4727,8 +4727,8 @@ export const MOCK_POKEMON: Pokemon[] = [
         "fields": [
             "ワカクサ本島",
             "ラピスラズリ湖畔",
-            "ワカクサ本島EX",
-            "アンバー渓谷"
+            "アンバー渓谷",
+            "ワカクサ本島EX"
         ],
         "styles": [
             {
@@ -4738,8 +4738,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "ラピスラズリ湖畔",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -4749,8 +4749,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "ラピスラズリ湖畔",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -4759,8 +4759,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "rarity": 3,
                 "locations": [
                     "ラピスラズリ湖畔",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -4770,8 +4770,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "ラピスラズリ湖畔",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             }
         ]
@@ -4785,8 +4785,8 @@ export const MOCK_POKEMON: Pokemon[] = [
         "fields": [
             "ワカクサ本島",
             "ラピスラズリ湖畔",
-            "ワカクサ本島EX",
-            "アンバー渓谷"
+            "アンバー渓谷",
+            "ワカクサ本島EX"
         ],
         "styles": [
             {
@@ -4796,8 +4796,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "ラピスラズリ湖畔",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -4807,8 +4807,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "ラピスラズリ湖畔",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -4817,8 +4817,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "rarity": 3,
                 "locations": [
                     "ラピスラズリ湖畔",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -4828,8 +4828,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "ラピスラズリ湖畔",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             }
         ]
@@ -5130,8 +5130,8 @@ export const MOCK_POKEMON: Pokemon[] = [
         "fields": [
             "ワカクサ本島",
             "トープ洞窟",
-            "ワカクサ本島EX",
-            "アンバー渓谷"
+            "アンバー渓谷",
+            "ワカクサ本島EX"
         ],
         "styles": [
             {
@@ -5141,8 +5141,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -5152,8 +5152,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -5162,8 +5162,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "rarity": 3,
                 "locations": [
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -5173,8 +5173,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             }
         ]
@@ -5561,8 +5561,8 @@ export const MOCK_POKEMON: Pokemon[] = [
         "fields": [
             "ワカクサ本島",
             "シアンの砂浜",
-            "ワカクサ本島EX",
-            "アンバー渓谷"
+            "アンバー渓谷",
+            "ワカクサ本島EX"
         ],
         "styles": [
             {
@@ -5572,8 +5572,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "シアンの砂浜",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -5583,8 +5583,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "シアンの砂浜",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -5594,8 +5594,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "シアンの砂浜",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -5605,8 +5605,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "シアンの砂浜",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             }
         ]
@@ -5830,8 +5830,8 @@ export const MOCK_POKEMON: Pokemon[] = [
             "ワカクサ本島",
             "シアンの砂浜",
             "ウノハナ雪原",
-            "ワカクサ本島EX",
-            "アンバー渓谷"
+            "アンバー渓谷",
+            "ワカクサ本島EX"
         ],
         "styles": [
             {
@@ -5842,8 +5842,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ワカクサ本島",
                     "シアンの砂浜",
                     "ウノハナ雪原",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -5854,8 +5854,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ワカクサ本島",
                     "シアンの砂浜",
                     "ウノハナ雪原",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -5865,8 +5865,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "シアンの砂浜",
                     "ウノハナ雪原",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -5877,8 +5877,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ワカクサ本島",
                     "シアンの砂浜",
                     "ウノハナ雪原",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             }
         ]
@@ -5936,8 +5936,8 @@ export const MOCK_POKEMON: Pokemon[] = [
         "fields": [
             "ワカクサ本島",
             "トープ洞窟",
-            "ワカクサ本島EX",
-            "アンバー渓谷"
+            "アンバー渓谷",
+            "ワカクサ本島EX"
         ],
         "styles": [
             {
@@ -5947,8 +5947,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -5958,8 +5958,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -5969,8 +5969,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             }
         ]
@@ -6032,8 +6032,8 @@ export const MOCK_POKEMON: Pokemon[] = [
         "fields": [
             "ワカクサ本島",
             "トープ洞窟",
-            "ワカクサ本島EX",
-            "アンバー渓谷"
+            "アンバー渓谷",
+            "ワカクサ本島EX"
         ],
         "styles": [
             {
@@ -6043,8 +6043,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -6054,8 +6054,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -6064,8 +6064,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "rarity": 3,
                 "locations": [
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -6075,8 +6075,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             }
         ]
@@ -6089,8 +6089,8 @@ export const MOCK_POKEMON: Pokemon[] = [
         "sleepType": "ぐっすり",
         "fields": [
             "トープ洞窟",
-            "ワカクサ本島EX",
-            "アンバー渓谷"
+            "アンバー渓谷",
+            "ワカクサ本島EX"
         ],
         "styles": [
             {
@@ -6099,8 +6099,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "rarity": 1,
                 "locations": [
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -6109,8 +6109,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "rarity": 2,
                 "locations": [
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -6119,8 +6119,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "rarity": 3,
                 "locations": [
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -6129,8 +6129,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "rarity": 4,
                 "locations": [
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             }
         ]
@@ -6143,8 +6143,8 @@ export const MOCK_POKEMON: Pokemon[] = [
         "sleepType": "うとうと",
         "fields": [
             "トープ洞窟",
-            "ワカクサ本島EX",
-            "アンバー渓谷"
+            "アンバー渓谷",
+            "ワカクサ本島EX"
         ],
         "styles": [
             {
@@ -6153,8 +6153,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "rarity": 1,
                 "locations": [
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -6163,8 +6163,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "rarity": 2,
                 "locations": [
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -6173,8 +6173,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "rarity": 3,
                 "locations": [
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -6183,8 +6183,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "rarity": 4,
                 "locations": [
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             }
         ]
@@ -6388,8 +6388,8 @@ export const MOCK_POKEMON: Pokemon[] = [
             "ワカクサ本島",
             "トープ洞窟",
             "ラピスラズリ湖畔",
-            "ワカクサ本島EX",
-            "アンバー渓谷"
+            "アンバー渓谷",
+            "ワカクサ本島EX"
         ],
         "styles": [
             {
@@ -6400,8 +6400,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ワカクサ本島",
                     "トープ洞窟",
                     "ラピスラズリ湖畔",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -6412,8 +6412,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ワカクサ本島",
                     "トープ洞窟",
                     "ラピスラズリ湖畔",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -6423,8 +6423,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "トープ洞窟",
                     "ラピスラズリ湖畔",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -6435,8 +6435,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ワカクサ本島",
                     "トープ洞窟",
                     "ラピスラズリ湖畔",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             }
         ]
@@ -6451,8 +6451,8 @@ export const MOCK_POKEMON: Pokemon[] = [
             "ワカクサ本島",
             "トープ洞窟",
             "ラピスラズリ湖畔",
-            "ワカクサ本島EX",
-            "アンバー渓谷"
+            "アンバー渓谷",
+            "ワカクサ本島EX"
         ],
         "styles": [
             {
@@ -6463,8 +6463,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ワカクサ本島",
                     "トープ洞窟",
                     "ラピスラズリ湖畔",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -6475,8 +6475,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ワカクサ本島",
                     "トープ洞窟",
                     "ラピスラズリ湖畔",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -6486,8 +6486,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "トープ洞窟",
                     "ラピスラズリ湖畔",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -6498,8 +6498,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ワカクサ本島",
                     "トープ洞窟",
                     "ラピスラズリ湖畔",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             }
         ]
@@ -6514,8 +6514,8 @@ export const MOCK_POKEMON: Pokemon[] = [
             "ワカクサ本島",
             "トープ洞窟",
             "ラピスラズリ湖畔",
-            "ワカクサ本島EX",
-            "アンバー渓谷"
+            "アンバー渓谷",
+            "ワカクサ本島EX"
         ],
         "styles": [
             {
@@ -6526,8 +6526,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ワカクサ本島",
                     "トープ洞窟",
                     "ラピスラズリ湖畔",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -6538,8 +6538,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ワカクサ本島",
                     "トープ洞窟",
                     "ラピスラズリ湖畔",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -6549,8 +6549,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "トープ洞窟",
                     "ラピスラズリ湖畔",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -6561,8 +6561,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ワカクサ本島",
                     "トープ洞窟",
                     "ラピスラズリ湖畔",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             }
         ]
@@ -6577,8 +6577,8 @@ export const MOCK_POKEMON: Pokemon[] = [
             "ワカクサ本島",
             "シアンの砂浜",
             "トープ洞窟",
-            "ワカクサ本島EX",
-            "アンバー渓谷"
+            "アンバー渓谷",
+            "ワカクサ本島EX"
         ],
         "styles": [
             {
@@ -6589,8 +6589,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ワカクサ本島",
                     "シアンの砂浜",
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -6601,8 +6601,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ワカクサ本島",
                     "シアンの砂浜",
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -6612,8 +6612,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "シアンの砂浜",
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -6624,8 +6624,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ワカクサ本島",
                     "シアンの砂浜",
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             }
         ]
@@ -6640,8 +6640,8 @@ export const MOCK_POKEMON: Pokemon[] = [
             "ワカクサ本島",
             "シアンの砂浜",
             "トープ洞窟",
-            "ワカクサ本島EX",
-            "アンバー渓谷"
+            "アンバー渓谷",
+            "ワカクサ本島EX"
         ],
         "styles": [
             {
@@ -6652,8 +6652,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ワカクサ本島",
                     "シアンの砂浜",
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -6664,8 +6664,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ワカクサ本島",
                     "シアンの砂浜",
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -6675,8 +6675,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "シアンの砂浜",
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -6687,8 +6687,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ワカクサ本島",
                     "シアンの砂浜",
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             }
         ]
@@ -6703,8 +6703,8 @@ export const MOCK_POKEMON: Pokemon[] = [
             "ワカクサ本島",
             "シアンの砂浜",
             "トープ洞窟",
-            "ワカクサ本島EX",
-            "アンバー渓谷"
+            "アンバー渓谷",
+            "ワカクサ本島EX"
         ],
         "styles": [
             {
@@ -6715,8 +6715,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ワカクサ本島",
                     "シアンの砂浜",
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -6727,8 +6727,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ワカクサ本島",
                     "シアンの砂浜",
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -6738,8 +6738,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "シアンの砂浜",
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -6750,8 +6750,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ワカクサ本島",
                     "シアンの砂浜",
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             }
         ]
@@ -7122,8 +7122,8 @@ export const MOCK_POKEMON: Pokemon[] = [
             "ワカクサ本島",
             "トープ洞窟",
             "ゴールド旧発電所",
-            "ワカクサ本島EX",
-            "アンバー渓谷"
+            "アンバー渓谷",
+            "ワカクサ本島EX"
         ],
         "styles": [
             {
@@ -7134,8 +7134,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ワカクサ本島",
                     "トープ洞窟",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -7146,8 +7146,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ワカクサ本島",
                     "トープ洞窟",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -7157,8 +7157,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "トープ洞窟",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -7169,8 +7169,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ワカクサ本島",
                     "トープ洞窟",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             }
         ]
@@ -7331,8 +7331,8 @@ export const MOCK_POKEMON: Pokemon[] = [
         "fields": [
             "ワカクサ本島",
             "ゴールド旧発電所",
-            "ワカクサ本島EX",
-            "アンバー渓谷"
+            "アンバー渓谷",
+            "ワカクサ本島EX"
         ],
         "styles": [
             {
@@ -7342,8 +7342,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -7353,8 +7353,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -7363,8 +7363,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "rarity": 3,
                 "locations": [
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -7374,8 +7374,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             }
         ]
@@ -7389,8 +7389,8 @@ export const MOCK_POKEMON: Pokemon[] = [
         "fields": [
             "ワカクサ本島",
             "ゴールド旧発電所",
-            "ワカクサ本島EX",
-            "アンバー渓谷"
+            "アンバー渓谷",
+            "ワカクサ本島EX"
         ],
         "styles": [
             {
@@ -7400,8 +7400,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -7411,8 +7411,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -7421,8 +7421,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "rarity": 3,
                 "locations": [
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -7432,8 +7432,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             }
         ]
@@ -7706,8 +7706,8 @@ export const MOCK_POKEMON: Pokemon[] = [
             "ワカクサ本島",
             "ウノハナ雪原",
             "ラピスラズリ湖畔",
-            "ワカクサ本島EX",
-            "アンバー渓谷"
+            "アンバー渓谷",
+            "ワカクサ本島EX"
         ],
         "styles": [
             {
@@ -7718,8 +7718,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ワカクサ本島",
                     "ウノハナ雪原",
                     "ラピスラズリ湖畔",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -7730,8 +7730,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ワカクサ本島",
                     "ウノハナ雪原",
                     "ラピスラズリ湖畔",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -7741,8 +7741,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ウノハナ雪原",
                     "ラピスラズリ湖畔",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -7753,8 +7753,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ワカクサ本島",
                     "ウノハナ雪原",
                     "ラピスラズリ湖畔",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             }
         ]
@@ -7768,8 +7768,8 @@ export const MOCK_POKEMON: Pokemon[] = [
         "fields": [
             "ウノハナ雪原",
             "ラピスラズリ湖畔",
-            "ワカクサ本島EX",
-            "アンバー渓谷"
+            "アンバー渓谷",
+            "ワカクサ本島EX"
         ],
         "styles": [
             {
@@ -7779,8 +7779,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ウノハナ雪原",
                     "ラピスラズリ湖畔",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -7790,8 +7790,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ウノハナ雪原",
                     "ラピスラズリ湖畔",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -7801,8 +7801,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ウノハナ雪原",
                     "ラピスラズリ湖畔",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -7812,8 +7812,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ウノハナ雪原",
                     "ラピスラズリ湖畔",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             }
         ]
@@ -8710,8 +8710,8 @@ export const MOCK_POKEMON: Pokemon[] = [
             "ワカクサ本島",
             "シアンの砂浜",
             "ウノハナ雪原",
-            "ワカクサ本島EX",
-            "アンバー渓谷"
+            "アンバー渓谷",
+            "ワカクサ本島EX"
         ],
         "styles": [
             {
@@ -8722,8 +8722,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ワカクサ本島",
                     "シアンの砂浜",
                     "ウノハナ雪原",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -8734,8 +8734,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ワカクサ本島",
                     "シアンの砂浜",
                     "ウノハナ雪原",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -8745,8 +8745,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "シアンの砂浜",
                     "ウノハナ雪原",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -8757,8 +8757,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ワカクサ本島",
                     "シアンの砂浜",
                     "ウノハナ雪原",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             }
         ]
@@ -9523,8 +9523,8 @@ export const MOCK_POKEMON: Pokemon[] = [
             "ワカクサ本島",
             "ラピスラズリ湖畔",
             "ゴールド旧発電所",
-            "ワカクサ本島EX",
-            "アンバー渓谷"
+            "アンバー渓谷",
+            "ワカクサ本島EX"
         ],
         "styles": [
             {
@@ -9535,8 +9535,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ワカクサ本島",
                     "ラピスラズリ湖畔",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -9547,8 +9547,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ワカクサ本島",
                     "ラピスラズリ湖畔",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -9558,8 +9558,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ラピスラズリ湖畔",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             }
         ]
@@ -9574,8 +9574,8 @@ export const MOCK_POKEMON: Pokemon[] = [
             "ワカクサ本島",
             "ラピスラズリ湖畔",
             "ゴールド旧発電所",
-            "ワカクサ本島EX",
-            "アンバー渓谷"
+            "アンバー渓谷",
+            "ワカクサ本島EX"
         ],
         "styles": [
             {
@@ -9586,8 +9586,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ワカクサ本島",
                     "ラピスラズリ湖畔",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -9598,8 +9598,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ワカクサ本島",
                     "ラピスラズリ湖畔",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -9609,8 +9609,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ラピスラズリ湖畔",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             }
         ]
@@ -9713,8 +9713,8 @@ export const MOCK_POKEMON: Pokemon[] = [
             "ワカクサ本島",
             "シアンの砂浜",
             "ウノハナ雪原",
-            "ワカクサ本島EX",
-            "アンバー渓谷"
+            "アンバー渓谷",
+            "ワカクサ本島EX"
         ],
         "styles": [
             {
@@ -9725,8 +9725,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ワカクサ本島",
                     "シアンの砂浜",
                     "ウノハナ雪原",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -9737,8 +9737,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ワカクサ本島",
                     "シアンの砂浜",
                     "ウノハナ雪原",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -9748,8 +9748,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "シアンの砂浜",
                     "ウノハナ雪原",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -9760,8 +9760,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ワカクサ本島",
                     "シアンの砂浜",
                     "ウノハナ雪原",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             }
         ]
@@ -9776,8 +9776,8 @@ export const MOCK_POKEMON: Pokemon[] = [
             "ワカクサ本島",
             "シアンの砂浜",
             "ウノハナ雪原",
-            "ワカクサ本島EX",
-            "アンバー渓谷"
+            "アンバー渓谷",
+            "ワカクサ本島EX"
         ],
         "styles": [
             {
@@ -9788,8 +9788,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ワカクサ本島",
                     "シアンの砂浜",
                     "ウノハナ雪原",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -9800,8 +9800,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ワカクサ本島",
                     "シアンの砂浜",
                     "ウノハナ雪原",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -9812,8 +9812,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ワカクサ本島",
                     "シアンの砂浜",
                     "ウノハナ雪原",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -9824,8 +9824,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "ワカクサ本島",
                     "シアンの砂浜",
                     "ウノハナ雪原",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             }
         ]
@@ -10455,8 +10455,8 @@ export const MOCK_POKEMON: Pokemon[] = [
         "fields": [
             "ワカクサ本島",
             "ゴールド旧発電所",
-            "ワカクサ本島EX",
-            "アンバー渓谷"
+            "アンバー渓谷",
+            "ワカクサ本島EX"
         ],
         "styles": [
             {
@@ -10466,8 +10466,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -10477,8 +10477,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -10487,8 +10487,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "rarity": 3,
                 "locations": [
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -10498,8 +10498,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             }
         ]
@@ -10513,8 +10513,8 @@ export const MOCK_POKEMON: Pokemon[] = [
         "fields": [
             "ワカクサ本島",
             "ゴールド旧発電所",
-            "ワカクサ本島EX",
-            "アンバー渓谷"
+            "アンバー渓谷",
+            "ワカクサ本島EX"
         ],
         "styles": [
             {
@@ -10524,8 +10524,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -10535,8 +10535,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -10545,8 +10545,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "rarity": 3,
                 "locations": [
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -10556,8 +10556,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             }
         ]
@@ -10571,8 +10571,8 @@ export const MOCK_POKEMON: Pokemon[] = [
         "fields": [
             "ワカクサ本島",
             "ゴールド旧発電所",
-            "ワカクサ本島EX",
-            "アンバー渓谷"
+            "アンバー渓谷",
+            "ワカクサ本島EX"
         ],
         "styles": [
             {
@@ -10582,8 +10582,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -10593,8 +10593,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -10603,8 +10603,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "rarity": 3,
                 "locations": [
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -10614,8 +10614,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "ゴールド旧発電所",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             }
         ]
@@ -11331,8 +11331,8 @@ export const MOCK_POKEMON: Pokemon[] = [
         "fields": [
             "ワカクサ本島",
             "トープ洞窟",
-            "ワカクサ本島EX",
-            "アンバー渓谷"
+            "アンバー渓谷",
+            "ワカクサ本島EX"
         ],
         "styles": [
             {
@@ -11342,8 +11342,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -11353,8 +11353,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -11363,8 +11363,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "rarity": 3,
                 "locations": [
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -11374,8 +11374,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "locations": [
                     "ワカクサ本島",
                     "トープ洞窟",
-                    "ワカクサ本島EX",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             }
         ]

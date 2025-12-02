@@ -80,15 +80,7 @@ function parseSheetData(data) {
     });
 }
 
-/**
- * カンマ区切りの文字列を配列に変換する
- * @param {string} str - カンマ区切りの文字列
- * @returns {Array<string>} - 配列
- */
-function splitCommaString(str) {
-    if (!str || str.trim() === '') return [];
-    return str.split(',').map(s => s.trim()).filter(s => s !== '');
-}
+
 
 /**
  * メイン処理
@@ -124,8 +116,13 @@ async function main() {
             // IDを自動生成
             const id = `p${p.dexNumber}_${p.name}`;
 
-            // fieldsをカンマ区切りから配列に変換
-            const fieldsArray = splitCommaString(p.fields);
+            // fieldsを列から取得
+            // sortedFieldsにあるフィールド名の列に値が入っていれば（truthyなら）採用
+            // ただし 'FALSE' という文字列は除外する
+            const fieldsArray = sortedFields.filter(fieldName => {
+                const val = p[fieldName];
+                return val && val.trim() !== '' && val.trim().toUpperCase() !== 'FALSE';
+            });
 
             // このポケモンに対応するstylesを取得
             const pokemonStyles = styles
@@ -134,8 +131,11 @@ async function main() {
                     // Style IDを自動生成
                     const styleId = `p${p.dexNumber}_${p.name}-${index + 1}`;
 
-                    // locationsをカンマ区切りから配列に変換
-                    const locations = splitCommaString(s.locations);
+                    // locationsを列から取得
+                    const locations = sortedFields.filter(fieldName => {
+                        const val = s[fieldName];
+                        return val && val.trim() !== '' && val.trim().toUpperCase() !== 'FALSE';
+                    });
 
                     return {
                         id: styleId,
