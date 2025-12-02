@@ -20,23 +20,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - トラブルシューティング
 
 ### Changed
-- Google Sheetsのデータ入力フォーマットを変更
-  - 旧: カンマ区切りテキスト形式（`fields`, `locations`列）
-  - 新: チェックボックス形式（各フィールド名の列に`TRUE`/`FALSE`）
 - `data/mockData.ts`: Google Sheetsから自動生成されるように変更
 - ドキュメント構成を整理
   - `docs/gcp-costs.md`: `docs/6_gcp-costs.md`からリネーム
   - `docs/1_folder-structure.md`: docsフォルダのリストを更新
   - `README.md`: ドキュメントリストにデータ更新ガイドを追加
-
-### Fixed
-- `scripts/fetch-sheets-to-ts.js`: FALSE値の処理ロジックを改善
-  - 空文字列と"FALSE"文字列を正しく処理
-- 未収集のみフィルタ機能の進捗集計ロジックを改善
-- デバッグログを削除
-
-### Removed
-- `docs/7_google_sheets_format_change.md`: `docs/6_date-update_guide.md`に統合
 
 ## [1.1.0] - 2024-11-XX
 
@@ -56,6 +44,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - ドロワーUIの改善
   - モバイル向けナビゲーションの最適化
   - ユーザビリティの向上
+
+### Fixed
+- 未収集のみフィルタ機能の進捗集計ロジックを改善
+- デバッグログを削除
 
 ## [1.0.1] - 2024-11-XX
 
