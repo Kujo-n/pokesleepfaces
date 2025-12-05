@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import { User } from 'firebase/auth';
-import { Pokemon, MOCK_POKEMON } from '@/data/mockData';
+import { MOCK_POKEMON } from '@/data/mockData';
 import { saveFilterPreferences, loadFilterPreferences } from '@/lib/db';
 
 type SleepType = 'all' | 'うとうと' | 'すやすや' | 'ぐっすり';
