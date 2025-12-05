@@ -1,6 +1,8 @@
 'use client';
 
 import { FIELD_NAMES } from '@/data/mockData';
+import AuthButton from '@/components/AuthButton';
+import type { User } from 'firebase/auth';
 
 type Props = {
   selectedField: string;
@@ -19,6 +21,7 @@ type Props = {
   toggleGlobal: (select: boolean) => void;
   setIsMenuOpen: (open: boolean) => void;
   setIsHelpOpen: (open: boolean) => void;
+  user: User | null;
 };
 
 export default function FilterPanel({
@@ -37,22 +40,14 @@ export default function FilterPanel({
   setIsBulkActionOpen,
   toggleGlobal,
   setIsMenuOpen,
-  setIsHelpOpen
+  setIsHelpOpen,
+  user
 }: Props) {
   return (
     <div className="p-4 flex flex-col gap-6 h-full overflow-y-auto">
-      <div className="flex items-center gap-4">
-        <button
-          onClick={() => setIsMenuOpen(false)}
-          className="p-2 rounded-lg hover:bg-gray-100 transition-colors text-gray-600 lg:hidden"
-          aria-label="閉じる"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <line x1="19" y1="12" x2="5" y2="12"></line>
-            <polyline points="12 19 5 12 12 5"></polyline>
-          </svg>
-        </button>
+      <div className="flex items-center justify-between">
         <h2 className="text-lg font-bold text-gray-900">フィルタ</h2>
+        <AuthButton />
       </div>
 
       {/* 一括操作 */}

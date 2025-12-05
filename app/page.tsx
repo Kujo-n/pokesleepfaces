@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import PokemonCard from '@/components/PokemonCard';
-import AuthButton from '@/components/AuthButton';
 import DataProtectionWarning from '@/components/DataProtectionWarning';
 import HelpModal from '@/components/HelpModal';
 import FilterPanel from '@/components/FilterPanel';
@@ -57,36 +56,33 @@ export default function Home() {
       <header className="bg-white border-b border-gray-200 sticky top-0 z-10 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 py-4">
           <div className="flex flex-col gap-4">
-            <div className="flex items-center justify-between gap-4">
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  className="p-2 rounded-lg hover:bg-gray-100 transition-colors text-gray-600 lg:hidden"
-                  aria-label="Menu"
-                >
-                  {isMenuOpen ? (
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <line x1="18" y1="6" x2="6" y2="18"></line>
-                      <line x1="6" y1="6" x2="18" y2="18"></line>
-                    </svg>
-                  ) : (
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <line x1="3" y1="12" x2="21" y2="12"></line>
-                      <line x1="3" y1="6" x2="21" y2="6"></line>
-                      <line x1="3" y1="18" x2="21" y2="18"></line>
-                    </svg>
-                  )}
-                </button>
-                <Image
-                  src="/icon.png"
-                  alt="ポケスリ寝顔チェッカー"
-                  width={40}
-                  height={40}
-                  className="rounded-lg"
-                />
-                <h1 className="text-2xl font-bold text-gray-900">ポケスリ寝顔チェッカー</h1>
-              </div>
-              <AuthButton />
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="p-2 rounded-lg hover:bg-gray-100 transition-colors text-gray-600 lg:hidden"
+                aria-label="Menu"
+              >
+                {isMenuOpen ? (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                ) : (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                  </svg>
+                )}
+              </button>
+              <Image
+                src="/icon.png"
+                alt="ポケスリ寝顔チェッカー"
+                width={30}
+                height={30}
+                className="rounded-lg"
+              />
+              <h1 className="text-xl font-bold text-gray-900">ポケスリ寝顔チェッカー</h1>
             </div>
 
             {/* Navigation Drawer Overlay */}
@@ -116,6 +112,7 @@ export default function Home() {
                 toggleGlobal={(select) => toggleGlobal(filteredPokemon, select, selectedField)}
                 setIsMenuOpen={setIsMenuOpen}
                 setIsHelpOpen={setIsHelpOpen}
+                user={user}
               />
             </div>
 
