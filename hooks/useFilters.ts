@@ -13,6 +13,7 @@ type SleepType = 'all' | 'うとうと' | 'すやすや' | 'ぐっすり';
 export const useFilters = (user: User | null, collectedStyles: Set<string>) => {
   const [selectedField, setSelectedField] = useState<string>('all');
   const [selectedSleepType, setSelectedSleepType] = useState<SleepType>('all');
+  const [selectedRarity, setSelectedRarity] = useState<string>('all');
   const [showUncollectedOnly, setShowUncollectedOnly] = useState<boolean>(false);
   const [filterBaseCollectedStyles, setFilterBaseCollectedStyles] = useState<Set<string>>(new Set());
 
@@ -23,6 +24,7 @@ export const useFilters = (user: User | null, collectedStyles: Set<string>) => {
         if (prefs) {
           setSelectedField(prefs.selectedField);
           setSelectedSleepType(prefs.selectedSleepType as SleepType);
+          if (prefs.selectedRarity) setSelectedRarity(prefs.selectedRarity);
           setShowUncollectedOnly(prefs.showUncollectedOnly);
         }
       });
@@ -41,43 +43,60 @@ export const useFilters = (user: User | null, collectedStyles: Set<string>) => {
 
   // フィルタ設定を保存
   const updateFilterPreferences = useCallback((
-    updates: { field?: string; sleepType?: string; uncollectedOnly?: boolean }
+    updates: { field?: string; sleepType?: string; rarity?: string; uncollectedOnly?: boolean }
   ) => {
     if (user) {
       saveFilterPreferences(user.uid, {
         selectedField: updates.field ?? selectedField,
         selectedSleepType: updates.sleepType ?? selectedSleepType,
+        selectedRarity: updates.rarity ?? selectedRarity,
         showUncollectedOnly: updates.uncollectedOnly ?? showUncollectedOnly
       });
     }
-  }, [user, selectedField, selectedSleepType, showUncollectedOnly]);
+  }, [user, selectedField, selectedSleepType, selectedRarity, showUncollectedOnly]);
 
   // フィルタリング処理
   const filteredPokemon = useMemo(() => {
     return MOCK_POKEMON.filter(p => {
+      // 1. 睡眠タイプによるフィルタ（ポケモンレベル）
       const matchesSleepType = selectedSleepType === 'all' || p.sleepType === selectedSleepType;
       if (!matchesSleepType) return false;
 
-      const hasStylesInField = selectedField === 'all' || p.styles.some(s => s.locations.includes(selectedField));
-      if (!hasStylesInField) return false;
+      // 2. スタイルによるフィルタ（フィールドとレアリティ）
+      let candidateStyles = p.styles;
 
+      // フィールドで絞り込み
+      if (selectedField !== 'all') {
+        candidateStyles = candidateStyles.filter(s => s.locations.includes(selectedField));
+      }
+
+      // レアリティで絞り込み
+      if (selectedRarity !== 'all') {
+        const rarityNum = parseInt(selectedRarity);
+        candidateStyles = candidateStyles.filter(s => s.rarity === rarityNum);
+      }
+
+      // 条件に合うスタイルが一つもなければ非表示
+      if (candidateStyles.length === 0) return false;
+
+      // 3. 未収集のみフィルタ
       if (showUncollectedOnly) {
-        const availableStyles = selectedField === 'all'
-          ? p.styles
-          : p.styles.filter(s => s.locations.includes(selectedField));
-        const hasUncollected = availableStyles.some(s => !filterBaseCollectedStyles.has(s.id));
+        // 残った候補スタイルの中に、未収集のものが含まれているかチェック
+        const hasUncollected = candidateStyles.some(s => !filterBaseCollectedStyles.has(s.id));
         return hasUncollected;
       }
 
       return true;
     });
-  }, [selectedSleepType, selectedField, showUncollectedOnly, filterBaseCollectedStyles]);
+  }, [selectedSleepType, selectedField, selectedRarity, showUncollectedOnly, filterBaseCollectedStyles]);
 
   return {
     selectedField,
     setSelectedField,
     selectedSleepType,
     setSelectedSleepType,
+    selectedRarity,
+    setSelectedRarity,
     showUncollectedOnly,
     setShowUncollectedOnly,
     filterBaseCollectedStyles,

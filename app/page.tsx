@@ -27,6 +27,8 @@ export default function Home() {
     setSelectedField,
     selectedSleepType,
     setSelectedSleepType,
+    selectedRarity,
+    setSelectedRarity,
     showUncollectedOnly,
     setShowUncollectedOnly,
     filterBaseCollectedStyles,
@@ -39,6 +41,7 @@ export default function Home() {
     filteredPokemon,
     collectedStyles,
     selectedField,
+    selectedRarity,
     showUncollectedOnly,
     filterBaseCollectedStyles
   );
@@ -101,6 +104,8 @@ export default function Home() {
                 setSelectedField={setSelectedField}
                 selectedSleepType={selectedSleepType}
                 setSelectedSleepType={setSelectedSleepType}
+                selectedRarity={selectedRarity}
+                setSelectedRarity={setSelectedRarity}
                 showUncollectedOnly={showUncollectedOnly}
                 setShowUncollectedOnly={setShowUncollectedOnly}
                 collectedStyles={collectedStyles}
@@ -115,7 +120,13 @@ export default function Home() {
             </div>
 
             {/* Progress Summary */}
-            <ProgressSummary {...progressData} />
+            <ProgressSummary
+              {...progressData}
+              selectedSleepType={selectedSleepType}
+              setSelectedSleepType={setSelectedSleepType}
+              selectedRarity={selectedRarity}
+              setSelectedRarity={setSelectedRarity}
+            />
           </div>
         </div>
       </header>
@@ -133,6 +144,7 @@ export default function Home() {
               onToggleStyle={toggleStyle}
               onToggleAll={(p, select) => toggleAllPokemonStyles(p, select, selectedField)}
               selectedField={selectedField}
+              selectedRarity={selectedRarity}
               showUncollectedOnly={showUncollectedOnly}
               filterBaseCollectedStyles={filterBaseCollectedStyles}
             />

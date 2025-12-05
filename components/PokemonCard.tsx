@@ -9,16 +9,21 @@ type Props = {
     onToggleStyle: (styleId: string) => void;
     onToggleAll: (pokemon: Pokemon, select: boolean) => void;
     selectedField?: string;
+    selectedRarity?: string;
     showUncollectedOnly?: boolean;
     filterBaseCollectedStyles?: Set<string>;
 };
 
-function PokemonCard({ pokemon, collectedStyles, onToggleStyle, onToggleAll, selectedField = 'all', showUncollectedOnly = false, filterBaseCollectedStyles = new Set() }: Props) {
-    const availableStyles = selectedField === 'all'
+function PokemonCard({ pokemon, collectedStyles, onToggleStyle, onToggleAll, selectedField = 'all', selectedRarity = 'all', showUncollectedOnly = false, filterBaseCollectedStyles = new Set() }: Props) {
+    let availableStyles = selectedField === 'all'
         ? pokemon.styles
         : pokemon.styles.filter(s => s.locations.includes(selectedField));
 
-    // 未収集のみフィルタが有効な場合、収集済みスタイルを除外
+    if (selectedRarity !== 'all') {
+        const rarityNum = parseInt(selectedRarity);
+        availableStyles = availableStyles.filter(s => s.rarity === rarityNum);
+    }
+
     // 未収集のみフィルタが有効な場合、収集済みスタイルを除外
     const displayStyles = showUncollectedOnly
         ? availableStyles.filter(s => !filterBaseCollectedStyles.has(s.id))
@@ -124,6 +129,7 @@ export default memo(PokemonCard, (prev, next) => {
 
     // フィルタ設定が変わったか
     if (prev.selectedField !== next.selectedField) return false;
+    if (prev.selectedRarity !== next.selectedRarity) return false;
     if (prev.showUncollectedOnly !== next.showUncollectedOnly) return false;
 
     // このポケモンのスタイルに関連する収集状態が変わったか

@@ -7,11 +7,13 @@ type Props = {
   setSelectedField: (field: string) => void;
   selectedSleepType: 'all' | 'うとうと' | 'すやすや' | 'ぐっすり';
   setSelectedSleepType: (type: 'all' | 'うとうと' | 'すやすや' | 'ぐっすり') => void;
+  selectedRarity: string;
+  setSelectedRarity: (rarity: string) => void;
   showUncollectedOnly: boolean;
   setShowUncollectedOnly: (show: boolean) => void;
   collectedStyles: Set<string>;
   setFilterBaseCollectedStyles: (styles: Set<string>) => void;
-  updateFilterPreferences: (updates: { field?: string; sleepType?: string; uncollectedOnly?: boolean }) => void;
+  updateFilterPreferences: (updates: { field?: string; sleepType?: string; rarity?: string; uncollectedOnly?: boolean }) => void;
   isBulkActionOpen: boolean;
   setIsBulkActionOpen: (open: boolean) => void;
   toggleGlobal: (select: boolean) => void;
@@ -24,6 +26,8 @@ export default function FilterPanel({
   setSelectedField,
   selectedSleepType,
   setSelectedSleepType,
+  selectedRarity,
+  setSelectedRarity,
   showUncollectedOnly,
   setShowUncollectedOnly,
   collectedStyles,
@@ -203,6 +207,44 @@ export default function FilterPanel({
         </div>
       </div>
 
+      {/* レアリティフィルタ */}
+      <div className="flex flex-col gap-4">
+        <h3 className="text-sm font-semibold text-gray-500">レアリティ</h3>
+        <div className="flex flex-wrap gap-2">
+          <button
+            onClick={() => {
+              setSelectedRarity('all');
+              updateFilterPreferences({ rarity: 'all' });
+            }}
+            className={`px-3 py-1.5 rounded-full text-sm transition-colors ${selectedRarity === 'all'
+              ? 'bg-gray-800 text-white'
+              : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+              }`}
+            aria-pressed={selectedRarity === 'all'}
+            aria-label="すべてのレアリティを表示"
+          >
+            全て
+          </button>
+          {['1', '2', '3', '4'].map((rarity) => (
+            <button
+              key={rarity}
+              onClick={() => {
+                setSelectedRarity(rarity);
+                updateFilterPreferences({ rarity });
+              }}
+              className={`px-3 py-1.5 rounded-full text-sm transition-colors ${selectedRarity === rarity
+                ? 'bg-amber-500 text-white'
+                : 'bg-amber-50 text-amber-800 hover:bg-amber-100'
+                }`}
+              aria-pressed={selectedRarity === rarity}
+              aria-label={`★${rarity}を表示`}
+            >
+              ★{rarity}
+            </button>
+          ))}
+        </div>
+      </div>
+
       {/* その他フィルタ */}
       <div className="flex flex-col gap-4">
         <h3 className="text-sm font-semibold text-gray-500">その他</h3>
@@ -232,21 +274,41 @@ export default function FilterPanel({
       </div>
 
       {/* ヘルプボタン */}
-      <button
-        onClick={() => {
-          setIsMenuOpen(false);
-          setIsHelpOpen(true);
-        }}
-        className="flex items-center gap-3 px-4 py-3 bg-blue-50 text-blue-700 rounded-lg hover:bg-blue-100 transition-colors mt-auto"
-        aria-label="ヘルプとよくある質問を表示"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="12" cy="12" r="10"></circle>
-          <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
-          <line x1="12" y1="17" x2="12.01" y2="17"></line>
-        </svg>
-        <span className="font-medium">ヘルプ・よくある質問</span>
-      </button>
+      <div className="mt-auto flex flex-col gap-3">
+        {/* Note記事リンク */}
+        {process.env.NEXT_PUBLIC_NOTE_ARTICLE_URL && (
+          <a
+            href={process.env.NEXT_PUBLIC_NOTE_ARTICLE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 px-4 py-3 bg-gray-50 text-gray-700 rounded-lg hover:bg-gray-100 transition-colors"
+            aria-label="使い方の記事をNoteで見る"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+            </svg>
+            <span className="font-medium">使い方の記事 (Note)</span>
+          </a>
+        )}
+
+        {/* ヘルプボタン */}
+        <button
+          onClick={() => {
+            setIsMenuOpen(false);
+            setIsHelpOpen(true);
+          }}
+          className="flex items-center gap-3 px-4 py-3 bg-blue-50 text-blue-700 rounded-lg hover:bg-blue-100 transition-colors"
+          aria-label="ヘルプとよくある質問を表示"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+          </svg>
+          <span className="font-medium">ヘルプ・よくある質問</span>
+        </button>
+      </div>
     </div>
   );
 }
