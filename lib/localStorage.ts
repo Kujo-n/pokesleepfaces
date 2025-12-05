@@ -4,12 +4,31 @@
 const STORAGE_KEY = 'pokesleep_temp_collection';
 import { Pokemon } from '@/data/mockData';
 
-export const saveToLocalStorage = (collectedStyles: Set<string>) => {
+export const saveToLocalStorage = (collectedStyles: Set<string>): boolean => {
     try {
         const data = Array.from(collectedStyles);
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        const jsonString = JSON.stringify(data);
+
+        // localStorage制限チェック（5MB）
+        const sizeInBytes = new Blob([jsonString]).size;
+        const maxSize = 5 * 1024 * 1024; // 5MB
+
+        if (sizeInBytes > maxSize) {
+            console.warn('Data too large for localStorage:', sizeInBytes, 'bytes');
+            alert('保存データが大きすぎます。ログインしてFirestoreに保存することをお勧めします。');
+            return false;
+        }
+
+        localStorage.setItem(STORAGE_KEY, jsonString);
+        return true;
     } catch (e) {
         console.error('Failed to save to localStorage', e);
+
+        // QuotaExceededErrorの特別処理
+        if (e instanceof DOMException && e.name === 'QuotaExceededError') {
+            alert('ストレージの容量が不足しています。不要なデータを削除するか、ログインしてFirestoreに保存してください。');
+        }
+        return false;
     }
 };
 
