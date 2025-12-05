@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- **UI改善**: Googleログインボタンをナビゲーションバー内に移動
+  - ヘッダーエリアをシンプル化
+  - フィルタパネル上部にログインボタンを配置
+  - ヘッダーのアイコン・タイトルサイズを調整
+
 ## [1.3.0] - 2025-12-05
 
 ### Added
