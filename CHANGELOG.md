@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.0] - 2025-12-05
+
+### Added
+- **アーキテクチャ刷新**: アプリケーションの再設計とリファクタリング
+  - カスタムフックの導入 (`useAuth`, `useCollection`, `useFilters`, `useProgress`)
+  - コンポーネントの責務分離とディレクトリ構造の整備
+- **パフォーマンス最適化**:
+  - `PokemonCard` 等の主要コンポーネントをメモ化 (`React.memo`)
+  - スタイル切替の応答速度を 200ms → 3.8ms に改善（98%高速化）
+  - 再レンダリング回数を 209回 → 1回 に削減
+- **安定性向上**:
+  - `ErrorBoundary` の導入によるクラッシュ防止
+  - データ書き込み時の厳格な入力バリデーション追加
+
+### Changed
+- `app/page.tsx`: ロジックをカスタムフックに委譲し、可読性と保守性を向上
+- ドキュメント構成の刷新:
+  - アーキテクチャ図、フォルダ構成、パフォーマンスレポートの更新
+
 ## [1.2.0] - 2025-12-03
 
 ### Added
