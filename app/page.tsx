@@ -112,7 +112,6 @@ export default function Home() {
                 toggleGlobal={(select) => toggleGlobal(filteredPokemon, select, selectedField)}
                 setIsMenuOpen={setIsMenuOpen}
                 setIsHelpOpen={setIsHelpOpen}
-                user={user}
               />
             </div>
 

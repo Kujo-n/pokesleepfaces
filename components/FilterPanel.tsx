@@ -2,7 +2,6 @@
 
 import { FIELD_NAMES } from '@/data/mockData';
 import AuthButton from '@/components/AuthButton';
-import type { User } from 'firebase/auth';
 
 type Props = {
   selectedField: string;
@@ -21,7 +20,6 @@ type Props = {
   toggleGlobal: (select: boolean) => void;
   setIsMenuOpen: (open: boolean) => void;
   setIsHelpOpen: (open: boolean) => void;
-  user: User | null;
 };
 
 export default function FilterPanel({
@@ -40,8 +38,7 @@ export default function FilterPanel({
   setIsBulkActionOpen,
   toggleGlobal,
   setIsMenuOpen,
-  setIsHelpOpen,
-  user
+  setIsHelpOpen
 }: Props) {
   return (
     <div className="p-4 flex flex-col gap-6 h-full overflow-y-auto">
