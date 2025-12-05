@@ -10,53 +10,48 @@ pokesleepfaces/
 │   ├── favicon.ico        # ファビコン
 │   ├── fonts/             # フォントファイル
 │   ├── globals.css        # グローバルスタイル
-│   ├── layout.tsx         # ルートレイアウト
-│   └── page.tsx           # メインページ（ダッシュボード）
+│   ├── layout.tsx         # ルートレイアウト（ErrorBoundary含む）
+│   └── page.tsx           # メインページ（コンポーネント統合）
 │
 ├── components/            # Reactコンポーネント
-│   ├── AuthButton.tsx     # 認証ボタン（Google ログイン/ログアウト）
-│   └── PokemonCard.tsx    # ポケモンカード表示コンポーネント
+│   ├── AuthButton.tsx     # 認証ボタン
+│   ├── DataProtectionWarning.tsx # データ保護警告
+│   ├── ErrorBoundary.tsx  # エラー境界コンポーネント
+│   ├── FilterPanel.tsx    # フィルタ操作パネル
+│   ├── HelpModal.tsx      # ヘルプモーダル
+│   ├── PokemonCard.tsx    # ポケモンカード（メモ化済み）
+│   └── ProgressSummary.tsx # 進捗サマリー表示
 │
 ├── data/                  # データ定義
-│   └── mockData.ts        # モックデータ（ポケモン・寝顔スタイル）
+│   └── mockData.ts        # モックデータ
 │
 ├── firebase/              # Firebase設定
-│   ├── config.ts          # Firebase初期化設定
-│   └── firestore.rules    # Firestoreセキュリティルール
+│   ├── config.ts          # 初期化設定
+│   └── firestore.rules    # セキュリティルール
 │
-├── lib/                   # ユーティリティ・ヘルパー
-│   ├── db.ts              # Firestore操作関数
-│   └── localStorage.ts    # LocalStorage操作（ゲストユーザー用）
+├── hooks/                 # カスタムフック
+│   ├── useAuth.ts         # 認証状態管理
+│   ├── useCollection.ts   # コレクション操作
+│   ├── useFilters.ts      # フィルタロジック
+│   └── useProgress.ts     # 進捗計算ロジック
+│
+├── lib/                   # ユーティリティ
+│   ├── db.ts              # Firestore操作（バリデーション付）
+│   └── localStorage.ts    # LocalStorage操作（サイズ制限付）
 │
 ├── public/                # 静的ファイル
-│   ├── file.svg
-│   ├── globe.svg
-│   ├── next.svg
-│   ├── vercel.svg
-│   └── window.svg
+│   └── ...
 │
 ├── docs/                  # ドキュメント
-│   ├── 1_folder-structure.md    # このファイル - プロジェクト構造
-│   ├── 2_setup_guide.md         # 環境構築手順書
-│   ├── 3_architecture.md        # アーキテクチャ図
-│   ├── 4_performance.md         # パフォーマンス最適化
-│   ├── 5_deployment.md          # デプロイ手順書
-│   ├── 6_date-update_guide.md   # データ更新ガイド
-│   └── gcp-costs.md             # GCPコスト試算
+│   └── ...
 │
 ├── .gitignore             # Git除外設定
-├── .next/                 # Next.jsビルド出力（自動生成）
-├── node_modules/          # 依存パッケージ（自動生成）
-├── env.example            # 環境変数テンプレート
 ├── eslint.config.mjs      # ESLint設定
-├── next-env.d.ts          # Next.js型定義（自動生成）
+├── jest.config.js         # Jest設定
+├── jest.setup.js          # Jestセットアップ
 ├── next.config.ts         # Next.js設定
-├── package.json           # プロジェクト依存関係
-├── package-lock.json      # 依存関係ロックファイル
-├── postcss.config.mjs     # PostCSS設定
-├── README.md              # プロジェクト概要
-├── tsconfig.json          # TypeScript設定
-└── walkthrough.md         # 実装ウォークスルー
+├── package.json           # 依存関係
+└── ...
 ```
 
 ## 主要ファイルの説明
@@ -64,42 +59,32 @@ pokesleepfaces/
 ### アプリケーションコア
 
 #### `app/page.tsx`
-- メインページコンポーネント
-- ダッシュボード、進捗表示、ポケモンリストを統合
-- Firebase認証状態の管理
-- Firestoreとのリアルタイム同期
+- メインページのエントリーポイント
+- カスタムフックとUIコンポーネントの統合
+- 責務を分離し、コードの見通しを改善
 
-#### `components/PokemonCard.tsx`
-- 個別ポケモンの表示カード
-- 寝顔スタイルの選択/解除機能
-- 展開/折りたたみ機能
-- 一括選択/解除機能
+#### `hooks/`
+- **`useAuth.ts`**: Firebase認証状態の監視
+- **`useCollection.ts`**: 寝顔収集データの管理（Firestore/LocalStorage同期）
+- **`useFilters.ts`**: フィルタリング状態とロジック
+- **`useProgress.ts`**: 進捗率の計算（メモ化による最適化）
 
-#### `components/AuthButton.tsx`
-- Google認証ボタン
-- ログイン/ログアウト処理
-- ユーザー情報表示
+#### `components/`
+- **`PokemonCard.tsx`**: `React.memo`により最適化されたカードコンポーネント
+- **`FilterPanel.tsx`**: フィルタUIと一括操作ボタン
+- **`ProgressSummary.tsx`**: 全体・タイプ別・レアリティ別の進捗表示
+- **`ErrorBoundary.tsx`**: 予期せぬエラーをキャッチし、フォールバックUIを表示
 
 ### データ層
 
-#### `data/mockData.ts`
-- ポケモンと寝顔スタイルのマスターデータ
-- 型定義（`Pokemon`, `SleepStyle`）
-- フィールド名リスト
-
 #### `lib/db.ts`
-- Firestore操作のヘルパー関数
-- `toggleSleepStyle`: 個別スタイルの切り替え
-- `toggleAllStyles`: ポケモン単位の一括切り替え
-- `subscribeToUserCollection`: リアルタイム同期
-- `checkIfNewUser`: 新規ユーザー判定
+- Firestore操作関数群
+- 入力値の厳格なバリデーション（型チェック、空文字チェック）
 
 #### `lib/localStorage.ts`
-- ゲストユーザー用のLocalStorage操作
-- `saveToLocalStorage`: 未ログイン時のデータ保存
-- `loadFromLocalStorage`: 起動時のデータ読み込み
-- `migrateToFirestore`: 新規ユーザーログイン時の自動移行
-- `clearLocalStorage`: LocalStorageクリア
+- ゲストユーザー用データ永続化
+- 容量制限（5MB）のチェックとエラーハンドリング
+- `QuotaExceededError`への対応
 
 ### Firebase設定
 
