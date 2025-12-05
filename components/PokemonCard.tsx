@@ -132,7 +132,7 @@ export default memo(PokemonCard, (prev, next) => {
         if (prev.collectedStyles.has(style.id) !== next.collectedStyles.has(style.id)) {
             return false;
         }
-        if (prev.filterBaseCollectedStyles.has(style.id) !== next.filterBaseCollectedStyles.has(style.id)) {
+        if (prev.filterBaseCollectedStyles?.has(style.id) !== next.filterBaseCollectedStyles?.has(style.id)) {
             return false;
         }
     }
