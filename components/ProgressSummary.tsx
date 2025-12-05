@@ -114,7 +114,7 @@ function ProgressSummary({
           <span className="font-bold text-gray-500">★1</span>
           <div className="flex items-baseline gap-1">
             <span className="font-medium text-gray-900">{rarity1Progress.percentage}%</span>
-            <span className="text-gray-900 text-xs">{rarity1Progress.collected}/{rarity1Progress.total}</span>
+            <span className="text-gray-900 text-xs">({rarity1Progress.collected}/{rarity1Progress.total})</span>
           </div>
         </button>
         <button
@@ -124,7 +124,7 @@ function ProgressSummary({
           <span className="font-bold text-emerald-600">★2</span>
           <div className="flex items-baseline gap-1">
             <span className="font-medium text-gray-900">{rarity2Progress.percentage}%</span>
-            <span className="text-gray-900 text-xs">{rarity2Progress.collected}/{rarity2Progress.total}</span>
+            <span className="text-gray-900 text-xs">({rarity2Progress.collected}/{rarity2Progress.total})</span>
           </div>
         </button>
         <button
@@ -134,7 +134,7 @@ function ProgressSummary({
           <span className="font-bold text-pink-600">★3</span>
           <div className="flex items-baseline gap-1">
             <span className="font-medium text-gray-900">{rarity3Progress.percentage}%</span>
-            <span className="text-gray-900 text-xs">{rarity3Progress.collected}/{rarity3Progress.total}</span>
+            <span className="text-gray-900 text-xs">({rarity3Progress.collected}/{rarity3Progress.total})</span>
           </div>
         </button>
         <button
@@ -144,7 +144,7 @@ function ProgressSummary({
           <span className="font-bold text-amber-600">★4</span>
           <div className="flex items-baseline gap-1">
             <span className="font-medium text-gray-900">{rarity4Progress.percentage}%</span>
-            <span className="text-gray-900 text-xs">{rarity4Progress.collected}/{rarity4Progress.total}</span>
+            <span className="text-gray-900 text-xs">({rarity4Progress.collected}/{rarity4Progress.total})</span>
           </div>
         </button>
       </div>
