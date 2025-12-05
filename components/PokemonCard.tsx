@@ -1,5 +1,6 @@
 'use client';
 
+import { memo } from 'react';
 import { Pokemon } from '@/data/mockData';
 
 type Props = {
@@ -12,7 +13,7 @@ type Props = {
     filterBaseCollectedStyles?: Set<string>;
 };
 
-export default function PokemonCard({ pokemon, collectedStyles, onToggleStyle, onToggleAll, selectedField = 'all', showUncollectedOnly = false, filterBaseCollectedStyles = new Set() }: Props) {
+function PokemonCard({ pokemon, collectedStyles, onToggleStyle, onToggleAll, selectedField = 'all', showUncollectedOnly = false, filterBaseCollectedStyles = new Set() }: Props) {
     const availableStyles = selectedField === 'all'
         ? pokemon.styles
         : pokemon.styles.filter(s => s.locations.includes(selectedField));
@@ -115,3 +116,26 @@ export default function PokemonCard({ pokemon, collectedStyles, onToggleStyle, o
         </div>
     );
 }
+
+// メモ化: このポケモンに関連するpropsが変更された時のみ再レンダリング
+export default memo(PokemonCard, (prev, next) => {
+    // pokemon自体が変わったか
+    if (prev.pokemon.id !== next.pokemon.id) return false;
+
+    // フィルタ設定が変わったか
+    if (prev.selectedField !== next.selectedField) return false;
+    if (prev.showUncollectedOnly !== next.showUncollectedOnly) return false;
+
+    // このポケモンのスタイルに関連する収集状態が変わったか
+    const prevStyles = prev.pokemon.styles;
+    for (const style of prevStyles) {
+        if (prev.collectedStyles.has(style.id) !== next.collectedStyles.has(style.id)) {
+            return false;
+        }
+        if (prev.filterBaseCollectedStyles?.has(style.id) !== next.filterBaseCollectedStyles?.has(style.id)) {
+            return false;
+        }
+    }
+
+    return true; // 変更なし = 再レンダリングスキップ
+});

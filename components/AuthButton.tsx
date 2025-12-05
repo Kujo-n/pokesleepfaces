@@ -1,20 +1,12 @@
 'use client';
 
 import { auth } from '@/firebase/config';
-import { GoogleAuthProvider, signInWithPopup, signOut, User } from 'firebase/auth';
-import { useState, useEffect } from 'react';
+import { GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
 import Image from 'next/image';
+import { useAuth } from '@/hooks/useAuth';
 
 export default function AuthButton() {
-    const [user, setUser] = useState<User | null>(null);
-
-    useEffect(() => {
-        if (!auth) return;
-        const unsubscribe = auth.onAuthStateChanged((u) => {
-            setUser(u);
-        });
-        return () => unsubscribe();
-    }, []);
+    const { user } = useAuth();
 
     const handleSignIn = async () => {
         if (!auth) {

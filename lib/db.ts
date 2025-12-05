@@ -6,6 +6,21 @@ import { doc, setDoc, arrayUnion, arrayRemove, onSnapshot, collection, getDocs, 
 
 export const toggleSleepStyle = async (userId: string, pokemonId: string, styleId: string, isCollected: boolean) => {
     if (!db) throw new Error("Firebase not initialized");
+
+    // 入力バリデーション追加
+    if (!userId || typeof userId !== 'string' || userId.trim() === '') {
+        throw new Error('Invalid userId');
+    }
+    if (!pokemonId || typeof pokemonId !== 'string' || pokemonId.trim() === '') {
+        throw new Error('Invalid pokemonId');
+    }
+    if (!styleId || typeof styleId !== 'string' || styleId.trim() === '') {
+        throw new Error('Invalid styleId');
+    }
+    if (typeof isCollected !== 'boolean') {
+        throw new Error('Invalid isCollected value');
+    }
+
     const docRef = doc(db as Firestore, `users/${userId}/collections/${pokemonId}`);
 
     try {
@@ -28,6 +43,24 @@ export const toggleSleepStyle = async (userId: string, pokemonId: string, styleI
 
 export const toggleAllStyles = async (userId: string, pokemonId: string, styleIds: string[], isSelected: boolean) => {
     if (!db) throw new Error("Firebase not initialized");
+
+    // バリデーション追加
+    if (!userId || typeof userId !== 'string' || userId.trim() === '') {
+        throw new Error('Invalid userId');
+    }
+    if (!pokemonId || typeof pokemonId !== 'string' || pokemonId.trim() === '') {
+        throw new Error('Invalid pokemonId');
+    }
+    if (!Array.isArray(styleIds) || styleIds.length === 0) {
+        throw new Error('Invalid styleIds array');
+    }
+    if (styleIds.some(id => typeof id !== 'string' || id.trim() === '')) {
+        throw new Error('Invalid styleId in array');
+    }
+    if (typeof isSelected !== 'boolean') {
+        throw new Error('Invalid isSelected value');
+    }
+
     const docRef = doc(db as Firestore, `users/${userId}/collections/${pokemonId}`);
 
     try {

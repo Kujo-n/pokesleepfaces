@@ -1,19 +1,9 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { auth } from '@/firebase/config';
-import { User } from 'firebase/auth';
+import { useAuth } from '@/hooks/useAuth';
 
 export default function DataProtectionWarning() {
-    const [user, setUser] = useState<User | null>(null);
-
-    useEffect(() => {
-        if (!auth) return;
-        const unsubscribe = auth.onAuthStateChanged((u) => {
-            setUser(u);
-        });
-        return () => unsubscribe();
-    }, []);
+    const { user } = useAuth();
 
     if (user) return null;
 

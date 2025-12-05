@@ -35,72 +35,82 @@ graph TB
 ```
 
 ## コンポーネント構成
-
-```mermaid
-graph LR
-    subgraph "Pages"
-        Page[app/page.tsx<br/>Main Dashboard]
-    end
-    
-    subgraph "Components"
-        AuthBtn[AuthButton<br/>認証UI]
-        PokemonCard[PokemonCard<br/>カード表示]
-    end
-    
-    subgraph "Data Layer"
-        MockData[mockData.ts<br/>マスターデータ]
-        DB[lib/db.ts<br/>Firestore操作]
-        LocalStore[lib/localStorage.ts<br/>ゲスト用保存]
-    end
-    
-    subgraph "Firebase"
-        Config[firebase/config.ts<br/>初期化]
-        Rules[firestore.rules<br/>セキュリティ]
-    end
-    
-    Page --> AuthBtn
-    Page --> PokemonCard
-    Page --> DB
-    Page --> LocalStore
-    AuthBtn --> Config
-    DB --> Config
-    DB --> MockData
-    LocalStore -.新規ユーザー.-> DB
-    Config -.適用.-> Rules
-    
-    style Page fill:#4285f4,color:#fff
-    style AuthBtn fill:#34a853,color:#fff
-    style PokemonCard fill:#34a853,color:#fff
-    style DB fill:#ea4335,color:#fff
-    style LocalStore fill:#34a853,color:#fff
-    style Config fill:#fbbc04,color:#000
-```
-
-## データフロー（ログイン時）
-
-```mermaid
-sequenceDiagram
-    participant U as User
-    participant UI as app/page.tsx
-    participant Auth as AuthButton
-    participant FB as Firebase Auth
-    participant FS as Firestore
-    
-    U->>Auth: クリック「Googleでログイン」
-    Auth->>FB: signInWithPopup()
-    FB-->>Auth: User認証情報
-    Auth-->>UI: onAuthStateChanged(user)
-    UI->>FS: subscribeToUserCollection(userId)
-    FS-->>UI: リアルタイム同期開始
-    FS-->>UI: 既存の収集データ
-    UI->>UI: collectedStyles更新
-    UI-->>U: UI更新（進捗表示）
-```
-
-## データフロー（寝顔選択時）
-
-```mermaid
-sequenceDiagram
+ 
+ ```mermaid
+ graph LR
+     subgraph "Pages"
+         Page[app/page.tsx<br/>Main Dashboard]
+         Layout[app/layout.tsx<br/>Root Layout]
+     end
+     
+     subgraph "Components"
+         AuthBtn[AuthButton]
+         PokemonCard["PokemonCard<br/>(Memoized)"]
+         FilterPanel[FilterPanel]
+         ProgressSummary[ProgressSummary]
+         ErrorBoundary[ErrorBoundary]
+     end
+     
+     subgraph "Hooks"
+         useAuth[useAuth]
+         useCollection[useCollection]
+         useFilters[useFilters]
+         useProgress[useProgress]
+     end
+     
+     subgraph "Data Layer"
+         MockData[mockData.ts]
+         DB[lib/db.ts]
+         LocalStore[lib/localStorage.ts]
+     end
+     
+     Layout --> ErrorBoundary
+     ErrorBoundary --> Page
+     
+     Page --> useAuth
+     Page --> useCollection
+     Page --> useFilters
+     Page --> useProgress
+     
+     Page --> AuthBtn
+     Page --> PokemonCard
+     Page --> FilterPanel
+     Page --> ProgressSummary
+     
+     useCollection --> DB
+     useCollection --> LocalStore
+     useFilters --> DB
+     
+     style Page fill:#4285f4,color:#fff
+     style ErrorBoundary fill:#ea4335,color:#fff
+     style useCollection fill:#fbbc04,color:#000
+ ```
+ 
+ ## データフロー（ログイン時）
+ 
+ ```mermaid
+ sequenceDiagram
+     participant U as User
+     participant Page as app/page.tsx
+     participant Hook as useAuth
+     participant FB as Firebase Auth
+     participant FS as Firestore
+     
+     U->>Page: アクセス
+     Page->>Hook: useAuth()
+     Hook->>FB: onAuthStateChanged()
+     FB-->>Hook: User認証情報
+     Hook-->>Page: user state更新
+     
+     Page->>FS: useCollection -> subscribeToUserCollection
+     FS-->>Page: リアルタイム同期開始
+     Page->>Page: collectedStyles更新
+ ```
+ 
+ ## データフロー（寝顔選択時）
+ 
+ ```mermaid
+ sequenceDiagram
     participant U as User
     participant Card as PokemonCard
     participant Page as app/page.tsx
@@ -265,45 +275,59 @@ graph TB
 ```
 
 ## 状態管理フロー
+ 
+ ```mermaid
+ graph TB
+     subgraph "Custom Hooks"
+         useAuth["useAuth<br/>(User State)"]
+         useCollection["useCollection<br/>(Collected Styles)"]
+         useFilters["useFilters<br/>(Filter State)"]
+         useProgress["useProgress<br/>(Calculated Stats)"]
+     end
+     
+     subgraph "UI Components"
+         Page[app/page.tsx]
+         FilterPanel[FilterPanel]
+         PokemonCard[PokemonCard]
+         ProgressSummary[ProgressSummary]
+     end
+     
+     useAuth --> Page
+     useCollection --> Page
+     useFilters --> Page
+     useProgress --> Page
+     
+     Page -->|Props| FilterPanel
+     Page -->|Props| PokemonCard
+     Page -->|Props| ProgressSummary
+     
+     FilterPanel -->|Action| useFilters
+     PokemonCard -->|Action| useCollection
+     
+     style useCollection fill:#34a853,color:#fff
+     style Page fill:#4285f4,color:#fff
+ ```
 
-```mermaid
-graph TB
-    subgraph "State Management"
-        UserState["user: User or null"]
-        CollectedState["collectedStyles: Set of string"]
-        FilterState["selectedField: string"]
-        SleepTypeState["selectedSleepType: string"]
-        UncollectedState["showUncollectedOnly: boolean"]
-        FilterSnapshot["filterBaseCollectedStyles: Set of string"]
-    end
-    
-    subgraph "Effects"
-        AuthEffect["useEffect: Auth監視"]
-        SyncEffect["useEffect: Firestore同期"]
-    end
-    
-    subgraph "Actions"
-        Toggle["toggleStyle"]
-        ToggleAll["toggleAllPokemonStyles"]
-        ToggleGlobal["toggleGlobal"]
-    end
-    
-    AuthEffect --> UserState
-    UserState --> SyncEffect
-    SyncEffect --> CollectedState
-    
-    Toggle --> CollectedState
-    ToggleAll --> CollectedState
-    ToggleGlobal --> CollectedState
-    
-    FilterState --> UI["UI Rendering"]
-    SleepTypeState --> UI
-    UncollectedState --> UI
-    UncollectedState -.-> FilterSnapshot
-    FilterSnapshot --> UI
-    CollectedState --> UI
-    
-    style UserState fill:#4285f4,color:#fff
-    style CollectedState fill:#34a853,color:#fff
-    style UI fill:#ea4335,color:#fff
-```
+ ## エラーハンドリング設計
+
+ ### 1. Error Boundary
+ - **範囲**: アプリケーション全体 (`app/layout.tsx` でラップ)
+ - **捕捉対象**: レンダリング中の予期せぬエラー
+ - **動作**: エラー画面を表示し、アプリケーションのクラッシュを防止
+ - **開発環境**: エラー詳細（スタックトレース）を表示
+
+ ### 2. 入力バリデーション
+ - **場所**: `lib/db.ts`, `lib/localStorage.ts`
+ - **対象**: 全てのデータ書き込み操作
+ - **チェック内容**:
+   - 型チェック (string, boolean, array)
+   - 必須値チェック (userId, pokemonId)
+   - 空文字チェック
+   - 容量制限チェック (LocalStorage 5MB)
+
+ ### 3. 非同期エラー処理
+ - **場所**: `hooks/useCollection.ts`
+ - **動作**:
+   - Optimistic UI更新後のAPI呼び出し失敗をcatch
+   - エラー時は状態をロールバック
+   - ユーザーにアラートを表示
