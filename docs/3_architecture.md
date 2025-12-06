@@ -203,7 +203,8 @@ stateDiagram-v2
     
     未ログイン: ローカルストレージのみ
     ログイン済み: Firestore同期有効
-    
+```
+
 ## データ同期フロー（Server Wins戦略）
 
 ```mermaid
