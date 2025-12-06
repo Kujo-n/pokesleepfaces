@@ -7620,7 +7620,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             },
             {
                 "id": "p329_ビブラーバ-2",
-                "name": "2番目の寝顔",
+                "name": "ホバリング寝",
                 "rarity": 2,
                 "locations": [
                     "トープ洞窟",
@@ -7629,7 +7629,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             },
             {
                 "id": "p329_ビブラーバ-3",
-                "name": "3番目の寝顔",
+                "name": "はねこすり寝",
                 "rarity": 3,
                 "locations": [
                     "トープ洞窟",
@@ -7669,7 +7669,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             },
             {
                 "id": "p330_フライゴン-2",
-                "name": "2番目の寝顔",
+                "name": "はばたき寝",
                 "rarity": 2,
                 "locations": [
                     "トープ洞窟",
@@ -7678,7 +7678,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             },
             {
                 "id": "p330_フライゴン-3",
-                "name": "3番目の寝顔",
+                "name": "おなかだし寝",
                 "rarity": 3,
                 "locations": [
                     "トープ洞窟",
@@ -8247,7 +8247,7 @@ export const MOCK_POKEMON: Pokemon[] = [
         "styles": [
             {
                 "id": "p372_コモルー-1",
-                "name": "1番目の寝顔",
+                "name": "そらとびたい寝",
                 "rarity": 1,
                 "locations": [
                     "アンバー渓谷"
@@ -8291,7 +8291,7 @@ export const MOCK_POKEMON: Pokemon[] = [
         "styles": [
             {
                 "id": "p373_ボーマンダ-1",
-                "name": "1番目の寝顔",
+                "name": "はばたき寝",
                 "rarity": 1,
                 "locations": [
                     "アンバー渓谷"
@@ -8299,7 +8299,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             },
             {
                 "id": "p373_ボーマンダ-2",
-                "name": "2番目の寝顔",
+                "name": "おおあくび寝",
                 "rarity": 2,
                 "locations": [
                     "アンバー渓谷"
@@ -8307,7 +8307,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             },
             {
                 "id": "p373_ボーマンダ-3",
-                "name": "3番目の寝顔",
+                "name": "かえんほうしゃ寝",
                 "rarity": 3,
                 "locations": [
                     "アンバー渓谷"
@@ -8779,7 +8779,7 @@ export const MOCK_POKEMON: Pokemon[] = [
         "styles": [
             {
                 "id": "p442_ミカルゲ-1",
-                "name": "1番目の寝顔",
+                "name": "かなめいし寝",
                 "rarity": 1,
                 "locations": [
                     "ワカクサ本島",
@@ -8791,7 +8791,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             },
             {
                 "id": "p442_ミカルゲ-2",
-                "name": "2番目の寝顔",
+                "name": "こっくり寝",
                 "rarity": 2,
                 "locations": [
                     "ワカクサ本島",
@@ -8803,7 +8803,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             },
             {
                 "id": "p442_ミカルゲ-3",
-                "name": "3番目の寝顔",
+                "name": "じめんぺったり寝",
                 "rarity": 3,
                 "locations": [
                     "ウノハナ雪原",
@@ -9671,7 +9671,7 @@ export const MOCK_POKEMON: Pokemon[] = [
         "styles": [
             {
                 "id": "p558_イワパレス-1",
-                "name": "1番目の寝顔",
+                "name": "からにこもる寝",
                 "rarity": 1,
                 "locations": [
                     "アンバー渓谷"
@@ -9679,7 +9679,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             },
             {
                 "id": "p558_イワパレス-2",
-                "name": "2番目の寝顔",
+                "name": "こもらない寝",
                 "rarity": 2,
                 "locations": [
                     "アンバー渓谷"
@@ -9687,7 +9687,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             },
             {
                 "id": "p558_イワパレス-3",
-                "name": "3番目の寝顔",
+                "name": "からのうえ寝",
                 "rarity": 3,
                 "locations": [
                     "アンバー渓谷"
@@ -10032,7 +10032,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             },
             {
                 "id": "p711_パンプジン-3",
-                "name": "3番目の寝顔",
+                "name": "おどろかし寝",
                 "rarity": 3,
                 "locations": [
                     "ゴールド旧発電所",
@@ -10599,7 +10599,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             },
             {
                 "id": "p849_ストリンダー（ローなすがた）-3",
-                "name": "3番目の寝顔",
+                "name": "ぐうたら寝",
                 "rarity": 3,
                 "locations": [
                     "ゴールド旧発電所",
