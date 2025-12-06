@@ -51,6 +51,13 @@ export const useCollection = (user: User | null) => {
     };
   }, [user, isInitialized]);
 
+  // 状態変更時にlocalStorageに自動保存
+  useEffect(() => {
+    if (isInitialized && collectedStyles.size > 0) {
+      saveToLocalStorage(collectedStyles);
+    }
+  }, [collectedStyles, isInitialized]);
+
   // 単一スタイルのトグル
   const toggleStyle = useCallback(async (styleId: string) => {
     const isCollected = collectedStyles.has(styleId);
@@ -75,9 +82,8 @@ export const useCollection = (user: User | null) => {
           alert("保存に失敗しました");
         }
       }
-    } else {
-      saveToLocalStorage(newSet);
     }
+    // localStorage save is handled by useEffect
   }, [user, collectedStyles]);
 
   // ポケモン単位での一括トグル
@@ -106,9 +112,8 @@ export const useCollection = (user: User | null) => {
         setCollectedStyles(collectedStyles);
         alert("保存に失敗しました");
       }
-    } else {
-      saveToLocalStorage(newSet);
     }
+    // localStorage save is handled by useEffect
   }, [user, collectedStyles]);
 
   // グローバル一括トグル
@@ -144,9 +149,8 @@ export const useCollection = (user: User | null) => {
         setCollectedStyles(collectedStyles);
         alert("一部の保存に失敗しました");
       }
-    } else {
-      saveToLocalStorage(newSet);
     }
+    // localStorage save is handled by useEffect
   }, [user, collectedStyles]);
 
   return {

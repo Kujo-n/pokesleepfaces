@@ -63,8 +63,7 @@ export const migrateToFirestore = async (
     const isNewUser = await checkIfNewUser(userId);
 
     if (!isNewUser) {
-        console.log('Existing user detected. Clearing local data without migration.');
-        clearLocalStorage();
+        console.log('Existing user detected. Keeping local data as offline cache.');
         return;
     }
 
@@ -86,3 +85,4 @@ export const migrateToFirestore = async (
         console.error('Failed to migrate local data', e);
     }
 };
+
