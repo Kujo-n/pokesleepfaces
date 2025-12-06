@@ -103,46 +103,74 @@ Firestore保存（100-500ms）
 
 ---
 
-### 3. ゲストユーザー対応（LocalStorage）
+### 3. LocalStorage による即時状態復元
 
-**目的**: 未ログイン時のデータ永続化
+**目的**: アプリ起動時の即時状態表示とオフラインキャッシュ
 
-**実装場所**: `lib/localStorage.ts`, `app/page.tsx`
+**実装場所**: `lib/localStorage.ts`, `hooks/useCollection.ts`
 
 **機能**:
-- 未ログイン時にLocalStorageへ自動保存
-- ページリロード後もデータ保持
-- 新規ユーザーログイン時にFirestoreへ自動移行
-- 既存ユーザーログイン時はLocalStorageクリア
+- アプリ起動時にLocalStorageから前回の状態を即座に復元
+- 収集状況の変更を自動的にLocalStorageに保存
+- ログイン後はFirestoreと同期（Server Wins戦略）
+- オフラインキャッシュとして機能
 
 **コード**:
 ```typescript
-// 未ログイン時
-if (!user) {
-  saveToLocalStorage(newSet);
-}
+// 起動時: LocalStorageから即座に読み込み
+useEffect(() => {
+  if (typeof window !== 'undefined') {
+    const savedData = loadFromLocalStorage();
+    if (savedData.size > 0) {
+      setCollectedStyles(savedData);
+    }
+    setIsInitialized(true);
+  }
+}, []);
 
-// ログイン時の自動移行
-const localData = loadFromLocalStorage();
-if (localData.size > 0) {
-  await migrateToFirestore(user.uid, localData, toggleSleepStyle, MOCK_POKEMON, checkIfNewUser);
-}
+// 状態変更時: 自動保存
+useEffect(() => {
+  if (isInitialized && collectedStyles.size > 0) {
+    saveToLocalStorage(collectedStyles);
+  }
+}, [collectedStyles, isInitialized]);
+
+// ログイン時: Firestoreと同期（Server Wins）
+useEffect(() => {
+  if (user && isInitialized) {
+    const unsubscribe = subscribeToUserCollection(
+      user.uid,
+      (firestoreData) => {
+        setCollectedStyles(firestoreData); // Firestoreが優先
+        saveToLocalStorage(firestoreData); // キャッシュ更新
+      }
+    );
+    return () => unsubscribe();
+  }
+}, [user, isInitialized]);
 ```
 
 **効果**:
-- ✅ ゲストユーザーでも試用可能
-- ✅ データ損失なし（ページリロード対応）
-- ✅ 新規登録時にデータ引き継ぎ
-- ✅ 既存ユーザーはFirestoreデータ優先
+- ✅ アプリ起動時に前回の状態を即座に表示（0ms）
+- ✅ ログイン前でもデータ永続化
+- ✅ ログイン後はFirestoreデータで上書き（Server Wins）
+- ✅ オフライン時もデータ保持
 
-**動作フロー**:
+**Server Wins戦略**:
 ```
-未ログイン → LocalStorage保存
+アプリ起動 → LocalStorageから即座に表示（Cache）
     ↓
-新規ログイン → Firestoreに移行 → LocalStorageクリア
+ログイン → Firestoreから最新データ取得（Master）
     ↓
-既存ログイン → LocalStorageクリア → Firestoreから読み込み
+表示更新 → Firestoreデータで上書き
+    ↓
+LocalStorage更新 → 次回起動用にキャッシュ
 ```
+
+**注意事項**:
+- ローディング中（同期前）の変更は、同期完了時にFirestoreデータで上書きされます
+- LocalStorageとFirestoreのデータが異なる場合、Firestoreが正（マスター）として扱われます
+
 
 ---
 

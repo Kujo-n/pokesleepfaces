@@ -5,7 +5,33 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+
+## [1.3.2] - 2025-12-06
+
+### Added
+- **LocalStorageによる即時状態復元機能**:
+  - アプリ起動時に前回の入力状態（収集状況）を即座に表示
+  - 収集状況の変更を自動的にLocalStorageに保存
+  - ログイン後はFirestoreと同期（Server Wins戦略）
+  - オフラインキャッシュとして機能
+
+### Changed
+- `hooks/useCollection.ts`: 
+  - 起動時にLocalStorageから状態を読み込む処理を追加
+  - 状態変更時の自動保存処理を一元化（`useEffect`で実装）
+  - 手動の`saveToLocalStorage`呼び出しを削除
+- `lib/localStorage.ts`:
+  - `migrateToFirestore`関数を修正し、既存ユーザーのLocalStorageをキャッシュとして保持
+- ドキュメント更新:
+  - `docs/3_architecture.md`: データ同期フロー図を追加
+  - `docs/4_performance.md`: LocalStorage即時復元機能の説明を追加
+
+### Technical Notes
+- **Server Wins戦略**: ローカルとサーバーのデータが異なる場合、Firestoreのデータが優先されます
+- **同期タイミング**: ログイン完了後、Firestoreから最新データを取得し、ローカル表示を更新します
+
 ## [1.3.1] - 2025-12-06
+
 
 ### Changed
 - **UI改善**: Googleログインボタンをナビゲーションバー内に移動

@@ -26,7 +26,8 @@ graph TB
     UI --> LocalStorage
     UI --> Firestore
     FAuth -.認証トークン.-> Firestore
-    LocalStorage -.新規ユーザーのみ.-> Firestore
+    LocalStorage -.起動時リストア.-> UI
+    LocalStorage -.オフラインキャッシュ.-> UI
     
     style UI fill:#4285f4,color:#fff
     style FAuth fill:#ffca28,color:#000
@@ -202,6 +203,26 @@ stateDiagram-v2
     
     未ログイン: ローカルストレージのみ
     ログイン済み: Firestore同期有効
+    
+## データ同期フロー（Server Wins戦略）
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant LS as LocalStorage
+    participant App
+    participant FS as Firestore
+    
+    User->>App: アプリ起動
+    LS->>App: 前回状態をロード
+    App->>User: 即座に表示 (Cache)
+    
+    App->>FS: 接続・同期開始
+    FS-->>App: 最新データ (Master)
+    App->>LS: 最新状態で更新
+    App->>User: 表示更新 (Master)
+    
+    Note over App, FS: サーバーデータが優先される
 ```
 
 ## セキュリティモデル
