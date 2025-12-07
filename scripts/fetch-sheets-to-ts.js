@@ -117,11 +117,10 @@ async function main() {
             const id = `p${p.dexNumber}_${p.name}`;
 
             // fieldsを列から取得
-            // sortedFieldsにあるフィールド名の列に値が入っていれば（truthyなら）採用
-            // ただし 'FALSE' という文字列は除外する
+            // sortedFieldsにあるフィールド名の列の値が 'TRUE' の場合のみ採用
             const fieldsArray = sortedFields.filter(fieldName => {
                 const val = p[fieldName];
-                return val && val.trim() !== '' && val.trim().toUpperCase() !== 'FALSE';
+                return val && val.trim().toUpperCase() === 'TRUE';
             });
 
             // このポケモンに対応するstylesを取得
@@ -132,9 +131,10 @@ async function main() {
                     const styleId = `p${p.dexNumber}_${p.name}-${index + 1}`;
 
                     // この寝顔の出現フィールドを列から取得
+                    // フィールド名の列の値が 'TRUE' の場合のみ採用
                     const styleFields = sortedFields.filter(fieldName => {
                         const val = s[fieldName];
-                        return val && val.trim() !== '' && val.trim().toUpperCase() !== 'FALSE';
+                        return val && val.trim().toUpperCase() === 'TRUE';
                     });
 
                     // ポケモンの出現フィールドのうち、この寝顔では出現しないものを抽出
