@@ -58,14 +58,14 @@ export const useFilters = (user: User | null, collectedStyles: Set<string>) => {
   // フィルタリング処理
   const filteredPokemon = useMemo(() => {
     return MOCK_POKEMON.filter(p => {
-      // 1. フィールドによるフィルタ（ポケモンレベル）- 除外率が高いため最初に実行
-      if (selectedField !== 'all') {
-        if (!p.fields.includes(selectedField)) return false;
-      }
-
-      // 2. 睡眠タイプによるフィルタ（ポケモンレベル）
+      // 1. 睡眠タイプによるフィルタ（ポケモンレベル）- 文字列比較で低コストかつ66%除外できるため最優先
       if (selectedSleepType !== 'all' && p.sleepType !== selectedSleepType) {
         return false;
+      }
+
+      // 2. フィールドによるフィルタ（ポケモンレベル）
+      if (selectedField !== 'all') {
+        if (!p.fields.includes(selectedField)) return false;
       }
 
       // 3. スタイルによるフィルタ（フィールドとレアリティ）
