@@ -12,7 +12,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "deploy:staging": "npm run build && firebase hosting:channel:deploy staging",
+    "deploy:staging": "cp .env.local.staging .env.local && npm run build && firebase hosting:channel:deploy staging",
     "deploy:prod": "npm run build && firebase deploy --only hosting",
     "copy:user": "node scripts/copy-user-data.js"
   },

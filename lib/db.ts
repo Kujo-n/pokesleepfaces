@@ -1,7 +1,13 @@
 import { db } from '@/firebase/config';
 import { doc, setDoc, arrayUnion, arrayRemove, onSnapshot, collection, getDocs, Firestore, writeBatch } from 'firebase/firestore';
+
+// 環境に応じたコレクション名
+const ENV = process.env.NEXT_PUBLIC_ENV || 'production';
+const USERS_COLLECTION = ENV === 'staging' ? 'users_staging' : 'users';
+
 // User Collection Structure:
-// users/{userId}/collections/{pokemonId}
+// users/{userId}/collections/{pokemonId} (production)
+// users_staging/{userId}/collections/{pokemonId} (staging)
 // Document contains: { collectedStyles: [styleId1, styleId2, ...] }
 
 export const toggleSleepStyle = async (userId: string, pokemonId: string, styleId: string, isCollected: boolean) => {
@@ -21,7 +27,7 @@ export const toggleSleepStyle = async (userId: string, pokemonId: string, styleI
         throw new Error('Invalid isCollected value');
     }
 
-    const docRef = doc(db as Firestore, `users/${userId}/collections/${pokemonId}`);
+    const docRef = doc(db as Firestore, `${USERS_COLLECTION}/${userId}/collections/${pokemonId}`);
 
     try {
         if (isCollected) {
@@ -61,7 +67,7 @@ export const toggleAllStyles = async (userId: string, pokemonId: string, styleId
         throw new Error('Invalid isSelected value');
     }
 
-    const docRef = doc(db as Firestore, `users/${userId}/collections/${pokemonId}`);
+    const docRef = doc(db as Firestore, `${USERS_COLLECTION}/${userId}/collections/${pokemonId}`);
 
     try {
         if (isSelected) {
@@ -86,7 +92,7 @@ interface UserCollection {
 export const subscribeToUserCollection = (userId: string, callback: (collected: Set<string>) => void) => {
     if (!db) return () => { };
 
-    const collectionRef = collection(db as Firestore, `users/${userId}/collections`).withConverter({
+    const collectionRef = collection(db as Firestore, `${USERS_COLLECTION}/${userId}/collections`).withConverter({
         toFirestore: (data: UserCollection) => data,
         fromFirestore: (snapshot, options) => {
             const data = snapshot.data(options);
@@ -110,7 +116,7 @@ export const checkIfNewUser = async (userId: string): Promise<boolean> => {
     if (!db) return false;
 
     try {
-        const collectionRef = collection(db as Firestore, `users/${userId}/collections`);
+        const collectionRef = collection(db as Firestore, `${USERS_COLLECTION}/${userId}/collections`);
         const snapshot = await getDocs(collectionRef);
 
         // コレクションが空 = 新規ユーザー
@@ -131,7 +137,7 @@ export interface FilterPreferences {
 
 export const saveFilterPreferences = async (userId: string, preferences: FilterPreferences) => {
     if (!db) throw new Error("Firebase not initialized");
-    const docRef = doc(db as Firestore, `users/${userId}/preferences/filters`);
+    const docRef = doc(db as Firestore, `${USERS_COLLECTION}/${userId}/preferences/filters`);
 
     try {
         await setDoc(docRef, preferences, { merge: true });
@@ -145,7 +151,7 @@ export const loadFilterPreferences = async (userId: string): Promise<FilterPrefe
     if (!db) return null;
 
     try {
-        const snapshot = await getDocs(collection(db as Firestore, `users/${userId}/preferences`));
+        const snapshot = await getDocs(collection(db as Firestore, `${USERS_COLLECTION}/${userId}/preferences`));
         const filterDoc = snapshot.docs.find(d => d.id === 'filters');
         if (filterDoc && filterDoc.exists()) {
             return filterDoc.data() as FilterPreferences;
@@ -179,7 +185,7 @@ export const toggleMultiplePokemonStyles = async (
             const batch = writeBatch(db as Firestore);
 
             chunk.forEach(({ pokemonId, styleIds }) => {
-                const docRef = doc(db as Firestore, `users/${userId}/collections/${pokemonId}`);
+                const docRef = doc(db as Firestore, `${USERS_COLLECTION}/${userId}/collections/${pokemonId}`);
                 if (isSelected) {
                     batch.set(docRef, {
                         collectedStyles: arrayUnion(...styleIds)
