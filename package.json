@@ -12,8 +12,8 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "deploy:staging": "cp .env.local.staging .env.local && npm run build && firebase hosting:channel:deploy staging",
-    "deploy:prod": "npm run build && firebase deploy --only hosting",
+    "deploy:staging": "node -e \"require('fs').copyFileSync('.env.local.staging', '.env.local')\" && npm run build && firebase hosting:channel:deploy staging",
+    "deploy:prod": "node -e \"try { require('fs').unlinkSync('.env.local') } catch(e) {}\" && npm run build && firebase deploy --only hosting",
     "copy:user": "node scripts/copy-user-data.js"
   },
   "dependencies": {

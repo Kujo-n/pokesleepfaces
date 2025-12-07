@@ -53,6 +53,12 @@ npm run deploy:prod
 npm run deploy:staging
 ```
 
+※ 初回構築時やセキュリティルールを変更した場合は、以下のコマンドでFirestoreルールも適用してください：
+
+```bash
+npx firebase deploy --only firestore:rules
+```
+
 ---
 
 ## 3. ユーザーデータのコピー
@@ -165,6 +171,20 @@ firebase hosting:channel:delete staging
 **解決方法:**
 - サービスアカウントに適切な権限があるか確認
 - Firebase Console → IAM で「Cloud Datastore User」ロールを付与
+
+### ステージング環境での権限エラー
+
+```
+Error toggling all styles: FirebaseError: Missing or insufficient permissions.
+```
+
+**解決方法:**
+- `users_staging` コレクションへの書き込みルールがクラウドに反映されていない可能性があります。
+- 以下のコマンドでルールを明示的にデプロイしてください：
+
+```bash
+npx firebase deploy --only firestore:rules
+```
 
 ---
 
