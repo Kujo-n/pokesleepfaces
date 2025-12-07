@@ -131,18 +131,28 @@ async function main() {
                     // Style IDを自動生成
                     const styleId = `p${p.dexNumber}_${p.name}-${index + 1}`;
 
-                    // locationsを列から取得
-                    const locations = sortedFields.filter(fieldName => {
+                    // この寝顔の出現フィールドを列から取得
+                    const styleFields = sortedFields.filter(fieldName => {
                         const val = s[fieldName];
                         return val && val.trim() !== '' && val.trim().toUpperCase() !== 'FALSE';
                     });
 
-                    return {
+                    // ポケモンの出現フィールドのうち、この寝顔では出現しないものを抽出
+                    const excludeFromFields = fieldsArray.filter(f => !styleFields.includes(f));
+
+                    // 基本プロパティ
+                    const result = {
                         id: styleId,
                         name: s.styleName,
-                        rarity: parseInt(s.rarity),
-                        locations: locations
+                        rarity: parseInt(s.rarity)
                     };
+
+                    // 除外フィールドがある場合のみプロパティを追加（データ量削減）
+                    if (excludeFromFields.length > 0) {
+                        result.excludeFromFields = excludeFromFields;
+                    }
+
+                    return result;
                 });
 
             // バリデーション: stylesが見つからない場合は警告
@@ -189,7 +199,7 @@ function generateTypeScriptCode(fields, pokemon) {
     id: string;
     name: string;
     rarity: number; // 1-4 stars
-    locations: string[]; // 出現フィールド
+    excludeFromFields?: string[]; // ポケモンfieldsから除外するフィールド（省略時は全fields出現）
 };
 
 export type Pokemon = {

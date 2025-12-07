@@ -67,7 +67,9 @@ export const useFilters = (user: User | null, collectedStyles: Set<string>) => {
 
       // フィールドで絞り込み
       if (selectedField !== 'all') {
-        candidateStyles = candidateStyles.filter(s => s.locations.includes(selectedField));
+        candidateStyles = candidateStyles.filter(s =>
+          !s.excludeFromFields || !s.excludeFromFields.includes(selectedField)
+        );
       }
 
       // レアリティで絞り込み

@@ -7,10 +7,11 @@ const mockPokemon: Pokemon = {
   dexNumber: 1,
   name: 'テストポケモン',
   sleepType: 'うとうと',
+  type: 'くさ',
   fields: ['ワカクサ'],
   styles: [
-    { id: 'style1', name: 'スタイル1', rarity: 1, locations: ['ワカクサ'] },
-    { id: 'style2', name: 'スタイル2', rarity: 2, locations: ['ワカクサ'] }
+    { id: 'style1', name: 'スタイル1', rarity: 1 },
+    { id: 'style2', name: 'スタイル2', rarity: 2 }
   ]
 };
 
@@ -76,11 +77,16 @@ describe('PokemonCard', () => {
   });
 
   test('filters styles by selectedField', () => {
-    const multiFieldPokemon = {
-      ...mockPokemon,
+    const multiFieldPokemon: Pokemon = {
+      id: 'test-001',
+      dexNumber: 1,
+      name: 'テストポケモン',
+      sleepType: 'うとうと',
+      type: 'くさ',
+      fields: ['ワカクサ', 'シアン'],
       styles: [
-        { id: 'style1', name: 'スタイル1', rarity: 1, locations: ['ワカクサ'] },
-        { id: 'style2', name: 'スタイル2', rarity: 2, locations: ['シアン'] }
+        { id: 'style1', name: 'スタイル1', rarity: 1 }, // excludeFromFieldsなし = 全フィールド出現
+        { id: 'style2', name: 'スタイル2', rarity: 2, excludeFromFields: ['ワカクサ'] } // ワカクサでは出現しない
       ]
     };
 

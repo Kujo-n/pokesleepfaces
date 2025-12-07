@@ -90,7 +90,9 @@ export const useCollection = (user: User | null) => {
   const toggleAllPokemonStyles = useCallback(async (pokemon: Pokemon, select: boolean, selectedField: string) => {
     const targetStyles = selectedField === 'all'
       ? pokemon.styles
-      : pokemon.styles.filter(s => s.locations.includes(selectedField));
+      : pokemon.styles.filter(s =>
+        !s.excludeFromFields || !s.excludeFromFields.includes(selectedField)
+      );
 
     const targetStyleIds = targetStyles.map(s => s.id);
 
@@ -121,7 +123,9 @@ export const useCollection = (user: User | null) => {
     const updates = filteredPokemon.map(p => {
       const targetStyles = selectedField === 'all'
         ? p.styles
-        : p.styles.filter(s => s.locations.includes(selectedField));
+        : p.styles.filter(s =>
+          !s.excludeFromFields || !s.excludeFromFields.includes(selectedField)
+        );
       return {
         pokemonId: p.id,
         styleIds: targetStyles.map(s => s.id)
