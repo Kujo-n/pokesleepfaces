@@ -82,7 +82,19 @@ graph LR
    ```bash
    npm run update:data
    ```
-3. **変更を確認し、コミットする**
+3. **データの整合性を確認する（推奨）**
+   Google Sheetsのデータ更新が正しく反映されたか確認するため、以下のコマンドを実行します。
+   
+   ```bash
+   node scripts/verify-all-fields.js
+   ```
+
+   **確認ポイント**:
+   - 各フィールドの寝顔数が期待通りか確認します。
+   - `ワカクサ本島EX` などの特殊フィールドでの数が正しいか特に注意します。
+   - 出力結果はマークダウンテーブル形式なので、GitHubのIssueなどにそのまま貼り付け可能です。
+
+4. **変更を確認し、コミットする**
    ```bash
    git add data/mockData.ts
    git commit -m "chore: update pokemon data"
