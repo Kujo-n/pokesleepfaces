@@ -2197,41 +2197,28 @@ export const MOCK_POKEMON: Pokemon[] = [
         "sleepType": "すやすや",
         "fields": [
             "シアンの砂浜",
-            "ゴールド旧発電所",
-            "ワカクサ本島EX"
+            "ゴールド旧発電所"
         ],
         "styles": [
             {
                 "id": "p122_バリヤード-1",
                 "name": "マイムのかべ寝",
-                "rarity": 1,
-                "excludeFromFields": [
-                    "ワカクサ本島EX"
-                ]
+                "rarity": 1
             },
             {
                 "id": "p122_バリヤード-2",
                 "name": "こいしコツン寝",
-                "rarity": 2,
-                "excludeFromFields": [
-                    "ワカクサ本島EX"
-                ]
+                "rarity": 2
             },
             {
                 "id": "p122_バリヤード-3",
                 "name": "マイムのベッド寝",
-                "rarity": 3,
-                "excludeFromFields": [
-                    "ワカクサ本島EX"
-                ]
+                "rarity": 3
             },
             {
                 "id": "p122_バリヤード-4",
                 "name": "おなかのうえ寝",
-                "rarity": 4,
-                "excludeFromFields": [
-                    "ワカクサ本島EX"
-                ]
+                "rarity": 4
             }
         ]
     },
@@ -2283,7 +2270,8 @@ export const MOCK_POKEMON: Pokemon[] = [
             "ウノハナ雪原",
             "ラピスラズリ湖畔",
             "ゴールド旧発電所",
-            "アンバー渓谷"
+            "アンバー渓谷",
+            "ワカクサ本島EX"
         ],
         "styles": [
             {
@@ -2372,7 +2360,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "トープ洞窟",
                     "ウノハナ雪原",
                     "ゴールド旧発電所",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             },
             {
@@ -2398,7 +2387,8 @@ export const MOCK_POKEMON: Pokemon[] = [
                     "トープ洞窟",
                     "ラピスラズリ湖畔",
                     "ゴールド旧発電所",
-                    "アンバー渓谷"
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
                 ]
             }
         ]
@@ -5663,41 +5653,28 @@ export const MOCK_POKEMON: Pokemon[] = [
         "type": "でんき",
         "sleepType": "すやすや",
         "fields": [
-            "ゴールド旧発電所",
-            "ワカクサ本島EX"
+            "ゴールド旧発電所"
         ],
         "styles": [
             {
                 "id": "p405_レントラー-1",
                 "name": "まるまり寝",
-                "rarity": 1,
-                "excludeFromFields": [
-                    "ワカクサ本島EX"
-                ]
+                "rarity": 1
             },
             {
                 "id": "p405_レントラー-2",
                 "name": "ふんばり寝",
-                "rarity": 2,
-                "excludeFromFields": [
-                    "ワカクサ本島EX"
-                ]
+                "rarity": 2
             },
             {
                 "id": "p405_レントラー-3",
                 "name": "スパーク寝",
-                "rarity": 3,
-                "excludeFromFields": [
-                    "ワカクサ本島EX"
-                ]
+                "rarity": 3
             },
             {
                 "id": "p405_レントラー-4",
                 "name": "おなかのうえ寝",
-                "rarity": 4,
-                "excludeFromFields": [
-                    "ワカクサ本島EX"
-                ]
+                "rarity": 4
             }
         ]
     },

@@ -58,21 +58,27 @@ export const useFilters = (user: User | null, collectedStyles: Set<string>) => {
   // フィルタリング処理
   const filteredPokemon = useMemo(() => {
     return MOCK_POKEMON.filter(p => {
-      // 1. 睡眠タイプによるフィルタ（ポケモンレベル）
-      const matchesSleepType = selectedSleepType === 'all' || p.sleepType === selectedSleepType;
-      if (!matchesSleepType) return false;
+      // 1. フィールドによるフィルタ（ポケモンレベル）- 除外率が高いため最初に実行
+      if (selectedField !== 'all') {
+        if (!p.fields.includes(selectedField)) return false;
+      }
 
-      // 2. スタイルによるフィルタ（フィールドとレアリティ）
+      // 2. 睡眠タイプによるフィルタ（ポケモンレベル）
+      if (selectedSleepType !== 'all' && p.sleepType !== selectedSleepType) {
+        return false;
+      }
+
+      // 3. スタイルによるフィルタ（フィールドとレアリティ）
       let candidateStyles = p.styles;
 
-      // フィールドで絞り込み
+      // フィールドで絞り込み（スタイルレベル）
       if (selectedField !== 'all') {
         candidateStyles = candidateStyles.filter(s =>
           !s.excludeFromFields || !s.excludeFromFields.includes(selectedField)
         );
       }
 
-      // レアリティで絞り込み
+      // 4. レアリティで絞り込み
       if (selectedRarity !== 'all') {
         const rarityNum = parseInt(selectedRarity);
         candidateStyles = candidateStyles.filter(s => s.rarity === rarityNum);
@@ -81,7 +87,7 @@ export const useFilters = (user: User | null, collectedStyles: Set<string>) => {
       // 条件に合うスタイルが一つもなければ非表示
       if (candidateStyles.length === 0) return false;
 
-      // 3. 未収集のみフィルタ
+      // 5. 未収集のみフィルタ
       if (showUncollectedOnly) {
         // 残った候補スタイルの中に、未収集のものが含まれているかチェック
         const hasUncollected = candidateStyles.some(s => !filterBaseCollectedStyles.has(s.id));
