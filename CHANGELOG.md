@@ -6,6 +6,28 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+
+## [1.4.0] - 2025-12-07
+
+### Deployment
+- **クロスプラットフォームデプロイ対応**:
+  - `package.json` のデプロイスクリプト (`deploy:staging`, `deploy:prod`) を Node.js ベースに移行
+  - OSに依存しない安全なファイル操作（`copySync`, `unlinkSync`）を実装
+
+### Documentation
+- **ステージング環境ガイドの更新**:
+  - `docs/8_staging-environment.md` にFirestoreセキュリティルールの適用手順を追加
+  - トラブルシューティング（権限エラー、404エラー）を拡充
+
+### Optimization & Testing
+- **データ構造と処理の最適化**:
+  - データサイズを約40%削減 (351KB → 211KB)
+  - フィルタ処理の順序最適化により、処理速度を30〜85%高速化
+- **品質保証の強化**:
+  - データ整合性を検証するチェックスクリプトを追加
+  - ダブルトグル連続操作などのエッジケースに対する回帰テストを追加
+  - テスト仕様書 (`docs/5_test-specification.md`) の作成とドキュメント整理
+
 ## [1.3.4] - 2025-12-07
 
 ### Mixed

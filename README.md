@@ -69,7 +69,7 @@ npm run build
 firebase deploy --only hosting
 ```
 
-詳細な手順は [docs/5_deployment.md](docs/5_deployment.md) を参照してください。
+詳細な手順は [docs/6_deployment.md](docs/6_deployment.md) を参照してください。
 
 ## ドキュメント
 
@@ -79,9 +79,11 @@ firebase deploy --only hosting
 2. [環境構築手順書](docs/2_setup_guide.md) - 開発環境のセットアップ
 3. [アーキテクチャ図](docs/3_architecture.md) - システム構成の詳細
 4. [パフォーマンス最適化](docs/4_performance.md) - 実装された最適化の説明
-5. [デプロイ手順書](docs/5_deployment.md) - Firebase Hosting へのデプロイ
-6. [データ更新ガイド](docs/6_date-update_guide.md) - Google Sheetsでのデータ管理
-7. [GCP コスト試算](docs/gcp-costs.md) - 運用コストの見積もり
+5. [テスト仕様書](docs/5_test-specification.md) - 品質保証とテスト
+6. [デプロイ手順書](docs/6_deployment.md) - Firebase Hosting へのデプロイ
+7. [データ更新ガイド](docs/6_date-update_guide.md) - Google Sheetsでのデータ管理
+8. [ステージング環境構築ガイド](docs/8_staging-environment.md) - テスト環境の構築と検証
+9. [GCP コスト試算](docs/gcp-costs.md) - 運用コストの見積もり
 
 ## ライセンス
 
