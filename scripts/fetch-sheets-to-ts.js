@@ -83,6 +83,67 @@ function parseSheetData(data) {
 
 
 /**
+ * データバリデーション関数
+ * @param {Array<Object>} pokemon - Pokemonデータ
+ * @param {Array<Object>} styles - Styleデータ
+ * @param {Array<Object>} fields - Fieldデータ
+ * @throws {Error} バリデーションエラーがある場合
+ */
+function validateData(pokemon, styles, fields) {
+    const errors = [];
+
+    // Fieldsシートのバリデーション
+    fields.forEach((field, index) => {
+        const rowNum = index + 2; // ヘッダー行を考慮
+        if (!field.name || field.name.trim() === '') {
+            errors.push(`❌ Fieldsシート ${rowNum}行目: 'name'が空です`);
+        }
+        if (!field.order || field.order.trim() === '') {
+            errors.push(`❌ Fieldsシート ${rowNum}行目: 'order'が空です`);
+        }
+    });
+
+    // Pokemonシートのバリデーション
+    pokemon.forEach((p, index) => {
+        const rowNum = index + 2; // ヘッダー行を考慮
+
+        if (!p.dexNumber || p.dexNumber.trim() === '') {
+            errors.push(`❌ Pokemonシート ${rowNum}行目: 'dexNumber'が空です`);
+        }
+        if (!p.name || p.name.trim() === '') {
+            errors.push(`❌ Pokemonシート ${rowNum}行目: 'name'が空です`);
+        }
+        if (!p.type || p.type.trim() === '') {
+            errors.push(`❌ Pokemonシート ${rowNum}行目 (${p.name || '名前なし'}): 'type'が空です`);
+        }
+        if (!p.sleepType || p.sleepType.trim() === '') {
+            errors.push(`❌ Pokemonシート ${rowNum}行目 (${p.name || '名前なし'}): 'sleepType'が空です`);
+        }
+    });
+
+    // Stylesシートのバリデーション
+    styles.forEach((s, index) => {
+        const rowNum = index + 2; // ヘッダー行を考慮
+
+        if (!s.pokemonName || s.pokemonName.trim() === '') {
+            errors.push(`❌ Stylesシート ${rowNum}行目: 'pokemonName'が空です`);
+        }
+        if (!s.styleName || s.styleName.trim() === '') {
+            errors.push(`❌ Stylesシート ${rowNum}行目 (${s.pokemonName || '名前なし'}): 'styleName'が空です`);
+        }
+        if (!s.rarity || s.rarity.trim() === '') {
+            errors.push(`❌ Stylesシート ${rowNum}行目 (${s.pokemonName || '名前なし'} - ${s.styleName || '寝顔名なし'}): 'rarity'が空です`);
+        }
+    });
+
+    // エラーがあれば例外をスロー
+    if (errors.length > 0) {
+        const errorMessage = `\n📋 データバリデーションエラーが見つかりました:\n\n${errors.join('\n')}\n\n💡 Google Sheetsで上記の空セルを修正してから再実行してください。`;
+        throw new Error(errorMessage);
+    }
+}
+
+/**
  * メイン処理
  */
 async function main() {
@@ -103,14 +164,19 @@ async function main() {
         const styles = parseSheetData(stylesData);
         const fields = parseSheetData(fieldsData);
 
-        // 3. Fieldsをorder順にソートして配列に変換
+        // 3. データバリデーション
+        console.log('🔍 Validating data...');
+        validateData(pokemon, styles, fields);
+        console.log('✅ Validation passed\n');
+
+        // 4. Fieldsをorder順にソートして配列に変換
         const sortedFields = fields
             .sort((a, b) => parseInt(a.order) - parseInt(b.order))
             .map(f => f.name);
 
         console.log(`✅ Loaded ${pokemon.length} Pokemon, ${styles.length} Styles, ${sortedFields.length} Fields\n`);
 
-        // 4. Pokemonデータを処理
+        // 5. Pokemonデータを処理
         console.log('🔨 Processing Pokemon data...');
         const processedPokemon = pokemon.map(p => {
             // IDを自動生成
@@ -171,11 +237,11 @@ async function main() {
             };
         });
 
-        // 5. TypeScriptコードを生成
+        // 6. TypeScriptコードを生成
         console.log('📝 Generating TypeScript code...');
         const tsCode = generateTypeScriptCode(sortedFields, processedPokemon);
 
-        // 6. ファイルに書き込み
+        // 7. ファイルに書き込み
         const outputPath = path.join(__dirname, '../data/mockData.ts');
         fs.writeFileSync(outputPath, tsCode, 'utf-8');
 
