@@ -19,9 +19,16 @@ const filterStyles = (
   showUncollectedOnly: boolean,
   filterBaseCollectedStyles: Set<string>
 ) => {
+  // ポケモン自体がそのフィールドに出現しない場合は空配列を返す
+  if (selectedField !== 'all' && !pokemon.fields.includes(selectedField)) {
+    return [];
+  }
+
   let styles = selectedField === 'all'
     ? pokemon.styles
-    : pokemon.styles.filter(s => s.locations.includes(selectedField));
+    : pokemon.styles.filter(s =>
+      !s.excludeFromFields || !s.excludeFromFields.includes(selectedField)
+    );
 
   if (selectedRarity !== 'all') {
     const rarityNum = parseInt(selectedRarity);

@@ -17,7 +17,9 @@ type Props = {
 function PokemonCard({ pokemon, collectedStyles, onToggleStyle, onToggleAll, selectedField = 'all', selectedRarity = 'all', showUncollectedOnly = false, filterBaseCollectedStyles = new Set() }: Props) {
     let availableStyles = selectedField === 'all'
         ? pokemon.styles
-        : pokemon.styles.filter(s => s.locations.includes(selectedField));
+        : pokemon.styles.filter(s =>
+            !s.excludeFromFields || !s.excludeFromFields.includes(selectedField)
+        );
 
     if (selectedRarity !== 'all') {
         const rarityNum = parseInt(selectedRarity);

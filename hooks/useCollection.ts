@@ -89,13 +89,15 @@ export const useCollection = (user: User | null) => {
       }
     }
     // localStorage save is handled by useEffect
-  }, [user, collectedStyles]);
+  }, [user, collectedStyles, showToast]);
 
   // ポケモン単位での一括トグル
   const toggleAllPokemonStyles = useCallback(async (pokemon: Pokemon, select: boolean, selectedField: string) => {
     const targetStyles = selectedField === 'all'
       ? pokemon.styles
-      : pokemon.styles.filter(s => s.locations.includes(selectedField));
+      : pokemon.styles.filter(s =>
+        !s.excludeFromFields || !s.excludeFromFields.includes(selectedField)
+      );
 
     const targetStyleIds = targetStyles
       .map(s => s.id)
@@ -124,14 +126,16 @@ export const useCollection = (user: User | null) => {
       }
     }
     // localStorage save is handled by useEffect
-  }, [user]); // Removed collectedStyles dependency as we use functional update for local state
+  }, [user, showToast]); // Removed collectedStyles dependency as we use functional update for local state
 
   // グローバル一括トグル
   const toggleGlobal = useCallback(async (filteredPokemon: Pokemon[], select: boolean, selectedField: string) => {
     const updates = filteredPokemon.map(p => {
       const targetStyles = selectedField === 'all'
         ? p.styles
-        : p.styles.filter(s => s.locations.includes(selectedField));
+        : p.styles.filter(s =>
+          !s.excludeFromFields || !s.excludeFromFields.includes(selectedField)
+        );
       return {
         pokemonId: p.id,
         styleIds: targetStyles.map(s => s.id).filter(id => id.startsWith(p.id))
@@ -163,7 +167,7 @@ export const useCollection = (user: User | null) => {
       }
     }
     // localStorage save is handled by useEffect
-  }, [user]); // Removed collectedStyles dependency as we use functional update for local state
+  }, [user, showToast]); // Removed collectedStyles dependency as we use functional update for local state
 
   return {
     collectedStyles,
