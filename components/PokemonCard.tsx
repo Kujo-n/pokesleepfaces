@@ -69,13 +69,19 @@ function PokemonCard({ pokemon, collectedStyles, onToggleStyle, onToggleAll, sel
                     </span>
                     <div className="flex gap-2">
                         <button
-                            onClick={() => onToggleAll(pokemon, true)}
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                onToggleAll(pokemon, true);
+                            }}
                             className="text-xs px-2 py-1 bg-blue-50 text-blue-600 rounded hover:bg-blue-100 transition-colors"
                         >
                             全選択
                         </button>
                         <button
-                            onClick={() => onToggleAll(pokemon, false)}
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                onToggleAll(pokemon, false);
+                            }}
                             className="text-xs px-2 py-1 bg-gray-50 text-gray-600 rounded hover:bg-gray-100 transition-colors"
                         >
                             全解除

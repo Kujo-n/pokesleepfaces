@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { User } from 'firebase/auth';
 import { Pokemon, MOCK_POKEMON } from '@/data/mockData';
-import { toggleSleepStyle, toggleAllStyles, subscribeToUserCollection, checkIfNewUser } from '@/lib/db';
+import { toggleSleepStyle, toggleAllStyles, toggleMultiplePokemonStyles, subscribeToUserCollection, checkIfNewUser } from '@/lib/db';
 import { saveToLocalStorage, loadFromLocalStorage, migrateToFirestore } from '@/lib/localStorage';
 
 /**
@@ -60,25 +60,28 @@ export const useCollection = (user: User | null) => {
 
   // 単一スタイルのトグル
   const toggleStyle = useCallback(async (styleId: string) => {
-    const isCollected = collectedStyles.has(styleId);
-
-    // Optimistic UI update
-    const newSet = new Set(collectedStyles);
-    if (isCollected) {
-      newSet.delete(styleId);
-    } else {
-      newSet.add(styleId);
+    // Optimistic UI update only for guest users or if needed for transition
+    // For logged-in users, rely on snapshot listener to avoid race conditions
+    if (!user) {
+      setCollectedStyles(prev => {
+        const newSet = new Set(prev);
+        if (newSet.has(styleId)) {
+          newSet.delete(styleId);
+        } else {
+          newSet.add(styleId);
+        }
+        return newSet;
+      });
     }
-    setCollectedStyles(newSet);
 
     if (user) {
+      const isCollected = collectedStyles.has(styleId);
       const pokemon = MOCK_POKEMON.find(p => p.styles.some(s => s.id === styleId));
       if (pokemon) {
         try {
           await toggleSleepStyle(user.uid, pokemon.id, styleId, !isCollected);
         } catch (e) {
           console.error("Failed to toggle style", e);
-          setCollectedStyles(collectedStyles); // Rollback
           alert("保存に失敗しました");
         }
       }
@@ -92,29 +95,34 @@ export const useCollection = (user: User | null) => {
       ? pokemon.styles
       : pokemon.styles.filter(s => s.locations.includes(selectedField));
 
-    const targetStyleIds = targetStyles.map(s => s.id);
+    const targetStyleIds = targetStyles
+      .map(s => s.id)
+      .filter(id => id.startsWith(pokemon.id)); // 安全策: IDが整合しているもののみ対象にする
 
-    const newSet = new Set(collectedStyles);
-    targetStyleIds.forEach((id) => {
-      if (select) {
-        newSet.add(id);
-      } else {
-        newSet.delete(id);
-      }
-    });
-    setCollectedStyles(newSet);
+    if (!user) {
+      setCollectedStyles(prev => {
+        const newSet = new Set(prev);
+        targetStyleIds.forEach((id) => {
+          if (select) {
+            newSet.add(id);
+          } else {
+            newSet.delete(id);
+          }
+        });
+        return newSet;
+      });
+    }
 
     if (user) {
       try {
         await toggleAllStyles(user.uid, pokemon.id, targetStyleIds, select);
       } catch (e) {
         console.error("Failed to toggle all styles", e);
-        setCollectedStyles(collectedStyles);
         alert("保存に失敗しました");
       }
     }
     // localStorage save is handled by useEffect
-  }, [user, collectedStyles]);
+  }, [user]); // Removed collectedStyles dependency as we use functional update for local state
 
   // グローバル一括トグル
   const toggleGlobal = useCallback(async (filteredPokemon: Pokemon[], select: boolean, selectedField: string) => {
@@ -124,34 +132,36 @@ export const useCollection = (user: User | null) => {
         : p.styles.filter(s => s.locations.includes(selectedField));
       return {
         pokemonId: p.id,
-        styleIds: targetStyles.map(s => s.id)
+        styleIds: targetStyles.map(s => s.id).filter(id => id.startsWith(p.id))
       };
     }).filter(u => u.styleIds.length > 0);
 
-    const newSet = new Set(collectedStyles);
-    updates.forEach(u => {
-      u.styleIds.forEach(id => {
-        if (select) {
-          newSet.add(id);
-        } else {
-          newSet.delete(id);
-        }
+    if (!user) {
+      setCollectedStyles(prev => {
+        const newSet = new Set(prev);
+        updates.forEach(u => {
+          u.styleIds.forEach(id => {
+            if (select) {
+              newSet.add(id);
+            } else {
+              newSet.delete(id);
+            }
+          });
+        });
+        return newSet;
       });
-    });
-    setCollectedStyles(newSet);
+    }
 
     if (user) {
-      const promises = updates.map(u => toggleAllStyles(user.uid, u.pokemonId, u.styleIds, select));
       try {
-        await Promise.all(promises);
+        await toggleMultiplePokemonStyles(user.uid, updates, select);
       } catch (e) {
         console.error("Failed to toggle global", e);
-        setCollectedStyles(collectedStyles);
         alert("一部の保存に失敗しました");
       }
     }
     // localStorage save is handled by useEffect
-  }, [user, collectedStyles]);
+  }, [user]); // Removed collectedStyles dependency as we use functional update for local state
 
   return {
     collectedStyles,

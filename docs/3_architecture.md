@@ -108,7 +108,7 @@ graph TB
      Page->>Page: collectedStyles更新
  ```
  
- ## データフロー（寝顔選択時）
+ ## データフロー（寝顔選択時 - ログインユーザー）
  
  ```mermaid
  sequenceDiagram
@@ -127,6 +127,27 @@ graph TB
     Page->>Page: collectedStyles更新
     Page-->>Card: 新しいcollectedStyles
     Card-->>U: UI更新（チェック状態変更）
+```
+
+## データフロー（寝顔選択時 - ゲストユーザー）
+
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant Card as PokemonCard
+    participant Hook as useCollection
+    participant LS as LocalStorage
+
+    U->>Card: 寝顔スタイルをクリック
+    Card->>Hook: toggleStyle(styleId)
+    Hook->>Hook: setCollectedStyles (関数型更新)
+    Note right of Hook: 即座にメモリ内ステートを更新
+    Hook-->>Card: 新しいcollectedStyles
+    Card-->>U: UI更新
+
+    Hook->>Hook: useEffect (ステート変更検知)
+    Hook->>LS: saveToLocalStorage()
+    LS-->>Hook: 保存完了
 ```
 
 ## Firestoreデータ構造
