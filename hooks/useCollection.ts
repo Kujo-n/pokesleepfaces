@@ -5,6 +5,7 @@ import { User } from 'firebase/auth';
 import { Pokemon, MOCK_POKEMON } from '@/data/mockData';
 import { toggleSleepStyle, toggleAllStyles, toggleMultiplePokemonStyles, subscribeToUserCollection, checkIfNewUser } from '@/lib/db';
 import { saveToLocalStorage, loadFromLocalStorage, migrateToFirestore } from '@/lib/localStorage';
+import { useToast } from '@/components/providers/ToastProvider';
 
 /**
  * コレクション状態とCRUD操作を管理するカスタムフック
@@ -12,6 +13,7 @@ import { saveToLocalStorage, loadFromLocalStorage, migrateToFirestore } from '@/
 export const useCollection = (user: User | null) => {
   const [collectedStyles, setCollectedStyles] = useState<Set<string>>(new Set());
   const [isInitialized, setIsInitialized] = useState(false);
+  const { showToast } = useToast();
 
   // 初期化: localStorageから読み込み
   useEffect(() => {
@@ -82,7 +84,7 @@ export const useCollection = (user: User | null) => {
           await toggleSleepStyle(user.uid, pokemon.id, styleId, !isCollected);
         } catch (e) {
           console.error("Failed to toggle style", e);
-          alert("保存に失敗しました");
+          showToast("保存に失敗しました", "error");
         }
       }
     }
@@ -118,7 +120,7 @@ export const useCollection = (user: User | null) => {
         await toggleAllStyles(user.uid, pokemon.id, targetStyleIds, select);
       } catch (e) {
         console.error("Failed to toggle all styles", e);
-        alert("保存に失敗しました");
+        showToast("保存に失敗しました", "error");
       }
     }
     // localStorage save is handled by useEffect
@@ -157,7 +159,7 @@ export const useCollection = (user: User | null) => {
         await toggleMultiplePokemonStyles(user.uid, updates, select);
       } catch (e) {
         console.error("Failed to toggle global", e);
-        alert("一部の保存に失敗しました");
+        showToast("一部の保存に失敗しました", "error");
       }
     }
     // localStorage save is handled by useEffect

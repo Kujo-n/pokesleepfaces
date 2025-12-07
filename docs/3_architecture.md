@@ -372,5 +372,6 @@ graph TB
  - **場所**: `hooks/useCollection.ts`
  - **動作**:
    - Optimistic UI更新後のAPI呼び出し失敗をcatch
-   - エラー時は状態をロールバック
-   - ユーザーにアラートを表示
+   - **Toast通知**: `window.alert` の代わりに `ToastProvider` を使用し、非ブロッキングな通知を表示
+   - **リトライ**: ネットワークエラー等はFirestore SDKが自動リトライするため、即座にエラーとはしない
+   - 重大なエラー（権限等）のみ通知を行う
