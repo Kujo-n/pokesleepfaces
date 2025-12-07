@@ -57,25 +57,25 @@ enableIndexedDbPersistence(db).catch((err) => {
 2. `toggleAllPokemonStyles` - ポケモン単位の一括選択
 3. `toggleGlobal` - グローバル一括選択
 
-**コード例**:
+**コード例（ゲストユーザー・ログインユーザー併用）**:
+*※ログインユーザーはFirestore SDKのLatency Compensation（遅延補償）機能により、SDK内部で楽観的更新が行われ、`onSnapshot`経由で即座にUIに反映されます。これにより手動更新と競合状態（Race Condition）を防いでいます。*
+
 ```typescript
 const toggleStyle = async (styleId: string) => {
-  // 1. 即座にUIを更新（楽観的更新）
-  const newSet = new Set(collectedStyles);
-  if (isCollected) {
-    newSet.delete(styleId);
-  } else {
-    newSet.add(styleId);
+  // 1. ゲストユーザー: 即座にローカルステートを更新（手動楽観的更新）
+  if (!user) {
+    setCollectedStyles(prev => {
+        const newSet = new Set(prev);
+        // ...更新ロジック
+        return newSet;
+    });
   }
-  setCollectedStyles(newSet);
 
-  // 2. バックグラウンドで保存
+  // 2. ログインユーザー: バックグラウンドで保存（SDKが楽観的更新を担当）
   if (user) {
     try {
       await toggleSleepStyle(user.uid, pokemon.id, styleId, !isCollected);
     } catch (e) {
-      // 3. エラー時はロールバック
-      setCollectedStyles(collectedStyles);
       alert("保存に失敗しました");
     }
   }

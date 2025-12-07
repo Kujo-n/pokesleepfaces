@@ -6,6 +6,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [1.3.4] - 2025-12-07
+
+### Mixed
+- **全選択ボタンの不具合修正**:
+  - ダブルクリック現象（選択直後に解除される等）を修正
+  - 連続操作時の状態不競合（Stale Closure）を解消し、動作を安定化
+- **エラーハンドリングのUX改善**:
+  - **Toast通知の導入**: `window.alert` によるブロッキングなエラー通知を廃止
+  - 非侵入的なToast通知により、エラー時も操作を妨げない設計に変更
+  - `app/layout.tsx` に `ToastProvider` を配置しアプリ全体で利用可能に
+
+## [1.3.3] - 2025-12-06
+
+### Security
+- **CVE-2025-55182 への対応**:
+  - React および ReactDOM のバージョンを `19.2.1` に更新
+
 ## [1.3.2] - 2025-12-06
 
 ### Added

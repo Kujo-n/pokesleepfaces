@@ -1,5 +1,5 @@
 import { db } from '@/firebase/config';
-import { doc, setDoc, arrayUnion, arrayRemove, onSnapshot, collection, getDocs, Firestore } from 'firebase/firestore';
+import { doc, setDoc, arrayUnion, arrayRemove, onSnapshot, collection, getDocs, Firestore, writeBatch } from 'firebase/firestore';
 // User Collection Structure:
 // users/{userId}/collections/{pokemonId}
 // Document contains: { collectedStyles: [styleId1, styleId2, ...] }
@@ -154,5 +154,47 @@ export const loadFilterPreferences = async (userId: string): Promise<FilterPrefe
     } catch (error) {
         console.error("Error loading filter preferences:", error);
         return null;
+    }
+};
+
+export const toggleMultiplePokemonStyles = async (
+    userId: string,
+    updates: { pokemonId: string; styleIds: string[] }[],
+    isSelected: boolean
+) => {
+    if (!db) throw new Error("Firebase not initialized");
+    if (!userId) throw new Error("Invalid userId");
+    if (updates.length === 0) return;
+
+    // Firestore batch limit is 500.
+    // If updates > 500, we need multiple batches.
+    const BATCH_SIZE = 500;
+    const chunks = [];
+    for (let i = 0; i < updates.length; i += BATCH_SIZE) {
+        chunks.push(updates.slice(i, i + BATCH_SIZE));
+    }
+
+    try {
+        for (const chunk of chunks) {
+            const batch = writeBatch(db as Firestore);
+
+            chunk.forEach(({ pokemonId, styleIds }) => {
+                const docRef = doc(db as Firestore, `users/${userId}/collections/${pokemonId}`);
+                if (isSelected) {
+                    batch.set(docRef, {
+                        collectedStyles: arrayUnion(...styleIds)
+                    }, { merge: true });
+                } else {
+                    batch.set(docRef, {
+                        collectedStyles: arrayRemove(...styleIds)
+                    }, { merge: true });
+                }
+            });
+
+            await batch.commit();
+        }
+    } catch (error) {
+        console.error("Error batch toggling styles:", error);
+        throw error;
     }
 };
