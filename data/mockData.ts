@@ -3264,8 +3264,7 @@ export const MOCK_POKEMON: Pokemon[] = [
         "sleepType": "すやすや",
         "fields": [
             "シアンの砂浜",
-            "ゴールド旧発電所",
-            "ワカクサ本島EX"
+            "ゴールド旧発電所"
         ],
         "styles": [
             {
@@ -3378,7 +3377,8 @@ export const MOCK_POKEMON: Pokemon[] = [
             "ウノハナ雪原",
             "ラピスラズリ湖畔",
             "ゴールド旧発電所",
-            "アンバー渓谷"
+            "アンバー渓谷",
+            "ワカクサ本島EX"
         ],
         "styles": [
             {
@@ -8418,8 +8418,7 @@ export const MOCK_POKEMON: Pokemon[] = [
         "type": "でんき",
         "sleepType": "すやすや",
         "fields": [
-            "ゴールド旧発電所",
-            "ワカクサ本島EX"
+            "ゴールド旧発電所"
         ],
         "styles": [
             {
