@@ -32,5 +32,20 @@ service cloud.firestore {
     match /users/{userId}/preferences/{document=**} {
       allow read, write: if isOwner(userId);
     }
+
+    // Staging Environment - User Collections
+    match /users_staging/{userId}/collections/{pokemonId} {
+      allow read, write: if isOwner(userId);
+    }
+    
+    // Staging Environment - User Progress/Metadata
+    match /users_staging/{userId} {
+      allow read, write: if isOwner(userId);
+    }
+
+    // Staging Environment - User Preferences
+    match /users_staging/{userId}/preferences/{document=**} {
+      allow read, write: if isOwner(userId);
+    }
   }
 }

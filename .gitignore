@@ -52,6 +52,11 @@ firebase-debug.log*
 firestore-debug.log*
 ui-debug.log*
 
+# Firebase Service Account Keys (NEVER commit!)
+*serviceAccountKey*.json
+serviceAccount*.json
+firebase/serviceAccountKey.json
+
 # IDE / Editor
 .vscode/
 .idea/
