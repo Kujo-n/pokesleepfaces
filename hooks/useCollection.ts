@@ -13,6 +13,7 @@ import { useToast } from '@/components/providers/ToastProvider';
 export const useCollection = (user: User | null) => {
   const [collectedStyles, setCollectedStyles] = useState<Set<string>>(new Set());
   const [isInitialized, setIsInitialized] = useState(false);
+  const [isSyncing, setIsSyncing] = useState(false); // Firestore同期中フラグ
   const { showToast } = useToast();
 
   // 初期化: localStorageから読み込み
@@ -33,14 +34,25 @@ export const useCollection = (user: User | null) => {
   useEffect(() => {
     if (!user || !isInitialized) return;
 
+    let isFirstSnapshot = true;
+    let isMounted = true;
+
     const handleUserLogin = async () => {
+      if (isMounted) setIsSyncing(true); // 同期開始
+
       const localData = loadFromLocalStorage();
       if (localData.size > 0) {
         await migrateToFirestore(user.uid, localData, toggleSleepStyle, MOCK_POKEMON, checkIfNewUser);
       }
 
       const unsubscribe = subscribeToUserCollection(user.uid, (newCollected) => {
-        setCollectedStyles(newCollected);
+        if (isMounted) {
+          setCollectedStyles(newCollected);
+          if (isFirstSnapshot) {
+            isFirstSnapshot = false;
+            setIsSyncing(false); // 初回同期完了
+          }
+        }
       });
 
       return unsubscribe;
@@ -49,6 +61,7 @@ export const useCollection = (user: User | null) => {
     const unsubscribePromise = handleUserLogin();
 
     return () => {
+      isMounted = false;
       unsubscribePromise.then(unsub => unsub && unsub());
     };
   }, [user, isInitialized]);
@@ -174,6 +187,7 @@ export const useCollection = (user: User | null) => {
     toggleStyle,
     toggleAllPokemonStyles,
     toggleGlobal,
-    isInitialized
+    isInitialized,
+    isSyncing
   };
 };

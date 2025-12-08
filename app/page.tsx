@@ -20,7 +20,7 @@ export default function Home() {
 
   // カスタムフック利用
   const { user } = useAuth();
-  const { collectedStyles, toggleStyle, toggleAllPokemonStyles, toggleGlobal } = useCollection(user);
+  const { collectedStyles, toggleStyle, toggleAllPokemonStyles, toggleGlobal, isSyncing } = useCollection(user);
   const {
     selectedField,
     setSelectedField,
@@ -128,6 +128,17 @@ export default function Home() {
       </header>
 
       <DataProtectionWarning />
+
+      {/* 同期中オーバーレイ */}
+      {isSyncing && (
+        <div className="fixed inset-0 bg-white/80 z-50 flex items-center justify-center">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-4 border-blue-500 border-t-transparent mx-auto mb-4"></div>
+            <p className="text-gray-700 font-medium">データを同期中...</p>
+            <p className="text-gray-500 text-sm mt-1">しばらくお待ちください</p>
+          </div>
+        </div>
+      )}
 
       {/* Content */}
       <div className="max-w-7xl mx-auto px-4 py-6">
