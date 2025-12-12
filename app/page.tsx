@@ -109,7 +109,7 @@ export default function Home() {
                 updateFilterPreferences={updateFilterPreferences}
                 isBulkActionOpen={isBulkActionOpen}
                 setIsBulkActionOpen={setIsBulkActionOpen}
-                toggleGlobal={(select) => toggleGlobal(filteredPokemon, select, selectedField)}
+                toggleGlobal={(select) => toggleGlobal(filteredPokemon, select, selectedField, selectedRarity)}
                 setIsMenuOpen={setIsMenuOpen}
                 setIsHelpOpen={setIsHelpOpen}
               />
@@ -149,7 +149,7 @@ export default function Home() {
               pokemon={pokemon}
               collectedStyles={collectedStyles}
               onToggleStyle={toggleStyle}
-              onToggleAll={(p, select) => toggleAllPokemonStyles(p, select, selectedField)}
+              onToggleAll={(p, select) => toggleAllPokemonStyles(p, select, selectedField, selectedRarity)}
               selectedField={selectedField}
               selectedRarity={selectedRarity}
               showUncollectedOnly={showUncollectedOnly}

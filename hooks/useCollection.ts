@@ -108,14 +108,20 @@ export const useCollection = (user: User | null) => {
   }, [collectedStyles, showToast]);
 
   // ポケモン単位での一括トグル
-  const toggleAllPokemonStyles = useCallback(async (pokemon: Pokemon, select: boolean, selectedField: string) => {
+  const toggleAllPokemonStyles = useCallback(async (pokemon: Pokemon, select: boolean, selectedField: string, selectedRarity: string) => {
     const currentUser = auth?.currentUser;
 
-    const targetStyles = selectedField === 'all'
+    let targetStyles = selectedField === 'all'
       ? pokemon.styles
       : pokemon.styles.filter(s =>
         !s.excludeFromFields || !s.excludeFromFields.includes(selectedField)
       );
+
+    // レアリティフィルタを適用
+    if (selectedRarity !== 'all') {
+      const rarityNum = parseInt(selectedRarity);
+      targetStyles = targetStyles.filter(s => s.rarity === rarityNum);
+    }
 
     const targetStyleIds = targetStyles
       .map(s => s.id)
@@ -147,15 +153,22 @@ export const useCollection = (user: User | null) => {
   }, [showToast]); // Removed collectedStyles dependency as we use functional update for local state
 
   // グローバル一括トグル
-  const toggleGlobal = useCallback(async (filteredPokemon: Pokemon[], select: boolean, selectedField: string) => {
+  const toggleGlobal = useCallback(async (filteredPokemon: Pokemon[], select: boolean, selectedField: string, selectedRarity: string) => {
     const currentUser = auth?.currentUser;
 
     const updates = filteredPokemon.map(p => {
-      const targetStyles = selectedField === 'all'
+      let targetStyles = selectedField === 'all'
         ? p.styles
         : p.styles.filter(s =>
           !s.excludeFromFields || !s.excludeFromFields.includes(selectedField)
         );
+
+      // レアリティフィルタを適用
+      if (selectedRarity !== 'all') {
+        const rarityNum = parseInt(selectedRarity);
+        targetStyles = targetStyles.filter(s => s.rarity === rarityNum);
+      }
+
       return {
         pokemonId: p.id,
         styleIds: targetStyles.map(s => s.id).filter(id => id.startsWith(p.id))
