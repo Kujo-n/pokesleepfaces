@@ -73,6 +73,7 @@ ehthumbs.db
 # Internal management
 internal_docs/
 Article_Note/
+ticket/
 
 # Review documents
 Review/V1.2.0/

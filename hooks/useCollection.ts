@@ -6,6 +6,7 @@ import { Pokemon, MOCK_POKEMON } from '@/data/mockData';
 import { toggleSleepStyle, toggleAllStyles, toggleMultiplePokemonStyles, subscribeToUserCollection, checkIfNewUser } from '@/lib/db';
 import { saveToLocalStorage, loadFromLocalStorage, migrateToFirestore } from '@/lib/localStorage';
 import { useToast } from '@/components/providers/ToastProvider';
+import { auth } from '@/firebase/config';
 
 /**
  * コレクション状態とCRUD操作を管理するカスタムフック
@@ -75,9 +76,11 @@ export const useCollection = (user: User | null) => {
 
   // 単一スタイルのトグル
   const toggleStyle = useCallback(async (styleId: string) => {
+    const currentUser = auth?.currentUser;
+
     // Optimistic UI update only for guest users or if needed for transition
     // For logged-in users, rely on snapshot listener to avoid race conditions
-    if (!user) {
+    if (!currentUser) {
       setCollectedStyles(prev => {
         const newSet = new Set(prev);
         if (newSet.has(styleId)) {
@@ -89,12 +92,12 @@ export const useCollection = (user: User | null) => {
       });
     }
 
-    if (user) {
+    if (currentUser) {
       const isCollected = collectedStyles.has(styleId);
       const pokemon = MOCK_POKEMON.find(p => p.styles.some(s => s.id === styleId));
       if (pokemon) {
         try {
-          await toggleSleepStyle(user.uid, pokemon.id, styleId, !isCollected);
+          await toggleSleepStyle(currentUser.uid, pokemon.id, styleId, !isCollected);
         } catch (e) {
           console.error("Failed to toggle style", e);
           showToast("保存に失敗しました", "error");
@@ -102,10 +105,12 @@ export const useCollection = (user: User | null) => {
       }
     }
     // localStorage save is handled by useEffect
-  }, [user, collectedStyles, showToast]);
+  }, [collectedStyles, showToast]);
 
   // ポケモン単位での一括トグル
   const toggleAllPokemonStyles = useCallback(async (pokemon: Pokemon, select: boolean, selectedField: string) => {
+    const currentUser = auth?.currentUser;
+
     const targetStyles = selectedField === 'all'
       ? pokemon.styles
       : pokemon.styles.filter(s =>
@@ -116,7 +121,7 @@ export const useCollection = (user: User | null) => {
       .map(s => s.id)
       .filter(id => id.startsWith(pokemon.id)); // 安全策: IDが整合しているもののみ対象にする
 
-    if (!user) {
+    if (!currentUser) {
       setCollectedStyles(prev => {
         const newSet = new Set(prev);
         targetStyleIds.forEach((id) => {
@@ -130,19 +135,21 @@ export const useCollection = (user: User | null) => {
       });
     }
 
-    if (user) {
+    if (currentUser) {
       try {
-        await toggleAllStyles(user.uid, pokemon.id, targetStyleIds, select);
+        await toggleAllStyles(currentUser.uid, pokemon.id, targetStyleIds, select);
       } catch (e) {
         console.error("Failed to toggle all styles", e);
         showToast("保存に失敗しました", "error");
       }
     }
     // localStorage save is handled by useEffect
-  }, [user, showToast]); // Removed collectedStyles dependency as we use functional update for local state
+  }, [showToast]); // Removed collectedStyles dependency as we use functional update for local state
 
   // グローバル一括トグル
   const toggleGlobal = useCallback(async (filteredPokemon: Pokemon[], select: boolean, selectedField: string) => {
+    const currentUser = auth?.currentUser;
+
     const updates = filteredPokemon.map(p => {
       const targetStyles = selectedField === 'all'
         ? p.styles
@@ -155,7 +162,7 @@ export const useCollection = (user: User | null) => {
       };
     }).filter(u => u.styleIds.length > 0);
 
-    if (!user) {
+    if (!currentUser) {
       setCollectedStyles(prev => {
         const newSet = new Set(prev);
         updates.forEach(u => {
@@ -171,16 +178,16 @@ export const useCollection = (user: User | null) => {
       });
     }
 
-    if (user) {
+    if (currentUser) {
       try {
-        await toggleMultiplePokemonStyles(user.uid, updates, select);
+        await toggleMultiplePokemonStyles(currentUser.uid, updates, select);
       } catch (e) {
         console.error("Failed to toggle global", e);
         showToast("一部の保存に失敗しました", "error");
       }
     }
     // localStorage save is handled by useEffect
-  }, [user, showToast]); // Removed collectedStyles dependency as we use functional update for local state
+  }, [showToast]); // Removed collectedStyles dependency as we use functional update for local state
 
   return {
     collectedStyles,

@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 
+## [1.4.1] - 2025-12-12
+
+### Fixed
+- **ログアウト後の状態管理不具合を修正**:
+  - ログアウト後、既に表示されているPokemonCardで入力ができなくなる問題を解決
+  - `memo`化されたコンポーネントが古いコールバック関数を保持し続ける問題に対処
+  - `useCollection`のトグル関数内で`user`変数の代わりに`auth?.currentUser`を直接参照するように変更
+  - 依存配列から`user`を削除し、コールバックの再生成頻度を最適化
+  - これによりログアウト後も既存のコンポーネントが最新の認証状態を正しく判断できるように改善
+
+### Changed
+- `hooks/useCollection.ts`:
+  - `toggleStyle`, `toggleAllPokemonStyles`, `toggleGlobal` 各関数の実装を改善
+  - Firestore操作の直前に`auth?.currentUser`で最新の認証状態を確認
+  - パフォーマンス向上（コールバックの不要な再生成を削減）
+
+
 ## [1.4.0] - 2025-12-07
 
 ### Deployment
