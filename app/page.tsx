@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import Image from 'next/image';
 import PokemonCard from '@/components/PokemonCard';
 import DataProtectionWarning from '@/components/DataProtectionWarning';
@@ -12,6 +12,7 @@ import { useAuth } from '@/hooks/useAuth';
 import { useCollection } from '@/hooks/useCollection';
 import { useFilters } from '@/hooks/useFilters';
 import { useProgress } from '@/hooks/useProgress';
+import { FilterState } from '@/types/filters';
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -43,6 +44,12 @@ export default function Home() {
     selectedRarity,
     showUncollectedOnly,
     filterBaseCollectedStyles
+  );
+
+  // フィルタ状態オブジェクト（一括操作用）
+  const filterState: FilterState = useMemo(
+    () => ({ selectedField, selectedRarity }),
+    [selectedField, selectedRarity]
   );
 
   const swipeHandlers = useSwipeable({
@@ -109,7 +116,7 @@ export default function Home() {
                 updateFilterPreferences={updateFilterPreferences}
                 isBulkActionOpen={isBulkActionOpen}
                 setIsBulkActionOpen={setIsBulkActionOpen}
-                toggleGlobal={(select) => toggleGlobal(filteredPokemon, select, selectedField, selectedRarity)}
+                toggleGlobal={(select) => toggleGlobal(filteredPokemon, select, filterState)}
                 setIsMenuOpen={setIsMenuOpen}
                 setIsHelpOpen={setIsHelpOpen}
               />
@@ -149,7 +156,7 @@ export default function Home() {
               pokemon={pokemon}
               collectedStyles={collectedStyles}
               onToggleStyle={toggleStyle}
-              onToggleAll={(p, select) => toggleAllPokemonStyles(p, select, selectedField, selectedRarity)}
+              onToggleAll={(p, select) => toggleAllPokemonStyles(p, select, filterState)}
               selectedField={selectedField}
               selectedRarity={selectedRarity}
               showUncollectedOnly={showUncollectedOnly}

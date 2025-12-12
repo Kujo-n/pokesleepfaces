@@ -7,6 +7,7 @@ import { toggleSleepStyle, toggleAllStyles, toggleMultiplePokemonStyles, subscri
 import { saveToLocalStorage, loadFromLocalStorage, migrateToFirestore } from '@/lib/localStorage';
 import { useToast } from '@/components/providers/ToastProvider';
 import { auth } from '@/firebase/config';
+import { FilterState } from '@/types/filters';
 
 /**
  * コレクション状態とCRUD操作を管理するカスタムフック
@@ -108,8 +109,9 @@ export const useCollection = (user: User | null) => {
   }, [collectedStyles, showToast]);
 
   // ポケモン単位での一括トグル
-  const toggleAllPokemonStyles = useCallback(async (pokemon: Pokemon, select: boolean, selectedField: string, selectedRarity: string) => {
+  const toggleAllPokemonStyles = useCallback(async (pokemon: Pokemon, select: boolean, filters: FilterState) => {
     const currentUser = auth?.currentUser;
+    const { selectedField, selectedRarity } = filters;
 
     let targetStyles = selectedField === 'all'
       ? pokemon.styles
@@ -153,8 +155,9 @@ export const useCollection = (user: User | null) => {
   }, [showToast]); // Removed collectedStyles dependency as we use functional update for local state
 
   // グローバル一括トグル
-  const toggleGlobal = useCallback(async (filteredPokemon: Pokemon[], select: boolean, selectedField: string, selectedRarity: string) => {
+  const toggleGlobal = useCallback(async (filteredPokemon: Pokemon[], select: boolean, filters: FilterState) => {
     const currentUser = auth?.currentUser;
+    const { selectedField, selectedRarity } = filters;
 
     const updates = filteredPokemon.map(p => {
       let targetStyles = selectedField === 'all'

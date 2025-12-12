@@ -39,6 +39,9 @@ pokesleepfaces/
 │   ├── db.ts              # Firestore操作（バリデーション付）
 │   └── localStorage.ts    # LocalStorage操作（サイズ制限付）
 │
+├── types/                 # 型定義
+│   └── filters.ts         # フィルタ状態型（FilterState）
+│
 ├── public/                # 静的ファイル
 │   └── ...
 │

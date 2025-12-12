@@ -16,12 +16,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `useCollection`のトグル関数内で`user`変数の代わりに`auth?.currentUser`を直接参照するように変更
   - 依存配列から`user`を削除し、コールバックの再生成頻度を最適化
   - これによりログアウト後も既存のコンポーネントが最新の認証状態を正しく判断できるように改善
+- **一括操作がレアリティフィルタを無視する不具合を修正**:
+  - `toggleAllPokemonStyles`と`toggleGlobal`がレアリティフィルタを考慮するように修正
 
 ### Changed
 - `hooks/useCollection.ts`:
   - `toggleStyle`, `toggleAllPokemonStyles`, `toggleGlobal` 各関数の実装を改善
   - Firestore操作の直前に`auth?.currentUser`で最新の認証状態を確認
   - パフォーマンス向上（コールバックの不要な再生成を削減）
+- **フィルタパラメータの一元管理**:
+  - `types/filters.ts`に`FilterState`型を新規作成
+  - 一括操作関数のパラメータをオブジェクト渡しに変更
+  - 新しいフィルタ追加時の修正箇所を削減（5箇所→3箇所）
 
 
 ## [1.4.0] - 2025-12-07
