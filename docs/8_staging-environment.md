@@ -45,7 +45,7 @@ firebase hosting:channel:deploy staging --expires 30d
 npm run dev:staging
 ```
 
-これにより、`.env.local.staging` が `.env.local` にコピーされ、Next.jsが起動します。
+これにより、`cross-env` を使用して `NEXT_PUBLIC_ENV=staging` が設定された状態でNext.jsが起動します。
 起動後は [http://localhost:3000](http://localhost:3000) でアクセスし、ログインすると `users_staging` コレクションが使用されます。
 
 ---

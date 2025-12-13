@@ -139,10 +139,10 @@ firebase deploy --only firestore:rules
 **操作場所**: PC（プロジェクトルート）
 
 ```bash
-cp env.example .env.local
+cp env.example .env
 ```
 
-`.env.local` を編集して、Firebase Console からコピーした値を設定：
+`.env` を編集して、Firebase Console からコピーした値を設定：
 
 ```env
 NEXT_PUBLIC_FIREBASE_API_KEY=your_api_key
@@ -174,6 +174,11 @@ npm run build
 **操作場所**: PC（プロジェクトルート）
 
 ```bash
+# 本番デプロイ（ビルドとデプロイを一括実行）
+npm run deploy:prod
+
+# または個別に実行
+npm run build
 firebase deploy --only hosting
 ```
 
@@ -235,9 +240,9 @@ firebase login
 
 **操作場所**: PC（プロジェクトルート）
 
-- `.env.local` ファイルが正しく作成されているか確認
+- `.env` ファイルが正しく作成されているか確認
 - ビルド前に環境変数を設定する必要があります
-- ビルド後に `.env.local` を変更した場合は、再ビルドが必要
+- ビルド後に `.env` を変更した場合は、再ビルドが必要
 
 ```bash
 # 環境変数を変更した後は必ず再ビルド
@@ -253,7 +258,7 @@ npm run build
 1. 🌐 Firebase Console で Firestore が有効になっているか確認
 2. 🌐 セキュリティルールが正しくデプロイされているか確認
    - Firebase Console → Firestore Database → ルール タブ
-3. 💻 `.env.local` の `NEXT_PUBLIC_FIREBASE_PROJECT_ID` が正しいか確認
+3. 💻 `.env` の `NEXT_PUBLIC_FIREBASE_PROJECT_ID` が正しいか確認
 
 ---
 
@@ -263,12 +268,11 @@ npm run build
 
 **操作場所**: PC（プロジェクトルート）
 
-```bash
-# 1. ビルド
-npm run build
+# 1. 本番環境へのデプロイ
+npm run deploy:prod
 
-# 2. デプロイ
-firebase deploy --only hosting
+# 2. ステージング環境へのデプロイ（テスト用）
+npm run deploy:staging
 ```
 
 ---

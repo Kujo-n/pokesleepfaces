@@ -42,10 +42,10 @@ npm install
 ### 2. 環境変数の設定
 
 ```bash
-cp env.example .env.local
+cp env.example .env
 ```
 
-`.env.local` を編集して、Firebase の設定値を入力してください。
+`.env` を編集して、Firebase の設定値を入力してください。
 
 詳細は [docs/2_setup_guide.md](docs/2_setup_guide.md) を参照してください。
 

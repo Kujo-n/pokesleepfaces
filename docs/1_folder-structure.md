@@ -161,7 +161,7 @@ app/page.tsx (UI Update)
 
 ## 環境変数
 
-`.env.local` に以下の環境変数を設定:
+`.env`（または `.env.local`）に以下の環境変数を設定:
 
 ```env
 NEXT_PUBLIC_FIREBASE_API_KEY=

@@ -32,12 +32,12 @@ npm install firebase
 
 ## 3. 環境変数の設定
 Firebase と連携するために環境変数の設定が必要です。
-`env.example` をコピーして `.env.local` を作成してください。
+`env.example` をコピーして `.env` を作成してください。
 
 ```powershell
-cp env.example .env.local
+cp env.example .env
 ```
-`.env.local` 内の各項目に、Firebase コンソールから取得した値を設定してください。
+`.env` 内の各項目に、Firebase コンソールから取得した値を設定してください。
 ※ UI実装フェーズでは、この設定はスキップ可能です（モックデータを使用）。
 
 ## 4. Firebase セットアップ
@@ -47,13 +47,13 @@ cp env.example .env.local
 3. **Cloud Firestore** を作成します（テストモードまたは本番モード）。
     - 本番モードの場合は、`firebase/firestore.rules` の内容をルールエディタに貼り付けて公開してください。
 4. プロジェクトの設定 > 全般 > マイアプリ からウェブアプリを追加します。
-5. 表示される `firebaseConfig` の内容を `.env.local` ファイルに設定します（`env.example` をコピーして作成）。
+5. 表示される `firebaseConfig` の内容を `.env` ファイルに設定します（`env.example` をコピーして作成）。
 
 ```bash
-cp env.example .env.local
+cp env.example .env
 ```
 
-`.env.local` の内容:
+`.env` の内容:
 ```env
 NEXT_PUBLIC_FIREBASE_API_KEY=your_api_key
 NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_project_id.firebaseapp.com
