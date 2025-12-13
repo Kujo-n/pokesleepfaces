@@ -18,6 +18,7 @@ export default function AuthButton() {
             await signInWithPopup(auth, provider);
         } catch (error) {
             console.error("Error signing in:", error);
+            alert(`ログインに失敗しました: ${error instanceof Error ? error.message : 'Unknown error'}`);
         }
     };
 

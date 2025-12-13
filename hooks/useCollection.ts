@@ -152,7 +152,7 @@ export const useCollection = (user: User | null) => {
       }
     }
     // localStorage save is handled by useEffect
-  }, [showToast]); // Removed collectedStyles dependency as we use functional update for local state
+  }, [collectedStyles, showToast]);
 
   // グローバル一括トグル
   const toggleGlobal = useCallback(async (filteredPokemon: Pokemon[], select: boolean, filters: FilterState) => {

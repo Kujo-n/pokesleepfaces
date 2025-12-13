@@ -37,6 +37,17 @@ firebase hosting:channel:deploy staging --expires 30d
 
 ステージング環境でも同じFirebaseプロジェクトを使用するため、`.env.local` の変更は不要です。
 
+### 1-3. ローカルでのステージング動作確認
+
+ローカル環境でステージング用として動作（`users_staging` コレクションを使用）させるには、以下のコマンドを使用します。
+
+```bash
+npm run dev:staging
+```
+
+これにより、`.env.local.staging` が `.env.local` にコピーされ、Next.jsが起動します。
+起動後は [http://localhost:3000](http://localhost:3000) でアクセスし、ログインすると `users_staging` コレクションが使用されます。
+
 ---
 
 ## 2. デプロイ方法
