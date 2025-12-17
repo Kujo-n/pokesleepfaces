@@ -5,6 +5,7 @@ import Image from 'next/image';
 import PokemonCard from '@/components/PokemonCard';
 import DataProtectionWarning from '@/components/DataProtectionWarning';
 import HelpModal from '@/components/HelpModal';
+import CollectionStatusModal from '@/components/CollectionStatusModal';
 import FilterPanel from '@/components/FilterPanel';
 import ProgressSummary from '@/components/ProgressSummary';
 import { useSwipeable } from 'react-swipeable';
@@ -18,6 +19,7 @@ export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isBulkActionOpen, setIsBulkActionOpen] = useState(false);
   const [isHelpOpen, setIsHelpOpen] = useState(false);
+  const [isCollectionStatusOpen, setIsCollectionStatusOpen] = useState(false);
 
   // カスタムフック利用
   const { user } = useAuth();
@@ -89,7 +91,18 @@ export default function Home() {
                 height={30}
                 className="rounded-lg"
               />
-              <h1 className="text-xl font-bold text-gray-900">ポケスリ寝顔チェッカー</h1>
+              <h1 className="text-xl font-bold text-gray-900 flex-grow">ポケスリ寝顔チェッカー</h1>
+
+              <button
+                onClick={() => setIsCollectionStatusOpen(true)}
+                className="p-2 rounded-lg hover:bg-gray-100 transition-colors text-gray-600"
+                aria-label="Collection Status"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M3 3v18h18" />
+                  <path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3" />
+                </svg>
+              </button>
             </div>
 
             {/* Navigation Drawer Overlay */}
@@ -172,6 +185,11 @@ export default function Home() {
       </div>
 
       <HelpModal isOpen={isHelpOpen} onClose={() => setIsHelpOpen(false)} />
+      <CollectionStatusModal
+        isOpen={isCollectionStatusOpen}
+        onClose={() => setIsCollectionStatusOpen(false)}
+        collectedStyles={collectedStyles}
+      />
     </main>
   );
 }

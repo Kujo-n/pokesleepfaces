@@ -20,7 +20,8 @@ pokesleepfaces/
 │   ├── FilterPanel.tsx    # フィルタ操作パネル
 │   ├── HelpModal.tsx      # ヘルプモーダル
 │   ├── PokemonCard.tsx    # ポケモンカード（メモ化済み）
-│   └── ProgressSummary.tsx # 進捗サマリー表示
+│   ├── ProgressSummary.tsx # 進捗サマリー表示
+│   └── CollectionStatusModal.tsx # 収集状況詳細モーダル
 │
 ├── data/                  # データ定義
 │   └── mockData.ts        # モックデータ
@@ -76,6 +77,8 @@ pokesleepfaces/
 - **`PokemonCard.tsx`**: `React.memo`により最適化されたカードコンポーネント
 - **`FilterPanel.tsx`**: フィルタUIと一括操作ボタン
 - **`ProgressSummary.tsx`**: 全体・タイプ別・レアリティ別の進捗表示
+- **`CollectionStatusModal.tsx`**: 全体・フィールド別進捗一覧を表示するモーダル
+- **`CollectionStatusItem.tsx`**: モーダル内で使用する各行の進捗表示詳細コンポーネント
 - **`ErrorBoundary.tsx`**: 予期せぬエラーをキャッチし、フォールバックUIを表示
 
 ### データ層

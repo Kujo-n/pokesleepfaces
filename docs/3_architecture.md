@@ -49,6 +49,8 @@ graph TB
          PokemonCard["PokemonCard<br/>(Memoized)"]
          FilterPanel[FilterPanel]
          ProgressSummary[ProgressSummary]
+         StatusModal[CollectionStatusModal]
+         StatusItem[CollectionStatusItem]
          ErrorBoundary[ErrorBoundary]
      end
      
@@ -77,6 +79,8 @@ graph TB
      Page --> PokemonCard
      Page --> FilterPanel
      Page --> ProgressSummary
+     Page --> StatusModal
+     StatusModal --> StatusItem
      
      useCollection --> DB
      useCollection --> LocalStore
