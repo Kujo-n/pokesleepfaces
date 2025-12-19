@@ -51,7 +51,7 @@ describe('CollectionStatusModal', () => {
         // 注意: モーダルヘッダー下の「全体」ラベルのItemを探す
 
         // 全体コンポーネントが表示されているか
-        expect(screen.getByText('寝顔収集状況詳細')).toBeInTheDocument();
+        expect(screen.getByText('収集状況一覧')).toBeInTheDocument();
 
         // 全体進捗: 50%
         // Progress is now shown as number, check for text content in formatted structure

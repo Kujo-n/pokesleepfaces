@@ -25,7 +25,7 @@ const StatBlock = ({ label, progress, colorClass, bgColorClass = "", className =
         <span className={`font-bold text-[10px] text-center leading-tight ${colorClass}`}>{label}</span>
         <div className="flex flex-col items-center leading-none">
             <span className="font-bold text-gray-900 text-xs">{progress.percentage}%</span>
-            <span className="text-gray-500 text-[9px] transform scale-0.9 whitespace-nowrap">
+            <span className="text-gray-900 text-[9px] transform scale-0.9 whitespace-nowrap">
                 ({progress.collected}/{progress.total})
             </span>
         </div>
@@ -64,7 +64,8 @@ function CollectionStatusItem({
                 <StatBlock
                     label="うとうと"
                     progress={dozingProgress}
-                    colorClass="text-yellow-600"
+                    colorClass="text-gray-800"
+                    bgColorClass="bg-yellow-100" // 薄黄色
                     className="border-r border-gray-200"
                 />
 
@@ -72,7 +73,8 @@ function CollectionStatusItem({
                 <StatBlock
                     label="すやすや"
                     progress={snoozingProgress}
-                    colorClass="text-blue-600"
+                    colorClass="text-gray-800"
+                    bgColorClass="bg-sky-100" // 水色
                     className="border-r border-gray-200"
                 />
 
@@ -80,7 +82,8 @@ function CollectionStatusItem({
                 <StatBlock
                     label="ぐっすり"
                     progress={slumberingProgress}
-                    colorClass="text-indigo-600"
+                    colorClass="text-gray-800"
+                    bgColorClass="bg-indigo-200" // 濃い青（背景として文字が見える範囲で濃いめ）
                     // Double thickness border for separation
                     className="border-r-2 border-gray-400"
                 />
