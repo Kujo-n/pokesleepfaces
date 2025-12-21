@@ -2,6 +2,7 @@
 
 import { memo } from 'react';
 import { Pokemon } from '@/data/mockData';
+import { filterPokemonStyles, getSleepTypeColor } from '@/lib/pokemonUtils';
 
 type Props = {
     pokemon: Pokemon;
@@ -15,33 +16,15 @@ type Props = {
 };
 
 function PokemonCard({ pokemon, collectedStyles, onToggleStyle, onToggleAll, selectedField = 'all', selectedRarity = 'all', showUncollectedOnly = false, filterBaseCollectedStyles = new Set() }: Props) {
-    let availableStyles = selectedField === 'all'
-        ? pokemon.styles
-        : pokemon.styles.filter(s =>
-            !s.excludeFromFields || !s.excludeFromFields.includes(selectedField)
-        );
-
-    if (selectedRarity !== 'all') {
-        const rarityNum = parseInt(selectedRarity);
-        availableStyles = availableStyles.filter(s => s.rarity === rarityNum);
-    }
-
-    // 未収集のみフィルタが有効な場合、収集済みスタイルを除外
-    const displayStyles = showUncollectedOnly
-        ? availableStyles.filter(s => !filterBaseCollectedStyles.has(s.id))
-        : availableStyles;
+    const { availableStyles, displayStyles } = filterPokemonStyles(pokemon, {
+        selectedField,
+        selectedRarity,
+        showUncollectedOnly,
+        filterBaseCollectedStyles
+    });
 
     const collectedCount = availableStyles.filter((s) => collectedStyles.has(s.id)).length;
     const totalStyles = availableStyles.length;
-
-    const getSleepTypeColor = (type: string) => {
-        switch (type) {
-            case 'うとうと': return 'bg-yellow-100 text-yellow-800 border-yellow-200';
-            case 'すやすや': return 'bg-blue-100 text-blue-800 border-blue-200';
-            case 'ぐっすり': return 'bg-indigo-100 text-indigo-800 border-indigo-200';
-            default: return 'bg-gray-100 text-gray-800 border-gray-200';
-        }
-    };
 
     return (
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
@@ -50,7 +33,7 @@ function PokemonCard({ pokemon, collectedStyles, onToggleStyle, onToggleAll, sel
                     <div className="flex items-center gap-3">
                         <span className="text-gray-500 font-mono text-sm">#{pokemon.dexNumber.toString().padStart(3, '0')}</span>
                         <h3 className="font-bold text-lg text-gray-900">{pokemon.name}</h3>
-                        <span className={`text-xs px-2 py-1 rounded-full border ${getSleepTypeColor(pokemon.sleepType)}`}>
+                        <span className={`text-xs px-2 py-1 rounded-full border ${getSleepTypeColor(pokemon.sleepType, true)}`}>
                             {pokemon.sleepType}
                         </span>
                     </div>

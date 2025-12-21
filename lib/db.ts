@@ -133,6 +133,7 @@ export interface FilterPreferences {
     selectedSleepType: string;
     selectedRarity: string; // 'all' | '1' | '2' | '3' | '4'
     showUncollectedOnly: boolean;
+    viewMode?: 'card' | 'grid'; // 表示モード
 }
 
 export const saveFilterPreferences = async (userId: string, preferences: FilterPreferences) => {

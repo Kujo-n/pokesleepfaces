@@ -46,7 +46,9 @@ graph TB
      
      subgraph "Components"
          AuthBtn[AuthButton]
-         PokemonCard["PokemonCard<br/>(Memoized)"]
+         PokemonCard["PokemonCard\u003cbr/\u003e(Memoized)"]
+         PokemonGridRow["PokemonGridRow\u003cbr/\u003e(Grid View)"]
+         PokemonGridHeader[PokemonGridHeader]
          FilterPanel[FilterPanel]
          ProgressSummary[ProgressSummary]
          StatusModal[CollectionStatusModal]
@@ -65,6 +67,7 @@ graph TB
          MockData[mockData.ts]
          DB[lib/db.ts]
          LocalStore[lib/localStorage.ts]
+         PokemonUtils[lib/pokemonUtils.ts]
      end
      
      Layout --> ErrorBoundary
@@ -167,7 +170,7 @@ graph TB
         
         Preferences[preferences/]
         FiltersDoc["filters"]
-        FilterData["selectedField<br/>selectedSleepType<br/>showUncollectedOnly"]
+        FilterData["selectedField\u003cbr/\u003eselectedSleepType\u003cbr/\u003eshowUncollectedOnly\u003cbr/\u003eviewMode"]
     end
     
     Users --> UserDoc

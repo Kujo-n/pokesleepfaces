@@ -5,7 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.6.0] - 2025-12-22
 
+### Added
+- **グリッド表示モード**:
+  - カード表示とグリッド表示を切り替えるトグルボタンをヘッダーに追加
+  - グリッド表示では1行1ポケモン、レアリティ別（★1〜★4）の列でチェックボックスを表示
+  - 同一レアリティに複数の寝顔がある場合、頭文字で識別可能
+  - ログインユーザーは表示モードの設定がFirestoreに保存され、次回アクセス時に復元
+- **`lib/pokemonUtils.ts`**: 共通ユーティリティ関数
+  - `filterPokemonStyles`: フィルタリングロジック
+  - `getSleepTypeColor`: 睡眠タイプの色取得
+  - `groupStylesByRarity`: レアリティ別グループ化
 
 ## [1.5.0] - 2025-12-17
 

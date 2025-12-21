@@ -16,6 +16,7 @@ export const useFilters = (user: User | null, collectedStyles: Set<string>) => {
   const [selectedRarity, setSelectedRarity] = useState<string>('all');
   const [showUncollectedOnly, setShowUncollectedOnly] = useState<boolean>(false);
   const [filterBaseCollectedStyles, setFilterBaseCollectedStyles] = useState<Set<string>>(new Set());
+  const [viewMode, setViewMode] = useState<'card' | 'grid'>('card');
 
   // ログイン時にフィルタ設定を読み込み
   useEffect(() => {
@@ -26,6 +27,7 @@ export const useFilters = (user: User | null, collectedStyles: Set<string>) => {
           setSelectedSleepType(prefs.selectedSleepType as SleepType);
           if (prefs.selectedRarity) setSelectedRarity(prefs.selectedRarity);
           setShowUncollectedOnly(prefs.showUncollectedOnly);
+          if (prefs.viewMode) setViewMode(prefs.viewMode);
         }
       });
     }
@@ -43,17 +45,18 @@ export const useFilters = (user: User | null, collectedStyles: Set<string>) => {
 
   // フィルタ設定を保存
   const updateFilterPreferences = useCallback((
-    updates: { field?: string; sleepType?: string; rarity?: string; uncollectedOnly?: boolean }
+    updates: { field?: string; sleepType?: string; rarity?: string; uncollectedOnly?: boolean; viewMode?: 'card' | 'grid' }
   ) => {
     if (user) {
       saveFilterPreferences(user.uid, {
         selectedField: updates.field ?? selectedField,
         selectedSleepType: updates.sleepType ?? selectedSleepType,
         selectedRarity: updates.rarity ?? selectedRarity,
-        showUncollectedOnly: updates.uncollectedOnly ?? showUncollectedOnly
+        showUncollectedOnly: updates.uncollectedOnly ?? showUncollectedOnly,
+        viewMode: updates.viewMode ?? viewMode
       });
     }
-  }, [user, selectedField, selectedSleepType, selectedRarity, showUncollectedOnly]);
+  }, [user, selectedField, selectedSleepType, selectedRarity, showUncollectedOnly, viewMode]);
 
   // フィルタリング処理
   const filteredPokemon = useMemo(() => {
@@ -110,6 +113,8 @@ export const useFilters = (user: User | null, collectedStyles: Set<string>) => {
     filterBaseCollectedStyles,
     setFilterBaseCollectedStyles,
     filteredPokemon,
-    updateFilterPreferences
+    updateFilterPreferences,
+    viewMode,
+    setViewMode
   };
 };

@@ -20,6 +20,8 @@ pokesleepfaces/
 │   ├── FilterPanel.tsx    # フィルタ操作パネル
 │   ├── HelpModal.tsx      # ヘルプモーダル
 │   ├── PokemonCard.tsx    # ポケモンカード（メモ化済み）
+│   ├── PokemonGridRow.tsx # グリッド表示行コンポーネント
+│   ├── PokemonGridHeader.tsx # グリッド表示ヘッダー
 │   ├── ProgressSummary.tsx # 進捗サマリー表示
 │   └── CollectionStatusModal.tsx # 収集状況詳細モーダル
 │
@@ -38,7 +40,8 @@ pokesleepfaces/
 │
 ├── lib/                   # ユーティリティ
 │   ├── db.ts              # Firestore操作（バリデーション付）
-│   └── localStorage.ts    # LocalStorage操作（サイズ制限付）
+│   ├── localStorage.ts    # LocalStorage操作（サイズ制限付）
+│   └── pokemonUtils.ts    # ポケモン共通ロジック（フィルタ、色取得）
 │
 ├── types/                 # 型定義
 │   └── filters.ts         # フィルタ状態型（FilterState）

@@ -3,6 +3,8 @@
 import { useState, useMemo } from 'react';
 import Image from 'next/image';
 import PokemonCard from '@/components/PokemonCard';
+import PokemonGridRow from '@/components/PokemonGridRow';
+import PokemonGridHeader from '@/components/PokemonGridHeader';
 import DataProtectionWarning from '@/components/DataProtectionWarning';
 import HelpModal from '@/components/HelpModal';
 import CollectionStatusModal from '@/components/CollectionStatusModal';
@@ -36,7 +38,9 @@ export default function Home() {
     filterBaseCollectedStyles,
     setFilterBaseCollectedStyles,
     filteredPokemon,
-    updateFilterPreferences
+    updateFilterPreferences,
+    viewMode,
+    setViewMode
   } = useFilters(user, collectedStyles);
 
   const progressData = useProgress(
@@ -92,6 +96,34 @@ export default function Home() {
                 className="rounded-lg"
               />
               <h1 className="text-xl font-bold text-gray-900 flex-grow">ポケスリ寝顔チェッカー</h1>
+
+              {/* View Mode Toggle */}
+              <div className="flex items-center bg-gray-100 rounded-lg p-0.5">
+                <button
+                  onClick={() => {
+                    setViewMode('card');
+                    updateFilterPreferences({ viewMode: 'card' });
+                  }}
+                  className={`px-3 py-1 text-sm font-medium rounded-md transition-colors ${viewMode === 'card'
+                    ? 'bg-white text-gray-900 shadow-sm'
+                    : 'text-gray-500 hover:text-gray-700'
+                    }`}
+                >
+                  card
+                </button>
+                <button
+                  onClick={() => {
+                    setViewMode('grid');
+                    updateFilterPreferences({ viewMode: 'grid' });
+                  }}
+                  className={`px-3 py-1 text-sm font-medium rounded-md transition-colors ${viewMode === 'grid'
+                    ? 'bg-white text-gray-900 shadow-sm'
+                    : 'text-gray-500 hover:text-gray-700'
+                    }`}
+                >
+                  grid
+                </button>
+              </div>
 
               <button
                 onClick={() => setIsCollectionStatusOpen(true)}
@@ -162,26 +194,49 @@ export default function Home() {
 
       {/* Content */}
       <div className="max-w-7xl mx-auto px-4 py-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
-          {filteredPokemon.map((pokemon) => (
-            <PokemonCard
-              key={pokemon.id}
-              pokemon={pokemon}
-              collectedStyles={collectedStyles}
-              onToggleStyle={toggleStyle}
-              onToggleAll={(p, select) => toggleAllPokemonStyles(p, select, filterState)}
-              selectedField={selectedField}
-              selectedRarity={selectedRarity}
-              showUncollectedOnly={showUncollectedOnly}
-              filterBaseCollectedStyles={filterBaseCollectedStyles}
-            />
-          ))}
-          {filteredPokemon.length === 0 && (
-            <div className="text-center py-10 text-gray-500">
-              該当するポケモンがいません
-            </div>
-          )}
-        </div>
+        {viewMode === 'card' ? (
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+            {filteredPokemon.map((pokemon) => (
+              <PokemonCard
+                key={pokemon.id}
+                pokemon={pokemon}
+                collectedStyles={collectedStyles}
+                onToggleStyle={toggleStyle}
+                onToggleAll={(p, select) => toggleAllPokemonStyles(p, select, filterState)}
+                selectedField={selectedField}
+                selectedRarity={selectedRarity}
+                showUncollectedOnly={showUncollectedOnly}
+                filterBaseCollectedStyles={filterBaseCollectedStyles}
+              />
+            ))}
+            {filteredPokemon.length === 0 && (
+              <div className="text-center py-10 text-gray-500">
+                該当するポケモンがいません
+              </div>
+            )}
+          </div>
+        ) : (
+          <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden w-fit">
+            <PokemonGridHeader />
+            {filteredPokemon.map((pokemon) => (
+              <PokemonGridRow
+                key={pokemon.id}
+                pokemon={pokemon}
+                collectedStyles={collectedStyles}
+                onToggleStyle={toggleStyle}
+                selectedField={selectedField}
+                selectedRarity={selectedRarity}
+                showUncollectedOnly={showUncollectedOnly}
+                filterBaseCollectedStyles={filterBaseCollectedStyles}
+              />
+            ))}
+            {filteredPokemon.length === 0 && (
+              <div className="text-center py-10 text-gray-500">
+                該当するポケモンがいません
+              </div>
+            )}
+          </div>
+        )}
       </div>
 
       <HelpModal isOpen={isHelpOpen} onClose={() => setIsHelpOpen(false)} />
