@@ -5432,7 +5432,7 @@ export const MOCK_POKEMON: Pokemon[] = [
         "styles": [
             {
                 "id": "p363_ホリデータマザラシ-1",
-                "name": "★1ねがお",
+                "name": "こてん寝",
                 "rarity": 1
             },
             {
@@ -7024,7 +7024,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             },
             {
                 "id": "p777_トゲデマル-2",
-                "name": "★2の寝顔",
+                "name": "しっぽゆらゆら寝",
                 "rarity": 2
             },
             {
@@ -7032,7 +7032,7 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "name": "★3の寝顔",
                 "rarity": 3,
                 "excludeFromFields": [
-                    "ウノハナ雪原"
+                    "ワカクサ本島"
                 ]
             },
             {
@@ -7680,18 +7680,21 @@ export const MOCK_POKEMON: Pokemon[] = [
         "styles": [
             {
                 "id": "p974_アルクジラ-1",
-                "name": "★1の寝顔",
+                "name": "ばんざい寝",
                 "rarity": 1
             },
             {
                 "id": "p974_アルクジラ-2",
-                "name": "★2の寝顔",
+                "name": "よたよた寝",
                 "rarity": 2
             },
             {
                 "id": "p974_アルクジラ-3",
-                "name": "★3の寝顔",
-                "rarity": 3
+                "name": "ぐずり寝",
+                "rarity": 3,
+                "excludeFromFields": [
+                    "ワカクサ本島"
+                ]
             },
             {
                 "id": "p974_アルクジラ-4",
