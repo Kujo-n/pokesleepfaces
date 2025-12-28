@@ -73,4 +73,27 @@ npm run dev
 ブラウザで `http://localhost:3000` にアクセスします。
 Googleログインボタンが表示され、ログインすると収集状況がFirestoreに保存されるようになります。
 
+---
+
+## トラブルシューティング
+
+### PowerShell実行ポリシーエラー
+
+**エラー内容:**
+```
+このシステムではスクリプトの実行が無効になっているため、ファイル C:\Program Files\nodejs\npm.ps1 を読み込むことができません
+```
+
+**原因:**  
+WindowsのPowerShell実行ポリシーが制限されているため、npmコマンドの実行がブロックされています。
+
+**恒久的な解決方法:**  
+以下のコマンドで、現在のユーザーに対して実行ポリシーを変更します（管理者権限不要）:
+
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+
+実行後、`npm install`を再度実行してください。
+
 
