@@ -2,44 +2,49 @@
 
 import { FIELD_NAMES } from '@/data/mockData';
 import AuthButton from '@/components/AuthButton';
+import { FilterValues, FilterActions } from '@/types/filters';
 
 type Props = {
-  selectedField: string;
-  setSelectedField: (field: string) => void;
-  selectedSleepType: 'all' | 'うとうと' | 'すやすや' | 'ぐっすり';
-  setSelectedSleepType: (type: 'all' | 'うとうと' | 'すやすや' | 'ぐっすり') => void;
-  selectedRarity: string;
-  setSelectedRarity: (rarity: string) => void;
-  showUncollectedOnly: boolean;
-  setShowUncollectedOnly: (show: boolean) => void;
+  // 構造化されたフィルタProps（17個→4グループに削減）
+  filterValues: FilterValues;
+  filterActions: FilterActions;
   collectedStyles: Set<string>;
   setFilterBaseCollectedStyles: (styles: Set<string>) => void;
-  updateFilterPreferences: (updates: { field?: string; sleepType?: string; rarity?: string; uncollectedOnly?: boolean }) => void;
+  // 一括操作Props
   isBulkActionOpen: boolean;
   setIsBulkActionOpen: (open: boolean) => void;
   toggleGlobal: (select: boolean) => void;
+  // UI制御Props
   setIsMenuOpen: (open: boolean) => void;
   setIsHelpOpen: (open: boolean) => void;
 };
 
 export default function FilterPanel({
-  selectedField,
-  setSelectedField,
-  selectedSleepType,
-  setSelectedSleepType,
-  selectedRarity,
-  setSelectedRarity,
-  showUncollectedOnly,
-  setShowUncollectedOnly,
+  filterValues,
+  filterActions,
   collectedStyles,
   setFilterBaseCollectedStyles,
-  updateFilterPreferences,
   isBulkActionOpen,
   setIsBulkActionOpen,
   toggleGlobal,
   setIsMenuOpen,
   setIsHelpOpen
 }: Props) {
+  const {
+    selectedField,
+    selectedSleepType,
+    selectedRarity,
+    showUncollectedOnly
+  } = filterValues;
+
+  const {
+    setSelectedField,
+    setSelectedSleepType,
+    setSelectedRarity,
+    setShowUncollectedOnly,
+    updateFilterPreferences
+  } = filterActions;
+
   return (
     <div className="p-4 flex flex-col gap-6 h-full overflow-y-auto">
       <div className="flex items-center justify-between">
@@ -101,7 +106,7 @@ export default function FilterPanel({
           <button
             onClick={() => {
               setSelectedField('all');
-              updateFilterPreferences({ field: 'all' });
+              updateFilterPreferences({ selectedField: 'all' });
             }}
             className={`px-3 py-1.5 rounded-full text-sm transition-colors ${selectedField === 'all'
               ? 'bg-gray-800 text-white'
@@ -117,7 +122,7 @@ export default function FilterPanel({
               key={field}
               onClick={() => {
                 setSelectedField(field);
-                updateFilterPreferences({ field });
+                updateFilterPreferences({ selectedField: field });
               }}
               className={`px-3 py-1.5 rounded-full text-sm transition-colors ${selectedField === field
                 ? field === 'イベント限定'
@@ -143,7 +148,7 @@ export default function FilterPanel({
           <button
             onClick={() => {
               setSelectedSleepType('all');
-              updateFilterPreferences({ sleepType: 'all' });
+              updateFilterPreferences({ selectedSleepType: 'all' });
             }}
             className={`px-3 py-1.5 rounded-full text-sm transition-colors ${selectedSleepType === 'all'
               ? 'bg-gray-800 text-white'
@@ -157,7 +162,7 @@ export default function FilterPanel({
           <button
             onClick={() => {
               setSelectedSleepType('うとうと');
-              updateFilterPreferences({ sleepType: 'うとうと' });
+              updateFilterPreferences({ selectedSleepType: 'うとうと' });
             }}
             className={`px-3 py-1.5 rounded-full text-sm transition-colors ${selectedSleepType === 'うとうと'
               ? 'bg-yellow-500 text-white'
@@ -171,7 +176,7 @@ export default function FilterPanel({
           <button
             onClick={() => {
               setSelectedSleepType('すやすや');
-              updateFilterPreferences({ sleepType: 'すやすや' });
+              updateFilterPreferences({ selectedSleepType: 'すやすや' });
             }}
             className={`px-3 py-1.5 rounded-full text-sm transition-colors ${selectedSleepType === 'すやすや'
               ? 'bg-blue-500 text-white'
@@ -185,7 +190,7 @@ export default function FilterPanel({
           <button
             onClick={() => {
               setSelectedSleepType('ぐっすり');
-              updateFilterPreferences({ sleepType: 'ぐっすり' });
+              updateFilterPreferences({ selectedSleepType: 'ぐっすり' });
             }}
             className={`px-3 py-1.5 rounded-full text-sm transition-colors ${selectedSleepType === 'ぐっすり'
               ? 'bg-indigo-500 text-white'
@@ -206,7 +211,7 @@ export default function FilterPanel({
           <button
             onClick={() => {
               setSelectedRarity('all');
-              updateFilterPreferences({ rarity: 'all' });
+              updateFilterPreferences({ selectedRarity: 'all' });
             }}
             className={`px-3 py-1.5 rounded-full text-sm transition-colors ${selectedRarity === 'all'
               ? 'bg-gray-800 text-white'
@@ -222,7 +227,7 @@ export default function FilterPanel({
               key={rarity}
               onClick={() => {
                 setSelectedRarity(rarity);
-                updateFilterPreferences({ rarity });
+                updateFilterPreferences({ selectedRarity: rarity });
               }}
               className={`px-3 py-1.5 rounded-full text-sm transition-colors ${selectedRarity === rarity
                 ? 'bg-amber-500 text-white'
@@ -256,7 +261,7 @@ export default function FilterPanel({
               } else {
                 setFilterBaseCollectedStyles(new Set());
               }
-              updateFilterPreferences({ uncollectedOnly: checked });
+              updateFilterPreferences({ showUncollectedOnly: checked });
             }}
             className="w-4 h-4 text-orange-600 bg-white border-orange-300 rounded focus:ring-orange-500 focus:ring-2 cursor-pointer"
             aria-describedby="uncollected-filter-description"

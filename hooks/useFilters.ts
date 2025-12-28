@@ -4,8 +4,7 @@ import { useState, useEffect, useMemo, useCallback } from 'react';
 import { User } from 'firebase/auth';
 import { MOCK_POKEMON } from '@/data/mockData';
 import { saveFilterPreferences, loadFilterPreferences } from '@/lib/db';
-
-type SleepType = 'all' | 'うとうと' | 'すやすや' | 'ぐっすり';
+import { SleepType, ViewMode, FilterValues, FilterActions } from '@/types/filters';
 
 /**
  * フィルタ状態と操作を管理するカスタムフック
@@ -16,7 +15,7 @@ export const useFilters = (user: User | null, collectedStyles: Set<string>) => {
   const [selectedRarity, setSelectedRarity] = useState<string>('all');
   const [showUncollectedOnly, setShowUncollectedOnly] = useState<boolean>(false);
   const [filterBaseCollectedStyles, setFilterBaseCollectedStyles] = useState<Set<string>>(new Set());
-  const [viewMode, setViewMode] = useState<'card' | 'grid'>('card');
+  const [viewMode, setViewMode] = useState<ViewMode>('card');
 
   // ログイン時にフィルタ設定を読み込み
   useEffect(() => {
@@ -45,14 +44,14 @@ export const useFilters = (user: User | null, collectedStyles: Set<string>) => {
 
   // フィルタ設定を保存
   const updateFilterPreferences = useCallback((
-    updates: { field?: string; sleepType?: string; rarity?: string; uncollectedOnly?: boolean; viewMode?: 'card' | 'grid' }
+    updates: Partial<FilterValues>
   ) => {
     if (user) {
       saveFilterPreferences(user.uid, {
-        selectedField: updates.field ?? selectedField,
-        selectedSleepType: updates.sleepType ?? selectedSleepType,
-        selectedRarity: updates.rarity ?? selectedRarity,
-        showUncollectedOnly: updates.uncollectedOnly ?? showUncollectedOnly,
+        selectedField: updates.selectedField ?? selectedField,
+        selectedSleepType: updates.selectedSleepType ?? selectedSleepType,
+        selectedRarity: updates.selectedRarity ?? selectedRarity,
+        showUncollectedOnly: updates.showUncollectedOnly ?? showUncollectedOnly,
         viewMode: updates.viewMode ?? viewMode
       });
     }
@@ -101,7 +100,33 @@ export const useFilters = (user: User | null, collectedStyles: Set<string>) => {
     });
   }, [selectedSleepType, selectedField, selectedRarity, showUncollectedOnly, filterBaseCollectedStyles]);
 
+  // フィルタ値をまとめたオブジェクト
+  const filterValues: FilterValues = useMemo(() => ({
+    selectedField,
+    selectedSleepType,
+    selectedRarity,
+    showUncollectedOnly,
+    viewMode
+  }), [selectedField, selectedSleepType, selectedRarity, showUncollectedOnly, viewMode]);
+
+  // フィルタ操作関数をまとめたオブジェクト
+  const filterActions: FilterActions = useMemo(() => ({
+    setSelectedField,
+    setSelectedSleepType,
+    setSelectedRarity,
+    setShowUncollectedOnly,
+    setViewMode,
+    updateFilterPreferences
+  }), [updateFilterPreferences]);
+
   return {
+    // 新しい構造化された戻り値
+    filterValues,
+    filterActions,
+    filteredPokemon,
+    filterBaseCollectedStyles,
+    setFilterBaseCollectedStyles,
+    // 後方互換性のための個別エクスポート（段階的移行用）
     selectedField,
     setSelectedField,
     selectedSleepType,
@@ -110,9 +135,6 @@ export const useFilters = (user: User | null, collectedStyles: Set<string>) => {
     setSelectedRarity,
     showUncollectedOnly,
     setShowUncollectedOnly,
-    filterBaseCollectedStyles,
-    setFilterBaseCollectedStyles,
-    filteredPokemon,
     updateFilterPreferences,
     viewMode,
     setViewMode
