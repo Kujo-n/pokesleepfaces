@@ -1,13 +1,12 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import PokemonCard from '@/components/PokemonCard';
 import PokemonGridRow from '@/components/PokemonGridRow';
 import PokemonGridHeader from '@/components/PokemonGridHeader';
 import DataProtectionWarning from '@/components/DataProtectionWarning';
-import HelpModal from '@/components/HelpModal';
-import CollectionStatusModal from '@/components/CollectionStatusModal';
 import FilterPanel from '@/components/FilterPanel';
 import ProgressSummary from '@/components/ProgressSummary';
 import { useSwipeable } from 'react-swipeable';
@@ -16,6 +15,27 @@ import { useCollection } from '@/hooks/useCollection';
 import { useFilters } from '@/hooks/useFilters';
 import { useProgress } from '@/hooks/useProgress';
 import { FilterState } from '@/types/filters';
+
+// モーダルコンポーネントの遅延読み込み
+const HelpModal = dynamic(() => import('@/components/HelpModal'), {
+  loading: () => (
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+      <div className="bg-white p-4 rounded-lg shadow-lg">
+        <div className="animate-spin rounded-full h-8 w-8 border-4 border-blue-500 border-t-transparent mx-auto"></div>
+      </div>
+    </div>
+  )
+});
+
+const CollectionStatusModal = dynamic(() => import('@/components/CollectionStatusModal'), {
+  loading: () => (
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+      <div className="bg-white p-4 rounded-lg shadow-lg">
+        <div className="animate-spin rounded-full h-8 w-8 border-4 border-blue-500 border-t-transparent mx-auto"></div>
+      </div>
+    </div>
+  )
+});
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -27,20 +47,20 @@ export default function Home() {
   const { user } = useAuth();
   const { collectedStyles, toggleStyle, toggleAllPokemonStyles, toggleGlobal, isSyncing } = useCollection(user);
   const {
+    filterValues,
+    filterActions,
     selectedField,
-    setSelectedField,
     selectedSleepType,
     setSelectedSleepType,
     selectedRarity,
     setSelectedRarity,
     showUncollectedOnly,
-    setShowUncollectedOnly,
     filterBaseCollectedStyles,
     setFilterBaseCollectedStyles,
     filteredPokemon,
-    updateFilterPreferences,
     viewMode,
-    setViewMode
+    setViewMode,
+    updateFilterPreferences
   } = useFilters(user, collectedStyles);
 
   const progressData = useProgress(
@@ -148,17 +168,10 @@ export default function Home() {
             {/* Navigation Drawer */}
             <div {...swipeHandlers} className={`fixed top-0 left-0 h-full w-80 bg-white z-50 shadow-lg transform transition-transform duration-300 ease-in-out ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 lg:shadow-none lg:border-r lg:border-gray-200`}>
               <FilterPanel
-                selectedField={selectedField}
-                setSelectedField={setSelectedField}
-                selectedSleepType={selectedSleepType}
-                setSelectedSleepType={setSelectedSleepType}
-                selectedRarity={selectedRarity}
-                setSelectedRarity={setSelectedRarity}
-                showUncollectedOnly={showUncollectedOnly}
-                setShowUncollectedOnly={setShowUncollectedOnly}
+                filterValues={filterValues}
+                filterActions={filterActions}
                 collectedStyles={collectedStyles}
                 setFilterBaseCollectedStyles={setFilterBaseCollectedStyles}
-                updateFilterPreferences={updateFilterPreferences}
                 isBulkActionOpen={isBulkActionOpen}
                 setIsBulkActionOpen={setIsBulkActionOpen}
                 toggleGlobal={(select) => toggleGlobal(filteredPokemon, select, filterState)}
