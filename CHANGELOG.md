@@ -5,7 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.6.0] - 2025-12-22
+## [1.6.0] - 2025-12-29
+
+### Performance
+- **モーダルの遅延読み込み**:
+  - `HelpModal` と `CollectionStatusModal` を `next/dynamic` を使用して遅延読み込みに変更
+  - 初期バンドルサイズを削減し、初回ロード時間を短縮
+  - 読み込み中のプレースホルダー（スピナー）を追加
+
+### Testing
+- **ユニットテストの追加**:
+  - `hooks/useFilters.ts` に対する包括的なテストスイートを作成（24ケース）
+  - 睡眠タイプ、フィールド、レアリティ、未収集フィルタの組み合わせなど、複雑な条件分岐を検証
+
+### Changed
+- **FilterPanelのリファクタリング**:
+  - 17個のPropsを `FilterValues` と `FilterActions` の2つのオブジェクトに集約
+  - `types/filters.ts` に型定義を一元化
+  - コンポーネントの可読性と保守性を向上
+
+
 
 ### Added
 - **グリッド表示モード**:
