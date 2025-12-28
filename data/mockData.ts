@@ -7716,12 +7716,12 @@ export const MOCK_POKEMON: Pokemon[] = [
         "styles": [
             {
                 "id": "p975_ハルクジラ-1",
-                "name": "★1の寝顔",
+                "name": "ゆめですべり寝",
                 "rarity": 1
             },
             {
                 "id": "p975_ハルクジラ-2",
-                "name": "★2の寝顔",
+                "name": "どっしり寝",
                 "rarity": 2
             },
             {
