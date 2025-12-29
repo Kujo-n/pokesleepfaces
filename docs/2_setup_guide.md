@@ -21,6 +21,9 @@ winget install -e --id OpenJS.NodeJS.LTS --accept-source-agreements --accept-pac
 ```powershell
 # 依存関係のインストール
 npm install
+
+# ※ npm installを実行することで、デプロイに必要なツール（Firebase CLI等）もインストールされます。
+
 ```
 
 ### 新規作成時の手順 (参考)

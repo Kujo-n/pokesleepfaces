@@ -24,7 +24,12 @@
 **操作場所**: PC（コマンドライン）
 
 ```bash
+npm install
+# プロジェクトの devDependencies に firebase-tools が含まれているため、
+# npm install を実行すればローカルにインストールされます。
+# グローバルにインストールしてコマンドラインから直接使いたい場合は以下を実行してください（任意）:
 npm install -g firebase-tools
+
 ```
 
 ---
@@ -34,6 +39,10 @@ npm install -g firebase-tools
 **操作場所**: PC（コマンドライン）
 
 ```bash
+# ローカルインストールを使用する場合（推奨）
+npx firebase login
+
+# グローバルインストール済みの場合
 firebase login
 ```
 
