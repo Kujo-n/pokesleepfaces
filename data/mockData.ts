@@ -3777,6 +3777,45 @@ export const MOCK_POKEMON: Pokemon[] = [
         ]
     },
     {
+        "id": "p213_ツボツボ",
+        "dexNumber": 213,
+        "name": "ツボツボ",
+        "type": "むし",
+        "sleepType": "うとうと",
+        "fields": [
+            "ワカクサ本島",
+            "シアンの砂浜",
+            "トープ洞窟",
+            "アンバー渓谷",
+            "ワカクサ本島EX"
+        ],
+        "styles": [
+            {
+                "id": "p213_ツボツボ-1",
+                "name": "★1の寝顔",
+                "rarity": 1
+            },
+            {
+                "id": "p213_ツボツボ-2",
+                "name": "★2の寝顔",
+                "rarity": 2
+            },
+            {
+                "id": "p213_ツボツボ-3",
+                "name": "★3の寝顔",
+                "rarity": 3,
+                "excludeFromFields": [
+                    "ワカクサ本島"
+                ]
+            },
+            {
+                "id": "p213_ツボツボ-4",
+                "name": "★4の寝顔",
+                "rarity": 4
+            }
+        ]
+    },
+    {
         "id": "p214_ヘラクロス",
         "dexNumber": 214,
         "name": "ヘラクロス",
