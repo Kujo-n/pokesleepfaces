@@ -3792,17 +3792,17 @@ export const MOCK_POKEMON: Pokemon[] = [
         "styles": [
             {
                 "id": "p213_ツボツボ-1",
-                "name": "★1の寝顔",
+                "name": "からにこもる寝",
                 "rarity": 1
             },
             {
                 "id": "p213_ツボツボ-2",
-                "name": "★2の寝顔",
+                "name": "こもらない寝",
                 "rarity": 2
             },
             {
                 "id": "p213_ツボツボ-3",
-                "name": "★3の寝顔",
+                "name": "ジュースこぼれ寝",
                 "rarity": 3,
                 "excludeFromFields": [
                     "ワカクサ本島"
@@ -3810,7 +3810,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             },
             {
                 "id": "p213_ツボツボ-4",
-                "name": "★4の寝顔",
+                "name": "おなかのうえ寝",
                 "rarity": 4
             }
         ]
@@ -7068,7 +7068,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             },
             {
                 "id": "p777_トゲデマル-3",
-                "name": "★3の寝顔",
+                "name": "とげさかだち寝",
                 "rarity": 3,
                 "excludeFromFields": [
                     "ワカクサ本島"
