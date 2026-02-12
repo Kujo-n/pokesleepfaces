@@ -6959,17 +6959,17 @@ export const MOCK_POKEMON: Pokemon[] = [
         "styles": [
             {
                 "id": "p742_アブリー-1",
-                "name": "★1の寝顔",
+                "name": "ぱたぱた寝",
                 "rarity": 1
             },
             {
                 "id": "p742_アブリー-2",
-                "name": "★2の寝顔",
+                "name": "はなさがし寝",
                 "rarity": 2
             },
             {
                 "id": "p742_アブリー-3",
-                "name": "★3の寝顔",
+                "name": "みつあつめ寝",
                 "rarity": 3,
                 "excludeFromFields": [
                     "ワカクサ本島"
@@ -6998,12 +6998,12 @@ export const MOCK_POKEMON: Pokemon[] = [
         "styles": [
             {
                 "id": "p743_アブリボン-1",
-                "name": "★1の寝顔",
+                "name": "ぱたぱた寝",
                 "rarity": 1
             },
             {
                 "id": "p743_アブリボン-2",
-                "name": "★2の寝顔",
+                "name": "ゆらゆら寝",
                 "rarity": 2
             },
             {
