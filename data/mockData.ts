@@ -7008,7 +7008,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             },
             {
                 "id": "p743_アブリボン-3",
-                "name": "★3の寝顔",
+                "name": "かふんだんご寝",
                 "rarity": 3,
                 "excludeFromFields": [
                     "ワカクサ本島"
