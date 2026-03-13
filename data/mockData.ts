@@ -2684,6 +2684,23 @@ export const MOCK_POKEMON: Pokemon[] = [
         ]
     },
     {
+        "id": "p151_ミュウ",
+        "dexNumber": 151,
+        "name": "ミュウ",
+        "type": "エスパー",
+        "sleepType": "すやすや",
+        "fields": [
+            "イベント限定"
+        ],
+        "styles": [
+            {
+                "id": "p151_ミュウ-1",
+                "name": "ふわふわ寝",
+                "rarity": 1
+            }
+        ]
+    },
+    {
         "id": "p152_チコリータ",
         "dexNumber": 152,
         "name": "チコリータ",
