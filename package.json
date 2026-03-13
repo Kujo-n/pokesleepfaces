@@ -15,6 +15,8 @@
     "test:coverage": "jest --coverage",
     "deploy:staging": "cross-env NEXT_PUBLIC_ENV=staging npm run build && firebase hosting:channel:deploy staging",
     "deploy:prod": "cross-env NEXT_PUBLIC_ENV=production npm run build && firebase deploy --only hosting",
+    "release:staging": "npm run update:data && npm run deploy:staging",
+    "release:prod": "npm run update:data && npm run deploy:prod",
     "copy:user": "node scripts/copy-user-data.js"
   },
   "dependencies": {
