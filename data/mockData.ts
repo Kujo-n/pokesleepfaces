@@ -6853,17 +6853,17 @@ export const MOCK_POKEMON: Pokemon[] = [
         "styles": [
             {
                 "id": "p714_オンバット-1",
-                "name": "★1寝顔",
+                "name": "はねやすめ寝",
                 "rarity": 1
             },
             {
                 "id": "p714_オンバット-2",
-                "name": "★2寝顔",
+                "name": "おおあくび寝",
                 "rarity": 2
             },
             {
                 "id": "p714_オンバット-3",
-                "name": "★3寝顔",
+                "name": "エコロケーション寝",
                 "rarity": 3,
                 "excludeFromFields": [
                     "ワカクサ本島"
@@ -6871,15 +6871,15 @@ export const MOCK_POKEMON: Pokemon[] = [
             },
             {
                 "id": "p714_オンバット-4",
-                "name": "★4寝顔",
+                "name": "おなかのうえ寝",
                 "rarity": 4
             }
         ]
     },
     {
-        "id": "p715_オズバーン",
+        "id": "p715_オンバーン",
         "dexNumber": 715,
-        "name": "オズバーン",
+        "name": "オンバーン",
         "type": "ドラゴン",
         "sleepType": "うとうと",
         "fields": [
@@ -6890,26 +6890,26 @@ export const MOCK_POKEMON: Pokemon[] = [
         ],
         "styles": [
             {
-                "id": "p715_オズバーン-1",
-                "name": "★1寝顔",
+                "id": "p715_オンバーン-1",
+                "name": "みみふるわせ寝",
                 "rarity": 1
             },
             {
-                "id": "p715_オズバーン-2",
-                "name": "★2寝顔",
+                "id": "p715_オンバーン-2",
+                "name": "おおあくび寝",
                 "rarity": 2
             },
             {
-                "id": "p715_オズバーン-3",
-                "name": "★3寝顔",
+                "id": "p715_オンバーン-3",
+                "name": "ばくおんぱ寝",
                 "rarity": 3,
                 "excludeFromFields": [
                     "ワカクサ本島"
                 ]
             },
             {
-                "id": "p715_オズバーン-4",
-                "name": "★4寝顔",
+                "id": "p715_オンバーン-4",
+                "name": "おなかのうえ寝",
                 "rarity": 4
             }
         ]
