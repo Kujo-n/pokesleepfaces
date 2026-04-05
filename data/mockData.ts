@@ -5661,6 +5661,36 @@ export const MOCK_POKEMON: Pokemon[] = [
         ]
     },
     {
+        "id": "p380_ラティアス",
+        "dexNumber": 380,
+        "name": "ラティアス",
+        "type": "ドラゴン",
+        "sleepType": "うとうと",
+        "fields": [
+            "ワカクサ本島",
+            "ラピスラズリ湖畔",
+            "アンバー渓谷",
+            "ワカクサ本島EX"
+        ],
+        "styles": [
+            {
+                "id": "p380_ラティアス-1",
+                "name": "★1寝顔",
+                "rarity": 1
+            },
+            {
+                "id": "p380_ラティアス-2",
+                "name": "★2寝顔",
+                "rarity": 2
+            },
+            {
+                "id": "p380_ラティアス-3",
+                "name": "★3寝顔",
+                "rarity": 3
+            }
+        ]
+    },
+    {
         "id": "p403_コリンク",
         "dexNumber": 403,
         "name": "コリンク",
