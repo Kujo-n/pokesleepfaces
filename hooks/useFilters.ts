@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import { User } from 'firebase/auth';
-import { MOCK_POKEMON } from '@/data/mockData';
+import { usePokemonData } from '@/hooks/usePokemonData';
 import { saveFilterPreferences, loadFilterPreferences } from '@/lib/db';
 import { SleepType, ViewMode, FilterValues, FilterActions } from '@/types/filters';
 
@@ -10,6 +10,7 @@ import { SleepType, ViewMode, FilterValues, FilterActions } from '@/types/filter
  * フィルタ状態と操作を管理するカスタムフック
  */
 export const useFilters = (user: User | null, collectedStyles: Set<string>) => {
+  const { pokemonList } = usePokemonData();
   const [selectedField, setSelectedField] = useState<string>('all');
   const [selectedSleepType, setSelectedSleepType] = useState<SleepType>('all');
   const [selectedRarity, setSelectedRarity] = useState<string>('all');
@@ -59,7 +60,7 @@ export const useFilters = (user: User | null, collectedStyles: Set<string>) => {
 
   // フィルタリング処理
   const filteredPokemon = useMemo(() => {
-    return MOCK_POKEMON.filter(p => {
+    return pokemonList.filter(p => {
       // 1. 睡眠タイプによるフィルタ（ポケモンレベル）- 文字列比較で低コストかつ66%除外できるため最優先
       if (selectedSleepType !== 'all' && p.sleepType !== selectedSleepType) {
         return false;
@@ -98,7 +99,7 @@ export const useFilters = (user: User | null, collectedStyles: Set<string>) => {
 
       return true;
     });
-  }, [selectedSleepType, selectedField, selectedRarity, showUncollectedOnly, filterBaseCollectedStyles]);
+  }, [pokemonList, selectedSleepType, selectedField, selectedRarity, showUncollectedOnly, filterBaseCollectedStyles]);
 
   // フィルタ値をまとめたオブジェクト
   const filterValues: FilterValues = useMemo(() => ({

@@ -1,6 +1,6 @@
 'use client';
 
-import { FIELD_NAMES } from '@/data/mockData';
+import { usePokemonData } from '@/hooks/usePokemonData';
 import AuthButton from '@/components/AuthButton';
 import { FilterValues, FilterActions } from '@/types/filters';
 
@@ -44,6 +44,8 @@ export default function FilterPanel({
     setShowUncollectedOnly,
     updateFilterPreferences
   } = filterActions;
+
+  const { fieldNames } = usePokemonData();
 
   return (
     <div className="p-4 flex flex-col gap-6 h-full overflow-y-auto">
@@ -117,7 +119,7 @@ export default function FilterPanel({
           >
             全て
           </button>
-          {FIELD_NAMES.map(field => (
+          {fieldNames.map(field => (
             <button
               key={field}
               onClick={() => {

@@ -2,7 +2,8 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { User } from 'firebase/auth';
-import { Pokemon, MOCK_POKEMON } from '@/data/mockData';
+import { Pokemon } from '@/data/mockData';
+import { usePokemonData } from '@/hooks/usePokemonData';
 import { toggleSleepStyle, toggleAllStyles, toggleMultiplePokemonStyles, subscribeToUserCollection, checkIfNewUser } from '@/lib/db';
 import { saveToLocalStorage, loadFromLocalStorage, migrateToFirestore } from '@/lib/localStorage';
 import { useToast } from '@/components/providers/ToastProvider';
@@ -13,6 +14,7 @@ import { FilterState } from '@/types/filters';
  * コレクション状態とCRUD操作を管理するカスタムフック
  */
 export const useCollection = (user: User | null) => {
+  const { pokemonList } = usePokemonData();
   const [collectedStyles, setCollectedStyles] = useState<Set<string>>(new Set());
   const [isInitialized, setIsInitialized] = useState(false);
   const [isSyncing, setIsSyncing] = useState(false); // Firestore同期中フラグ
@@ -44,7 +46,7 @@ export const useCollection = (user: User | null) => {
 
       const localData = loadFromLocalStorage();
       if (localData.size > 0) {
-        await migrateToFirestore(user.uid, localData, toggleSleepStyle, MOCK_POKEMON, checkIfNewUser);
+        await migrateToFirestore(user.uid, localData, toggleSleepStyle, pokemonList, checkIfNewUser);
       }
 
       const unsubscribe = subscribeToUserCollection(user.uid, (newCollected) => {
@@ -95,7 +97,7 @@ export const useCollection = (user: User | null) => {
 
     if (currentUser) {
       const isCollected = collectedStyles.has(styleId);
-      const pokemon = MOCK_POKEMON.find(p => p.styles.some(s => s.id === styleId));
+      const pokemon = pokemonList.find(p => p.styles.some(s => s.id === styleId));
       if (pokemon) {
         try {
           await toggleSleepStyle(currentUser.uid, pokemon.id, styleId, !isCollected);
@@ -106,7 +108,7 @@ export const useCollection = (user: User | null) => {
       }
     }
     // localStorage save is handled by useEffect
-  }, [collectedStyles, showToast]);
+  }, [pokemonList, collectedStyles, showToast]);
 
   // ポケモン単位での一括トグル
   const toggleAllPokemonStyles = useCallback(async (pokemon: Pokemon, select: boolean, filters: FilterState) => {

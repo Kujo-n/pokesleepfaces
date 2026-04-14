@@ -12,6 +12,25 @@ service cloud.firestore {
       return isAuthenticated() && request.auth.uid == userId;
     }
 
+    // Helper function to check if user is an admin
+    // 管理者のFirebase Auth UIDをここに追加する
+    function isAdmin() {
+      return isAuthenticated() && request.auth.uid in [
+        "qiUc5eOanjZyssnFlBwnnu5GMS63"
+      ];
+    }
+
+    // Pokemon Master Data (公開読み取り, 管理者のみ書き込み)
+    match /master/{document=**} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Staging Master Data
+    match /master_staging/{document=**} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
     // Pokemon Master Data (Read-only for authenticated users, Write denied for client)
     match /pokemon/{pokemonId} {
       allow read: if true; // Public read for now, or restrict to isAuthenticated()

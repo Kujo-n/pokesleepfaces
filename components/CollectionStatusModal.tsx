@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useMemo } from 'react';
-import { MOCK_POKEMON, FIELD_NAMES } from '@/data/mockData';
+import { usePokemonData } from '@/hooks/usePokemonData';
 import CollectionStatusItem from './CollectionStatusItem';
 
 interface CollectionStatusModalProps {
@@ -28,6 +28,7 @@ type DetailedStats = {
 };
 
 export default function CollectionStatusModal({ isOpen, onClose, collectedStyles }: CollectionStatusModalProps) {
+    const { pokemonList, fieldNames } = usePokemonData();
     useEffect(() => {
         if (isOpen) {
             document.body.style.overflow = 'hidden';
@@ -52,7 +53,7 @@ export default function CollectionStatusModal({ isOpen, onClose, collectedStyles
                 rarity4: { total: 0, collected: 0, percentage: 0 },
             };
 
-            MOCK_POKEMON.forEach(pokemon => {
+            pokemonList.forEach(pokemon => {
                 // Determine if pokemon should be included based on field filter
                 if (fieldFilter && !pokemon.fields.includes(fieldFilter)) {
                     return;
@@ -117,7 +118,7 @@ export default function CollectionStatusModal({ isOpen, onClose, collectedStyles
         };
 
         const overall = calculateStats();
-        const fields = FIELD_NAMES.map(field => ({
+        const fields = fieldNames.map(field => ({
             name: field,
             stats: calculateStats(field)
         }));
