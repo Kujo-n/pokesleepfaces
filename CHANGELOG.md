@@ -5,9 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.6.0] - 2025-12-29
+## [1.7.0] - 2026-04-14
 
-### Performance
+### Added
+- **マスターデータのFirestore完全移行と管理画面 (CMS)**:
+  - 従来のGoogle Sheets＆自動生成ファイルによる運用を廃止し、Firestore上でマスターデータを一元管理するアーキテクチャへと刷新
+  - アプリ内に専用の管理画面（`/admin`）を実装（要管理者UID権限）
+  - ブラウザから直接ポケモン・フィールドデータ（文字色などのUIも調整済み）の追加・編集・削除が可能に
+- **フィールド一括設定 (Bulk Field Assignment)**:
+  - 新規フィールド追加時の設定工数を激減させるための一括設定UIを管理画面に新設
+  - 追加するフィールドに対して、ポケモンのチェックをONにすれば全寝顔が自動追加状態となり、特定の「星の寝顔だけ出ない」場合もチェックを外すだけで直感的に構成可能
+  - UI上で数百のチェックボックスによる描画遅延を防ぐため `React.memo` を利用したパフォーマンス最適化（部分再レンダリング）を適用
+
+### Changed
+- **ドキュメントの再編**:
+  - `docs/7_data-update_guide.md`: 管理画面 (CMS) 操作に対応する形へゼロベースから完全書き換え（初期データシードの投入手順等も記載）
+  - `docs/3_architecture.md`: Context・Firestoreを中心とした構成図・シーケンス図への更新
+  - `docs/1_folder-structure.md`: admin ディレクトリの説明を追加
+
+## [1.6.0] - 2025-12-29### Performance
 - **モーダルの遅延読み込み**:
   - `HelpModal` と `CollectionStatusModal` を `next/dynamic` を使用して遅延読み込みに変更
   - 初期バンドルサイズを削減し、初回ロード時間を短縮

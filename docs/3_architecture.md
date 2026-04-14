@@ -61,11 +61,13 @@ graph TB
          useCollection[useCollection]
          useFilters[useFilters]
          useProgress[useProgress]
+         usePokemonData[usePokemonData]
      end
      
      subgraph "Data Layer"
-         MockData[mockData.ts]
+         MockData["mockData.ts (Fallback)"]
          DB[lib/db.ts]
+         AdminDB["lib/adminDb.ts (Admin)"]
          LocalStore[lib/localStorage.ts]
          PokemonUtils[lib/pokemonUtils.ts]
      end
@@ -77,6 +79,7 @@ graph TB
      Page --> useCollection
      Page --> useFilters
      Page --> useProgress
+     Page --> usePokemonData
      
      Page --> AuthBtn
      Page --> PokemonCard
@@ -171,6 +174,10 @@ graph TB
         Preferences[preferences/]
         FiltersDoc["filters"]
         FilterData["selectedField\u003cbr/\u003eselectedSleepType\u003cbr/\u003eshowUncollectedOnly\u003cbr/\u003eviewMode"]
+        
+        Master["master/ (or master_staging/)"]
+        MasterFields["fields"]
+        MasterPokemon["pokemon (collection)"]
     end
     
     Users --> UserDoc
@@ -180,6 +187,8 @@ graph TB
     PokemonDoc --> Data
     Preferences --> FiltersDoc
     FiltersDoc --> FilterData
+    Master --> MasterFields
+    Master --> MasterPokemon
     
     style Users fill:#ff6f00,color:#fff
     style Collections fill:#ff6f00,color:#fff
@@ -275,6 +284,11 @@ graph TB
     style Deny fill:#ea4335,color:#fff
 ```
 
+### マスターデータ向けのセキュリティ
+- **条件**: `isAdmin()` 関数により、UIDが事前に設定された管理者リストに含まれているかを確認
+- **読取**: 認証不要（全ユーザーがマスターデータを取得可能）
+- **書込**: 管理者のみ許可
+
 ## 技術スタック
 
 ```mermaid
@@ -346,6 +360,7 @@ graph TB
      useCollection --> Page
      useFilters --> Page
      useProgress --> Page
+     usePokemonData --> Page
      
      Page -->|Props| FilterPanel
      Page -->|Props| PokemonCard
@@ -356,6 +371,24 @@ graph TB
      
      style useCollection fill:#34a853,color:#fff
      style Page fill:#4285f4,color:#fff
+ ```
+
+ ## 管理画面アーキテクチャ (CMS)
+ 
+ ```mermaid
+ sequenceDiagram
+    participant Admin as 管理者
+    participant UI as app/admin/page.tsx
+    participant DB as lib/adminDb.ts
+    participant FS as Firestore (master)
+    
+    Admin->>UI: 「初期データ投入」 or 編集保存
+    UI->>DB: savePokemon() または saveFieldNames()
+    DB->>FS: Firestoreへ書き込み
+    FS-->>DB: 成功
+    DB-->>UI: 成功通知
+    UI->>UI: 画面リロード → usePokemonData再フェッチ
+    UI-->>Admin: 最新状態を表示
  ```
 
  ## エラーハンドリング設計

@@ -1,6 +1,6 @@
 {
   "name": "sleepingfaceschecker",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "private": true,
   "license": "CC-BY-NC-4.0",
   "scripts": {
@@ -9,14 +9,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "update:data": "node scripts/fetch-sheets-to-ts.js",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
+    "seed:firestore": "node scripts/seed-firestore.js",
+    "seed:firestore:staging": "cross-env FIRESTORE_ENV=staging node scripts/seed-firestore.js",
     "deploy:staging": "cross-env NEXT_PUBLIC_ENV=staging npm run build && firebase hosting:channel:deploy staging",
     "deploy:prod": "cross-env NEXT_PUBLIC_ENV=production npm run build && firebase deploy --only hosting",
-    "release:staging": "npm run update:data && npm run deploy:staging",
-    "release:prod": "npm run update:data && npm run deploy:prod",
     "copy:user": "node scripts/copy-user-data.js"
   },
   "dependencies": {
@@ -39,6 +38,7 @@
     "cross-env": "^10.1.0",
     "eslint": "^9",
     "eslint-config-next": "16.0.3",
+    "firebase-admin": "^13.8.0",
     "firebase-tools": "^15.1.0",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
