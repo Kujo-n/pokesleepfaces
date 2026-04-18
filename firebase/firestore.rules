@@ -16,7 +16,8 @@ service cloud.firestore {
     // 管理者のFirebase Auth UIDをここに追加する
     function isAdmin() {
       return isAuthenticated() && request.auth.uid in [
-        "qiUc5eOanjZyssnFlBwnnu5GMS63"
+        "qiUc5eOanjZyssnFlBwnnu5GMS63",
+        "qmv00Ntm4ZaKALbU54z0TlcvijP2"
       ];
     }
 
