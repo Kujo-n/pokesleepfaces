@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, createContext, useContext } from 'react';
+import { useState, useEffect, useCallback, createContext, useContext } from 'react';
 import { db } from '@/firebase/config';
 import { collection, getDocs, doc, getDoc, Firestore } from 'firebase/firestore';
 import { MOCK_POKEMON, FIELD_NAMES, Pokemon } from '@/data/mockData';
@@ -19,6 +19,7 @@ type PokemonDataContextType = {
   isLoading: boolean;
   error: string | null;
   isUsingFallback: boolean;
+  reload: () => void;
 };
 
 /**
@@ -30,6 +31,7 @@ const defaultValue: PokemonDataContextType = {
   isLoading: false,
   error: null,
   isUsingFallback: true,
+  reload: () => {},
 };
 
 export const PokemonDataContext = createContext<PokemonDataContextType>(defaultValue);
@@ -53,6 +55,11 @@ export const usePokemonDataLoader = (): PokemonDataContextType => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [isUsingFallback, setIsUsingFallback] = useState(true);
+  const [reloadKey, setReloadKey] = useState(0);
+
+  const reload = useCallback(() => {
+    setReloadKey((k) => k + 1);
+  }, []);
 
   useEffect(() => {
     const loadData = async () => {
@@ -61,6 +68,8 @@ export const usePokemonDataLoader = (): PokemonDataContextType => {
         setIsLoading(false);
         return;
       }
+
+      setIsLoading(true);
 
       try {
         // フィールド名とポケモンデータを並列で取得
@@ -77,6 +86,8 @@ export const usePokemonDataLoader = (): PokemonDataContextType => {
           setPokemonList(pokemonResult);
           // データが1件以上あればフォールバックではないと判定
           setIsUsingFallback(false);
+        } else {
+          setIsUsingFallback(true);
         }
       } catch (e) {
         const message = e instanceof Error ? e.message : 'マスターデータの読み込みに失敗しました';
@@ -89,9 +100,9 @@ export const usePokemonDataLoader = (): PokemonDataContextType => {
     };
 
     loadData();
-  }, []);
+  }, [reloadKey]);
 
-  return { pokemonList, fieldNames, isLoading, error, isUsingFallback };
+  return { pokemonList, fieldNames, isLoading, error, isUsingFallback, reload };
 };
 
 /**

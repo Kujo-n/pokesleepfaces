@@ -31,20 +31,17 @@ type Tab = 'pokemon' | 'fields' | 'bulk';
  */
 export default function AdminPage() {
     const { user } = useAuth();
-    const { pokemonList, fieldNames, isLoading, isUsingFallback } = usePokemonData();
+    const { pokemonList, fieldNames, isLoading, isUsingFallback, reload } = usePokemonData();
     const [activeTab, setActiveTab] = useState<Tab>('pokemon');
     const [refreshKey, setRefreshKey] = useState(0);
     const [isSeeding, setIsSeeding] = useState(false);
     const [seedProgress, setSeedProgress] = useState('');
 
-    // データ更新をトリガー（保存後にリロード）
+    // データ更新をトリガー（保存後にContextを再取得）
     const handleSaved = useCallback(() => {
         setRefreshKey(prev => prev + 1);
-        // 少し待ってからページをリロードしてContextを更新
-        setTimeout(() => {
-            window.location.reload();
-        }, 500);
-    }, []);
+        reload();
+    }, [reload]);
 
     const handleSeedData = useCallback(async () => {
         if (!confirm('mockData.ts から初期データを投入しますか？\n既存のデータがある場合、上書きされる可能性があります。')) {
@@ -70,16 +67,14 @@ export default function AdminPage() {
             }
             
             setSeedProgress('完了しました！');
-            setTimeout(() => {
-                window.location.reload();
-            }, 1500);
+            reload();
         } catch (e) {
             console.error(e);
             alert('データ投入中にエラーが発生しました');
         } finally {
             setIsSeeding(false);
         }
-    }, []);
+    }, [reload]);
 
     // 認証チェック
     const isAdmin = user && ADMIN_UIDS.includes(user.uid);
