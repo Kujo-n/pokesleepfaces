@@ -29,10 +29,10 @@ function createEmptyPokemon(): Partial<Pokemon> {
         sleepType: 'うとうと',
         fields: [],
         styles: [
-            { id: '', rarity: 1, name: '' },
-            { id: '', rarity: 2, name: '' },
-            { id: '', rarity: 3, name: '' },
-            { id: '', rarity: 4, name: '' }
+            { id: '', rarity: 1, name: '星1寝' },
+            { id: '', rarity: 2, name: '星2寝' },
+            { id: '', rarity: 3, name: '星3寝' },
+            { id: '', rarity: 4, name: 'おなかのうえ寝' }
         ]
     };
 }
