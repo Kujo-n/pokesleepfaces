@@ -48,7 +48,6 @@ export default function PokemonEditor({ pokemonList, fieldNames, onSaved }: Prop
     const [editingPokemon, setEditingPokemon] = useState<Partial<Pokemon> | null>(null);
     const [isCreating, setIsCreating] = useState(false);
     const [isSaving, setIsSaving] = useState(false);
-    const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
     const [error, setError] = useState<string | null>(null);
     const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
@@ -206,11 +205,11 @@ export default function PokemonEditor({ pokemonList, fieldNames, onSaved }: Prop
     }, [editingPokemon, onSaved]);
 
     // 削除処理
-    const handleDelete = useCallback(async (pokemonId: string) => {
+    const handleDelete = useCallback(async (pokemonId: string, pokemonName: string) => {
+        if (!confirm(`本当に「${pokemonName}」を削除しますか？`)) return;
         try {
             await deletePokemon(pokemonId);
             setSuccessMessage('ポケモンを削除しました');
-            setDeleteConfirm(null);
             setEditingPokemon(null);
             onSaved();
         } catch (e) {
@@ -441,7 +440,7 @@ export default function PokemonEditor({ pokemonList, fieldNames, onSaved }: Prop
                                 寝顔{pokemon.styles.length}種
                             </span>
                         </div>
-                        <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <div className="flex gap-1">
                             <button
                                 onClick={() => handleStartEdit(pokemon)}
                                 className="px-3 py-1 text-xs font-medium text-blue-600 hover:bg-blue-50 rounded transition-colors"
@@ -449,30 +448,13 @@ export default function PokemonEditor({ pokemonList, fieldNames, onSaved }: Prop
                             >
                                 編集
                             </button>
-                            {deleteConfirm === pokemon.id ? (
-                                <div className="flex gap-1">
-                                    <button
-                                        onClick={() => handleDelete(pokemon.id)}
-                                        className="px-3 py-1 text-xs font-medium text-white bg-red-600 hover:bg-red-700 rounded transition-colors"
-                                    >
-                                        削除する
-                                    </button>
-                                    <button
-                                        onClick={() => setDeleteConfirm(null)}
-                                        className="px-3 py-1 text-xs font-medium text-gray-500 hover:bg-gray-100 rounded transition-colors"
-                                    >
-                                        取消
-                                    </button>
-                                </div>
-                            ) : (
-                                <button
-                                    onClick={() => setDeleteConfirm(pokemon.id)}
-                                    className="px-3 py-1 text-xs font-medium text-red-600 hover:bg-red-50 rounded transition-colors"
-                                    aria-label={`${pokemon.name}を削除`}
-                                >
-                                    削除
-                                </button>
-                            )}
+                            <button
+                                onClick={() => handleDelete(pokemon.id, pokemon.name)}
+                                className="px-3 py-1 text-xs font-medium text-red-600 hover:bg-red-50 rounded transition-colors"
+                                aria-label={`${pokemon.name}を削除`}
+                            >
+                                削除
+                            </button>
                         </div>
                     </div>
                 ))}
