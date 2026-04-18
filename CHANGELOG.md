@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.1] - 2026-04-18
+
+### Added
+- **ポケモン新規追加時の寝顔スタイル初期値**:
+  - 管理画面でポケモンを追加する際、レアリティ1〜3の名前欄に「星1寝」「星2寝」「星3寝」を既定で入力
+  - レアリティ4は「おなかのうえ寝」を既定で入力
+
+### Fixed
+- 管理画面で編集を保存するとURLが `/admin` のままポケモン一覧画面に遷移する不具合を修正
+- 管理画面で編集を保存するとトップ画面に遷移してしまう動作を修正
+
+### Changed
+- 削除時の確認UIをダイアログコンポーネントに統一（`window.confirm` からの置き換え）
+
 ## [1.7.0] - 2026-04-14
 
 ### Added
