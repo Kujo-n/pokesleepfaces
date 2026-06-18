@@ -77,3 +77,6 @@ ticket/
 
 # Review documents
 Review/V1.2.0/
+
+# Temporary files
+/temp

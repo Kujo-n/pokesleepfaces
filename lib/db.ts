@@ -131,7 +131,7 @@ export const checkIfNewUser = async (userId: string): Promise<boolean> => {
 export interface FilterPreferences {
     selectedField: string;
     selectedSleepType: string;
-    selectedRarity: string; // 'all' | '1' | '2' | '3' | '4'
+    selectedRarity: string; // 'all' | '1' | '2' | '3' | '4' | '5'
     showUncollectedOnly: boolean;
     viewMode?: 'card' | 'grid'; // 表示モード
 }

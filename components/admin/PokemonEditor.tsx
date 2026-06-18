@@ -3,6 +3,7 @@
 import { useState, useCallback, useMemo } from 'react';
 import { Pokemon, SleepStyle } from '@/data/mockData';
 import { savePokemon, deletePokemon, generatePokemonId, generateStyleId, validatePokemon } from '@/lib/adminDb';
+import { RARITY_LEVELS } from '@/lib/rarity';
 
 /** ポケモンタイプの選択肢 */
 const TYPE_OPTIONS = [
@@ -349,7 +350,7 @@ export default function PokemonEditor({ pokemonList, fieldNames, onSaved }: Prop
                                             className="px-2 py-1 border border-gray-300 rounded text-sm text-gray-900 bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
                                             aria-label={`スタイル${index + 1}のレアリティ`}
                                         >
-                                            {[1, 2, 3, 4].map(r => (
+                                            {RARITY_LEVELS.map(r => (
                                                 <option key={r} value={r}>★{r}</option>
                                             ))}
                                         </select>

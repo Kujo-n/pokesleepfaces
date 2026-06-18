@@ -3,6 +3,7 @@
 import { usePokemonData } from '@/hooks/usePokemonData';
 import AuthButton from '@/components/AuthButton';
 import { FilterValues, FilterActions } from '@/types/filters';
+import { RARITY_LEVELS } from '@/lib/rarity';
 
 type Props = {
   // 構造化されたフィルタProps（17個→4グループに削減）
@@ -224,7 +225,7 @@ export default function FilterPanel({
           >
             全て
           </button>
-          {['1', '2', '3', '4'].map((rarity) => (
+          {RARITY_LEVELS.map(String).map((rarity) => (
             <button
               key={rarity}
               onClick={() => {

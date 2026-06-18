@@ -3,6 +3,7 @@
 import { memo } from 'react';
 import { Pokemon } from '@/data/mockData';
 import { filterPokemonStyles, getSleepTypeColor, groupStylesByRarity } from '@/lib/pokemonUtils';
+import { RARITY_LEVELS } from '@/lib/rarity';
 
 type Props = {
     pokemon: Pokemon;
@@ -34,7 +35,10 @@ function PokemonGridRow({
     const stylesByRarity = groupStylesByRarity(displayStyles);
 
     return (
-        <div className="grid grid-cols-[auto_repeat(4,minmax(32px,60px))] gap-0 bg-white border-b border-gray-200 items-center">
+        <div
+            className="grid gap-0 bg-white border-b border-gray-200 items-center"
+            style={{ gridTemplateColumns: `auto repeat(${RARITY_LEVELS.length}, minmax(32px, 60px))` }}
+        >
             {/* ポケモン名セル */}
             <div className="flex flex-col p-2 border-r border-gray-100 min-w-0">
                 <div className="flex items-center gap-1">
@@ -46,8 +50,8 @@ function PokemonGridRow({
                 <span className="font-medium text-sm text-gray-900 truncate">{pokemon.name}</span>
             </div>
 
-            {/* レアリティ1〜4のセル */}
-            {[1, 2, 3, 4].map((rarity) => {
+            {/* レアリティ別のセル */}
+            {RARITY_LEVELS.map((rarity) => {
                 const styles = stylesByRarity.get(rarity) || [];
                 const hasMultiple = styles.length > 1;
                 return (

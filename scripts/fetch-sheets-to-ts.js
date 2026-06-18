@@ -264,7 +264,7 @@ function generateTypeScriptCode(fields, pokemon) {
     return `export type SleepStyle = {
     id: string;
     name: string;
-    rarity: number; // 1-4 stars
+    rarity: number; // 1-5 stars
     excludeFromFields?: string[]; // ポケモンfieldsから除外するフィールド（省略時は全fields出現）
 };
 

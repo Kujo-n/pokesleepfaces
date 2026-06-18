@@ -5,6 +5,7 @@
 import { db } from '@/firebase/config';
 import { doc, setDoc, deleteDoc, Firestore, serverTimestamp } from 'firebase/firestore';
 import { Pokemon } from '@/data/mockData';
+import { MIN_RARITY, MAX_RARITY } from '@/lib/rarity';
 
 // 環境に応じたマスターコレクション名
 const ENV = process.env.NEXT_PUBLIC_ENV || 'production';
@@ -41,8 +42,8 @@ export function validatePokemon(pokemon: Partial<Pokemon>): string[] {
         if (!style.name || style.name.trim() === '') {
             errors.push(`スタイル${index + 1}: 名前は必須です`);
         }
-        if (!style.rarity || style.rarity < 1 || style.rarity > 4) {
-            errors.push(`スタイル${index + 1}: レアリティは1〜4の範囲で指定してください`);
+        if (!style.rarity || style.rarity < MIN_RARITY || style.rarity > MAX_RARITY) {
+            errors.push(`スタイル${index + 1}: レアリティは${MIN_RARITY}〜${MAX_RARITY}の範囲で指定してください`);
         }
     });
 

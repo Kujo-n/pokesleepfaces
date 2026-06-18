@@ -1,4 +1,5 @@
 import { Pokemon, SleepStyle } from '@/data/mockData';
+import { RARITY_LEVELS } from '@/lib/rarity';
 
 /**
  * フィルタリングオプション
@@ -58,7 +59,7 @@ export function getSleepTypeColor(type: string, withBorder = false): string {
  */
 export function groupStylesByRarity(styles: SleepStyle[]): Map<number, SleepStyle[]> {
     const map = new Map<number, SleepStyle[]>();
-    for (let r = 1; r <= 4; r++) {
+    for (const r of RARITY_LEVELS) {
         map.set(r, styles.filter(s => s.rarity === r));
     }
     return map;
