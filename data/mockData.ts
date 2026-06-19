@@ -762,6 +762,82 @@ export const MOCK_POKEMON: Pokemon[] = [
         ]
     },
     {
+        "id": "p27_サンド",
+        "dexNumber": 27,
+        "name": "サンド",
+        "type": "じめん",
+        "sleepType": "ぐっすり",
+        "fields": [
+            "ワカクサ本島",
+            "トープ洞窟",
+            "アンバー渓谷",
+            "ワカクサ本島EX"
+        ],
+        "styles": [
+            {
+                "id": "p27_サンド-1",
+                "name": "おなかだし寝",
+                "rarity": 1
+            },
+            {
+                "id": "p27_サンド-2",
+                "name": "こっくり寝",
+                "rarity": 2
+            },
+            {
+                "id": "p27_サンド-3",
+                "name": "つちうまり寝",
+                "rarity": 3,
+                "excludeFromFields": [
+                    "ワカクサ本島"
+                ]
+            },
+            {
+                "id": "p27_サンド-4",
+                "name": "おなかのうえ寝",
+                "rarity": 4
+            }
+        ]
+    },
+    {
+        "id": "p28_サンドパン",
+        "dexNumber": 28,
+        "name": "サンドパン",
+        "type": "じめん",
+        "sleepType": "ぐっすり",
+        "fields": [
+            "ワカクサ本島",
+            "トープ洞窟",
+            "アンバー渓谷",
+            "ワカクサ本島EX"
+        ],
+        "styles": [
+            {
+                "id": "p28_サンドパン-1",
+                "name": "かおごしごし寝",
+                "rarity": 1,
+                "excludeFromFields": [
+                    "ワカクサ本島"
+                ]
+            },
+            {
+                "id": "p28_サンドパン-2",
+                "name": "こっくり寝",
+                "rarity": 2
+            },
+            {
+                "id": "p28_サンドパン-3",
+                "name": "つちうまり寝",
+                "rarity": 3
+            },
+            {
+                "id": "p28_サンドパン-4",
+                "name": "おなかのうえ寝",
+                "rarity": 4
+            }
+        ]
+    },
+    {
         "id": "p35_ピッピ",
         "dexNumber": 35,
         "name": "ピッピ",
@@ -1370,7 +1446,7 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "name": "へそてん寝",
                 "rarity": 3,
                 "excludeFromFields": [
-                    "ワカクサ本島"
+                "ワカクサ本島"
                 ]
             },
             {
@@ -2697,6 +2773,16 @@ export const MOCK_POKEMON: Pokemon[] = [
                 "id": "p151_ミュウ-1",
                 "name": "ふわふわ寝",
                 "rarity": 1
+            },
+            {
+                "id": "p151_ミュウ-2",
+                "name": "じゆうじざい寝",
+                "rarity": 2
+            },
+            {
+                "id": "p151_ミュウ-3",
+                "name": "あわベット寝",
+                "rarity": 3
             }
         ]
     },
@@ -5668,25 +5754,97 @@ export const MOCK_POKEMON: Pokemon[] = [
         "sleepType": "うとうと",
         "fields": [
             "ワカクサ本島",
-            "ラピスラズリ湖畔",
+            "ワカクサ本島EX",
             "アンバー渓谷",
-            "ワカクサ本島EX"
+            "ラピスラズリ湖畔",
+            "イベント限定"
         ],
         "styles": [
             {
                 "id": "p380_ラティアス-1",
-                "name": "★1寝顔",
-                "rarity": 1
+                "name": "うかびはばたき寝",
+                "rarity": 1,
+                "excludeFromFields": [
+                    "イベント限定"
+                ]
             },
             {
                 "id": "p380_ラティアス-2",
-                "name": "★2寝顔",
-                "rarity": 2
+                "name": "ゆうがにひこう寝",
+                "rarity": 2,
+                "excludeFromFields": [
+                    "イベント限定"
+                ]
             },
             {
                 "id": "p380_ラティアス-3",
-                "name": "★3寝顔",
-                "rarity": 3
+                "name": "むげんのひかり寝",
+                "rarity": 3,
+                "excludeFromFields": [
+                    "イベント限定"
+                ]
+            },
+            {
+                "id": "p380_ラティアス-4",
+                "name": "なかまおもい寝",
+                "rarity": 5,
+                "excludeFromFields": [
+                    "ワカクサ本島",
+                    "ワカクサ本島EX",
+                    "アンバー渓谷",
+                    "ラピスラズリ湖畔"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "p381_ラティオス",
+        "dexNumber": 381,
+        "name": "ラティオス",
+        "type": "ドラゴン",
+        "sleepType": "うとうと",
+        "fields": [
+            "ワカクサ本島",
+            "ラピスラズリ湖畔",
+            "アンバー渓谷",
+            "ワカクサ本島EX",
+            "イベント限定"
+        ],
+        "styles": [
+            {
+                "id": "p381_ラティオス-1",
+                "name": "うかびはばたき寝",
+                "rarity": 1,
+                "excludeFromFields": [
+                    "イベント限定"
+                ]
+            },
+            {
+                "id": "p381_ラティオス-2",
+                "name": "ゆうがにひこう寝",
+                "rarity": 2,
+                "excludeFromFields": [
+                    "イベント限定"
+                ]
+            },
+            {
+                "id": "p381_ラティオス-3",
+                "name": "むげんのオーラ寝",
+                "rarity": 3,
+                "excludeFromFields": [
+                    "イベント限定"
+                ]
+            },
+            {
+                "id": "p381_ラティオス-4",
+                "name": "なかまおもい寝",
+                "rarity": 5,
+                "excludeFromFields": [
+                    "ワカクサ本島",
+                    "ラピスラズリ湖畔",
+                    "アンバー渓谷",
+                    "ワカクサ本島EX"
+                ]
             }
         ]
     },
@@ -6722,6 +6880,77 @@ export const MOCK_POKEMON: Pokemon[] = [
         ]
     },
     {
+        "id": "p696_チゴラス",
+        "dexNumber": 696,
+        "name": "チゴラス",
+        "type": "いわ",
+        "sleepType": "ぐっすり",
+        "fields": [
+            "ワカクサ本島",
+            "トープ洞窟",
+            "アンバー渓谷",
+            "ワカクサ本島EX"
+        ],
+        "styles": [
+            {
+                "id": "p696_チゴラス-1",
+                "name": "すわり寝",
+                "rarity": 1
+            },
+            {
+                "id": "p696_チゴラス-2",
+                "name": "おおあくび寝",
+                "rarity": 2
+            },
+            {
+                "id": "p696_チゴラス-3",
+                "name": "かみつく寝",
+                "rarity": 3,
+                "excludeFromFields": [
+                    "ワカクサ本島"
+                ]
+            },
+            {
+                "id": "p696_チゴラス-4",
+                "name": "おなかのうえ寝",
+                "rarity": 4
+            }
+        ]
+    },
+    {
+        "id": "p697_ガチゴラス",
+        "dexNumber": 697,
+        "name": "ガチゴラス",
+        "type": "いわ",
+        "sleepType": "ぐっすり",
+        "fields": [
+            "ワカクサ本島",
+            "トープ洞窟",
+            "ワカクサ本島EX",
+            "アンバー渓谷"
+        ],
+        "styles": [
+            {
+                "id": "p697_ガチゴラス-1",
+                "name": "どっしり寝",
+                "rarity": 1
+            },
+            {
+                "id": "p697_ガチゴラス-2",
+                "name": "おおあくび寝",
+                "rarity": 2
+            },
+            {
+                "id": "p697_ガチゴラス-3",
+                "name": "ほうこう寝",
+                "rarity": 3,
+                "excludeFromFields": [
+                    "ワカクサ本島"
+                ]
+            }
+        ]
+    },
+    {
         "id": "p700_ニンフィア",
         "dexNumber": 700,
         "name": "ニンフィア",
@@ -7314,6 +7543,44 @@ export const MOCK_POKEMON: Pokemon[] = [
             },
             {
                 "id": "p778_ミミッキュ-4",
+                "name": "おなかのうえ寝",
+                "rarity": 4
+            }
+        ]
+    },
+    {
+        "id": "p780_ジジーロン",
+        "dexNumber": 780,
+        "name": "ジジーロン",
+        "type": "ドラゴン",
+        "sleepType": "うとうと",
+        "fields": [
+            "ワカクサ本島",
+            "アンバー渓谷",
+            "ラピスラズリ湖畔",
+            "ワカクサ本島EX"
+        ],
+        "styles": [
+            {
+                "id": "p780_ジジーロン-1",
+                "name": "くびのばし寝",
+                "rarity": 1
+            },
+            {
+                "id": "p780_ジジーロン-2",
+                "name": "くねく寝",
+                "rarity": 2
+            },
+            {
+                "id": "p780_ジジーロン-3",
+                "name": "せなかまくら寝",
+                "rarity": 3,
+                "excludeFromFields": [
+                    "ワカクサ本島"
+                ]
+            },
+            {
+                "id": "p780_ジジーロン-4",
                 "name": "おなかのうえ寝",
                 "rarity": 4
             }
@@ -7966,7 +8233,7 @@ export const MOCK_POKEMON: Pokemon[] = [
             },
             {
                 "id": "p975_ハルクジラ-3",
-                "name": "★3の寝顔",
+                "name": "エコロケーション寝",
                 "rarity": 3
             }
         ]

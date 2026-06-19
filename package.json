@@ -14,6 +14,8 @@
     "test:coverage": "jest --coverage",
     "seed:firestore": "node scripts/seed-firestore.js",
     "seed:firestore:staging": "cross-env FIRESTORE_ENV=staging node scripts/seed-firestore.js",
+    "dump:firestore": "node scripts/dump-firestore-to-ts.js",
+    "dump:firestore:staging": "cross-env FIRESTORE_ENV=staging node scripts/dump-firestore-to-ts.js",
     "deploy:staging": "cross-env NEXT_PUBLIC_ENV=staging npm run build && firebase hosting:channel:deploy staging",
     "deploy:prod": "cross-env NEXT_PUBLIC_ENV=production npm run build && firebase deploy --only hosting",
     "copy:user": "node scripts/copy-user-data.js"
