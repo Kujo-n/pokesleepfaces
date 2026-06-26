@@ -3,7 +3,7 @@
 import { memo } from 'react';
 import { Pokemon } from '@/data/mockData';
 import { filterPokemonStyles, getSleepTypeColor, groupStylesByRarity } from '@/lib/pokemonUtils';
-import { RARITY_LEVELS } from '@/lib/rarity';
+import { RARITY_LEVELS, GRID_TEMPLATE_COLUMNS } from '@/lib/rarity';
 
 type Props = {
     pokemon: Pokemon;
@@ -37,7 +37,7 @@ function PokemonGridRow({
     return (
         <div
             className="grid gap-0 bg-white border-b border-gray-200 items-center"
-            style={{ gridTemplateColumns: `auto repeat(${RARITY_LEVELS.length}, minmax(32px, 60px))` }}
+            style={{ gridTemplateColumns: GRID_TEMPLATE_COLUMNS }}
         >
             {/* ポケモン名セル */}
             <div className="flex flex-col p-2 border-r border-gray-100 min-w-0">
