@@ -15,7 +15,7 @@ pokesleepfaces/
 │   └── page.tsx           # メインページ（コンポーネント統合）
 │
 ├── components/            # Reactコンポーネント
-│   ├── admin/             # 管理画面用コンポーネント (PokemonEditor, FieldEditor, BulkFieldAssignment 等)
+│   ├── admin/             # 管理画面用コンポーネント (PokemonEditor, FieldEditor, BulkFieldAssignment, BulkSpeciesAssignment 等)
 │   ├── AuthButton.tsx     # 認証ボタン
 │   ├── DataProtectionWarning.tsx # データ保護警告
 │   ├── ErrorBoundary.tsx  # エラー境界コンポーネント
@@ -45,10 +45,11 @@ pokesleepfaces/
 │   ├── adminDb.ts         # 管理者用Firestore操作（CRUD）
 │   ├── db.ts              # UI用Firestore操作（収集データ）
 │   ├── localStorage.ts    # LocalStorage操作（サイズ制限付）
-│   └── pokemonUtils.ts    # ポケモン共通ロジック（フィルタ、色取得）
+│   ├── pokemonUtils.ts    # ポケモン共通ロジック（フィルタ、色取得）
+│   └── rarity.ts          # レアリティ定数の単一情報源（★1〜★5）
 │
 ├── types/                 # 型定義
-│   └── filters.ts         # フィルタ状態型（FilterState）
+│   └── filters.ts         # フィルタの状態・操作の型（FilterState/FilterValues 等）
 │
 ├── public/                # 静的ファイル
 │   └── ...
@@ -57,7 +58,11 @@ pokesleepfaces/
 │   └── ...
 │
 ├── scripts/               # 運用スクリプト
-│   └── seed-firestore.js  # Firestore初期データ投入スクリプト
+│   ├── seed-firestore.js       # mockData.ts → Firestore 初期データ投入
+│   ├── dump-firestore-to-ts.js # Firestore → mockData.ts 書き出し（バックアップ）
+│   ├── fetch-sheets-to-ts.js   # Google Sheets → mockData.ts 生成（旧データ取込）
+│   ├── copy-user-data.js       # ユーザー収集データのコピー
+│   └── verify-all-fields.js    # フィールド設定の整合性チェック
 │
 ├── .gitignore             # Git除外設定
 ├── eslint.config.mjs      # ESLint設定
@@ -97,6 +102,7 @@ pokesleepfaces/
 - **`FieldEditor.tsx`**: フィールド名の追加・並べ替え・削除UI
 - **`BulkFieldAssignment.tsx`**: フィールド追加時の複数ポケモン一括設定（出現フラグ・寝顔）UI
 - **`BulkPokemonRow.tsx`**: 一括設定リストの各行（React.memoによるパフォーマンス最適化済み）
+- **`BulkSpeciesAssignment.tsx`**: 種ポケモン（進化前なし）フラグの一括設定UI（変更差分のみFirestoreへ保存）
 
 ### データ層
 
@@ -109,6 +115,11 @@ pokesleepfaces/
 - 容量制限（5MB）のチェックとエラーハンドリング
 - `QuotaExceededError`への対応
 
+#### `lib/rarity.ts`
+- 寝顔スタイルのレアリティ（★1〜★5）に関する定数の単一情報源
+- `MIN_RARITY` / `MAX_RARITY` / `RARITY_LEVELS` とグリッド表示の列定義（`GRID_TEMPLATE_COLUMNS`）を提供
+- レアリティ範囲のハードコードを排し、★追加時の変更箇所を1ファイルに集約
+
 ### Firebase設定
 
 #### `firebase/config.ts`
@@ -120,6 +131,16 @@ pokesleepfaces/
 - Firestoreセキュリティルール
 - ユーザーごとのデータ分離
 - 読み取り/書き込み権限の定義
+
+### 運用スクリプト (`scripts/`)
+
+ローカルから実行する運用補助スクリプト群です。データ更新フローの詳細は `docs/7_data-update_guide.md` を参照してください。
+
+- **`seed-firestore.js`**: `data/mockData.ts` を読み込み、空のFirestore（`master` / `master_staging`）へ初期データを投入（`npm run seed:firestore[:staging]`）
+- **`dump-firestore-to-ts.js`**: Firestoreの正データを読み出して `data/mockData.ts` を再生成（`seed` の逆向き、`npm run dump:firestore[:staging]`）
+- **`fetch-sheets-to-ts.js`**: Google Sheets からマスターデータを取得して `mockData.ts` を生成（旧データ取込経路）
+- **`copy-user-data.js`**: ユーザーの収集データをコピーする運用スクリプト
+- **`verify-all-fields.js`**: フィールド設定の整合性を検証するスクリプト
 
 ### 設定ファイル
 

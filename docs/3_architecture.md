@@ -46,8 +46,8 @@ graph TB
      
      subgraph "Components"
          AuthBtn[AuthButton]
-         PokemonCard["PokemonCard\u003cbr/\u003e(Memoized)"]
-         PokemonGridRow["PokemonGridRow\u003cbr/\u003e(Grid View)"]
+         PokemonCard["PokemonCard<br/>(Memoized)"]
+         PokemonGridRow["PokemonGridRow<br/>(Grid View)"]
          PokemonGridHeader[PokemonGridHeader]
          FilterPanel[FilterPanel]
          ProgressSummary[ProgressSummary]
@@ -173,7 +173,7 @@ graph TB
         
         Preferences[preferences/]
         FiltersDoc["filters"]
-        FilterData["selectedField\u003cbr/\u003eselectedSleepType\u003cbr/\u003eshowUncollectedOnly\u003cbr/\u003eviewMode"]
+        FilterData["selectedField<br/>selectedSleepType<br/>selectedRarity<br/>showUncollectedOnly<br/>showSpeciesOnly<br/>viewMode"]
         
         Master["master/ (or master_staging/)"]
         MasterFields["fields"]
@@ -220,7 +220,10 @@ graph TB
         "filters": {
           "selectedField": "all",
           "selectedSleepType": "all",
-          "showUncollectedOnly": false
+          "selectedRarity": "all",
+          "showUncollectedOnly": false,
+          "showSpeciesOnly": false,
+          "viewMode": "card"
         }
       }
     }
