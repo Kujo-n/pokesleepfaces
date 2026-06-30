@@ -17,12 +17,15 @@ const FieldEditor = dynamic(() => import('@/components/admin/FieldEditor'), {
 const BulkFieldAssignment = dynamic(() => import('@/components/admin/BulkFieldAssignment'), {
     loading: () => <div className="animate-pulse bg-gray-100 rounded-lg h-64" />
 });
+const BulkSpeciesAssignment = dynamic(() => import('@/components/admin/BulkSpeciesAssignment'), {
+    loading: () => <div className="animate-pulse bg-gray-100 rounded-lg h-64" />
+});
 
 // 管理者UIDリスト
 // 環境変数から読み込み。カンマ区切りで複数指定可能
 const ADMIN_UIDS = (process.env.NEXT_PUBLIC_ADMIN_UIDS || '').split(',').filter(Boolean);
 
-type Tab = 'pokemon' | 'fields' | 'bulk';
+type Tab = 'pokemon' | 'fields' | 'bulk' | 'species';
 
 /**
  * 管理画面ページ
@@ -182,6 +185,17 @@ export default function AdminPage() {
                         >
                             フィールド一括設定
                         </button>
+                        <button
+                            onClick={() => setActiveTab('species')}
+                            className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
+                                activeTab === 'species'
+                                    ? 'bg-blue-600 text-white'
+                                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                            }`}
+                            aria-pressed={activeTab === 'species'}
+                        >
+                            種ポケモン一括設定
+                        </button>
                     </div>
                 </div>
             </header>
@@ -227,6 +241,12 @@ export default function AdminPage() {
                         <BulkFieldAssignment
                             pokemonList={pokemonList}
                             fieldNames={fieldNames}
+                            onSaved={handleSaved}
+                        />
+                    )}
+                    {activeTab === 'species' && (
+                        <BulkSpeciesAssignment
+                            pokemonList={pokemonList}
                             onSaved={handleSaved}
                         />
                     )}

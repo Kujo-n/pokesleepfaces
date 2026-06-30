@@ -133,6 +133,7 @@ export interface FilterPreferences {
     selectedSleepType: string;
     selectedRarity: string; // 'all' | '1' | '2' | '3' | '4' | '5'
     showUncollectedOnly: boolean;
+    showSpeciesOnly?: boolean; // 種ポケモンのみ表示
     viewMode?: 'card' | 'grid'; // 表示モード
 }
 

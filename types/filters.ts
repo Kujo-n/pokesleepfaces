@@ -31,6 +31,7 @@ export type FilterValues = {
     selectedSleepType: SleepType;
     selectedRarity: string;
     showUncollectedOnly: boolean;
+    showSpeciesOnly: boolean;
     viewMode: ViewMode;
 };
 
@@ -42,6 +43,7 @@ export type FilterActions = {
     setSelectedSleepType: (type: SleepType) => void;
     setSelectedRarity: (rarity: string) => void;
     setShowUncollectedOnly: (show: boolean) => void;
+    setShowSpeciesOnly: (show: boolean) => void;
     setViewMode: (mode: ViewMode) => void;
     updateFilterPreferences: (updates: Partial<FilterValues>) => void;
 };

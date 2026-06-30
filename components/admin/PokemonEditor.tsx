@@ -28,6 +28,7 @@ function createEmptyPokemon(): Partial<Pokemon> {
         name: '',
         type: '',
         sleepType: 'うとうと',
+        isSpecies: false,
         fields: [],
         styles: [
             { id: '', rarity: 1, name: '星1寝' },
@@ -182,6 +183,7 @@ export default function PokemonEditor({ pokemonList, fieldNames, onSaved }: Prop
                 sleepType: editingPokemon.sleepType!,
                 fields: editingPokemon.fields || [],
                 styles,
+                isSpecies: !!editingPokemon.isSpecies,
             };
 
             // バリデーション
@@ -300,6 +302,19 @@ export default function PokemonEditor({ pokemonList, fieldNames, onSaved }: Prop
                                 ))}
                             </select>
                         </div>
+                    </div>
+
+                    {/* 種ポケモン */}
+                    <div>
+                        <label className="flex items-center gap-2 text-sm text-gray-900 cursor-pointer w-fit">
+                            <input
+                                type="checkbox"
+                                checked={!!editingPokemon.isSpecies}
+                                onChange={(e) => updateField('isSpecies', e.target.checked)}
+                                className="w-4 h-4 text-green-600 rounded focus:ring-green-500"
+                            />
+                            <span>種ポケモン（これ以上進化前がない）</span>
+                        </label>
                     </div>
 
                     {/* 出現フィールド */}

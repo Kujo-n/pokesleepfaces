@@ -35,7 +35,8 @@ export default function FilterPanel({
     selectedField,
     selectedSleepType,
     selectedRarity,
-    showUncollectedOnly
+    showUncollectedOnly,
+    showSpeciesOnly
   } = filterValues;
 
   const {
@@ -43,6 +44,7 @@ export default function FilterPanel({
     setSelectedSleepType,
     setSelectedRarity,
     setShowUncollectedOnly,
+    setShowSpeciesOnly,
     updateFilterPreferences
   } = filterActions;
 
@@ -270,6 +272,24 @@ export default function FilterPanel({
             aria-describedby="uncollected-filter-description"
           />
           <span id="uncollected-filter-description">未収集のみ</span>
+        </label>
+        <label
+          className="flex items-center gap-2 px-3 py-1.5 rounded-full text-sm bg-green-50 text-green-700 hover:bg-green-100 cursor-pointer transition-colors w-fit"
+          htmlFor="species-only-filter"
+        >
+          <input
+            id="species-only-filter"
+            type="checkbox"
+            checked={showSpeciesOnly}
+            onChange={(e) => {
+              const checked = e.target.checked;
+              setShowSpeciesOnly(checked);
+              updateFilterPreferences({ showSpeciesOnly: checked });
+            }}
+            className="w-4 h-4 text-green-600 bg-white border-green-300 rounded focus:ring-green-500 focus:ring-2 cursor-pointer"
+            aria-describedby="species-filter-description"
+          />
+          <span id="species-filter-description">種ポケモンのみ</span>
         </label>
       </div>
 

@@ -14,6 +14,7 @@ const mockPokemonList: Pokemon[] = [
         name: 'うとうとポケモン',
         sleepType: 'うとうと',
         type: 'くさ',
+        isSpecies: true,
         fields: ['ワカクサ本島', 'ラピスラズリ湖畔'],
         styles: [
             { id: 'test-001-s1', name: 'スタイルA', rarity: 1 },
@@ -62,11 +63,17 @@ const simulateFilterPokemon = (
     selectedField: string,
     selectedRarity: string,
     showUncollectedOnly: boolean,
-    filterBaseCollectedStyles: Set<string>
+    filterBaseCollectedStyles: Set<string>,
+    showSpeciesOnly: boolean = false
 ): Pokemon[] => {
     return pokemonList.filter(p => {
         // 1. 睡眠タイプによるフィルタ
         if (selectedSleepType !== 'all' && p.sleepType !== selectedSleepType) {
+            return false;
+        }
+
+        // 1.5. 種ポケモンによるフィルタ（ポケモンレベル）
+        if (showSpeciesOnly && !p.isSpecies) {
             return false;
         }
 
@@ -252,6 +259,40 @@ describe('useFilters フィルタリングロジック', () => {
         });
     });
 
+    describe('種ポケモンフィルタ', () => {
+        it('種ポケモンのみ=falseの場合、全てのポケモンが表示される', () => {
+            const result = simulateFilterPokemon(
+                mockPokemonList, 'all', 'all', 'all', false, new Set(), false
+            );
+            expect(result.length).toBe(3);
+        });
+
+        it('種ポケモンのみ=trueの場合、isSpeciesのポケモンのみ表示される', () => {
+            const result = simulateFilterPokemon(
+                mockPokemonList, 'all', 'all', 'all', false, new Set(), true
+            );
+            // test-001のみ isSpecies: true
+            expect(result.length).toBe(1);
+            expect(result[0].id).toBe('test-001');
+            expect(result[0].isSpecies).toBe(true);
+        });
+
+        it('種ポケモンのみ + 睡眠タイプの組み合わせが正しく動作する', () => {
+            // test-001は うとうと かつ 種ポケモン
+            const result = simulateFilterPokemon(
+                mockPokemonList, 'うとうと', 'all', 'all', false, new Set(), true
+            );
+            expect(result.length).toBe(1);
+            expect(result[0].id).toBe('test-001');
+
+            // すやすや の種ポケモンは存在しない
+            const empty = simulateFilterPokemon(
+                mockPokemonList, 'すやすや', 'all', 'all', false, new Set(), true
+            );
+            expect(empty.length).toBe(0);
+        });
+    });
+
     describe('複合フィルタ', () => {
         it('睡眠タイプ + フィールドの組み合わせが正しく動作する', () => {
             const result = simulateFilterPokemon(
@@ -301,6 +342,7 @@ describe('フィルタ状態の初期値', () => {
             selectedSleepType: 'all' as const,
             selectedRarity: 'all',
             showUncollectedOnly: false,
+            showSpeciesOnly: false,
             viewMode: 'card' as const
         };
 
@@ -308,6 +350,7 @@ describe('フィルタ状態の初期値', () => {
         expect(defaultState.selectedSleepType).toBe('all');
         expect(defaultState.selectedRarity).toBe('all');
         expect(defaultState.showUncollectedOnly).toBe(false);
+        expect(defaultState.showSpeciesOnly).toBe(false);
         expect(defaultState.viewMode).toBe('card');
     });
 });

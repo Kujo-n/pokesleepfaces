@@ -13,6 +13,7 @@ export type Pokemon = {
     sleepType: 'うとうと' | 'すやすや' | 'ぐっすり';
     fields: string[]; // 出現フィールド
     styles: SleepStyle[];
+    isSpecies?: boolean; // 種ポケモン（これ以上進化前がない）
 };
 
 export const FIELD_NAMES = [

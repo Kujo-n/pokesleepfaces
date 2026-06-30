@@ -159,6 +159,7 @@ async function loadPokemonList(): Promise<Pokemon[] | null> {
           rarity: s.rarity as number,
           ...(s.excludeFromFields ? { excludeFromFields: s.excludeFromFields as string[] } : {}),
         })),
+        ...(data.isSpecies ? { isSpecies: true } : {}),
       });
     });
 

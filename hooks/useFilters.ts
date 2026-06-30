@@ -15,6 +15,7 @@ export const useFilters = (user: User | null, collectedStyles: Set<string>) => {
   const [selectedSleepType, setSelectedSleepType] = useState<SleepType>('all');
   const [selectedRarity, setSelectedRarity] = useState<string>('all');
   const [showUncollectedOnly, setShowUncollectedOnly] = useState<boolean>(false);
+  const [showSpeciesOnly, setShowSpeciesOnly] = useState<boolean>(false);
   const [filterBaseCollectedStyles, setFilterBaseCollectedStyles] = useState<Set<string>>(new Set());
   const [viewMode, setViewMode] = useState<ViewMode>('card');
 
@@ -27,6 +28,7 @@ export const useFilters = (user: User | null, collectedStyles: Set<string>) => {
           setSelectedSleepType(prefs.selectedSleepType as SleepType);
           if (prefs.selectedRarity) setSelectedRarity(prefs.selectedRarity);
           setShowUncollectedOnly(prefs.showUncollectedOnly);
+          if (prefs.showSpeciesOnly !== undefined) setShowSpeciesOnly(prefs.showSpeciesOnly);
           if (prefs.viewMode) setViewMode(prefs.viewMode);
         }
       });
@@ -53,16 +55,22 @@ export const useFilters = (user: User | null, collectedStyles: Set<string>) => {
         selectedSleepType: updates.selectedSleepType ?? selectedSleepType,
         selectedRarity: updates.selectedRarity ?? selectedRarity,
         showUncollectedOnly: updates.showUncollectedOnly ?? showUncollectedOnly,
+        showSpeciesOnly: updates.showSpeciesOnly ?? showSpeciesOnly,
         viewMode: updates.viewMode ?? viewMode
       });
     }
-  }, [user, selectedField, selectedSleepType, selectedRarity, showUncollectedOnly, viewMode]);
+  }, [user, selectedField, selectedSleepType, selectedRarity, showUncollectedOnly, showSpeciesOnly, viewMode]);
 
   // フィルタリング処理
   const filteredPokemon = useMemo(() => {
     return pokemonList.filter(p => {
       // 1. 睡眠タイプによるフィルタ（ポケモンレベル）- 文字列比較で低コストかつ66%除外できるため最優先
       if (selectedSleepType !== 'all' && p.sleepType !== selectedSleepType) {
+        return false;
+      }
+
+      // 1.5. 種ポケモンによるフィルタ（ポケモンレベル）
+      if (showSpeciesOnly && !p.isSpecies) {
         return false;
       }
 
@@ -99,7 +107,7 @@ export const useFilters = (user: User | null, collectedStyles: Set<string>) => {
 
       return true;
     });
-  }, [pokemonList, selectedSleepType, selectedField, selectedRarity, showUncollectedOnly, filterBaseCollectedStyles]);
+  }, [pokemonList, selectedSleepType, selectedField, selectedRarity, showUncollectedOnly, showSpeciesOnly, filterBaseCollectedStyles]);
 
   // フィルタ値をまとめたオブジェクト
   const filterValues: FilterValues = useMemo(() => ({
@@ -107,8 +115,9 @@ export const useFilters = (user: User | null, collectedStyles: Set<string>) => {
     selectedSleepType,
     selectedRarity,
     showUncollectedOnly,
+    showSpeciesOnly,
     viewMode
-  }), [selectedField, selectedSleepType, selectedRarity, showUncollectedOnly, viewMode]);
+  }), [selectedField, selectedSleepType, selectedRarity, showUncollectedOnly, showSpeciesOnly, viewMode]);
 
   // フィルタ操作関数をまとめたオブジェクト
   const filterActions: FilterActions = useMemo(() => ({
@@ -116,6 +125,7 @@ export const useFilters = (user: User | null, collectedStyles: Set<string>) => {
     setSelectedSleepType,
     setSelectedRarity,
     setShowUncollectedOnly,
+    setShowSpeciesOnly,
     setViewMode,
     updateFilterPreferences
   }), [updateFilterPreferences]);
@@ -136,6 +146,8 @@ export const useFilters = (user: User | null, collectedStyles: Set<string>) => {
     setSelectedRarity,
     showUncollectedOnly,
     setShowUncollectedOnly,
+    showSpeciesOnly,
+    setShowSpeciesOnly,
     updateFilterPreferences,
     viewMode,
     setViewMode

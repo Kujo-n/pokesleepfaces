@@ -46,6 +46,11 @@ function PokemonGridRow({
                     <span className={`text-[10px] px-1 py-0.5 rounded shrink-0 ${getSleepTypeColor(pokemon.sleepType)}`}>
                         {pokemon.sleepType}
                     </span>
+                    {pokemon.isSpecies && (
+                        <span className="text-[10px] px-1 py-0.5 rounded shrink-0 bg-green-100 text-green-800">
+                            種
+                        </span>
+                    )}
                 </div>
                 <span className="font-medium text-sm text-gray-900 truncate">{pokemon.name}</span>
             </div>

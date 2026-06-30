@@ -36,6 +36,11 @@ function PokemonCard({ pokemon, collectedStyles, onToggleStyle, onToggleAll, sel
                         <span className={`text-xs px-2 py-1 rounded-full border ${getSleepTypeColor(pokemon.sleepType, true)}`}>
                             {pokemon.sleepType}
                         </span>
+                        {pokemon.isSpecies && (
+                            <span className="text-xs px-2 py-1 rounded-full border bg-green-100 text-green-800 border-green-200">
+                                種
+                            </span>
+                        )}
                     </div>
                     <div className="flex flex-wrap gap-1 mt-1">
                         {pokemon.fields.map(field => (

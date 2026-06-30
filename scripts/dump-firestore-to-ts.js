@@ -55,7 +55,7 @@ function normalizePokemon(data) {
         return style;
     });
 
-    return {
+    const result = {
         id: data.id,
         dexNumber: data.dexNumber,
         name: data.name,
@@ -64,6 +64,11 @@ function normalizePokemon(data) {
         fields: data.fields || [],
         styles,
     };
+    // 種ポケモンは true の時のみ出力して差分を最小化
+    if (data.isSpecies) {
+        result.isSpecies = true;
+    }
+    return result;
 }
 
 /**
@@ -85,6 +90,7 @@ export type Pokemon = {
     sleepType: 'うとうと' | 'すやすや' | 'ぐっすり';
     fields: string[]; // 出現フィールド
     styles: SleepStyle[];
+    isSpecies?: boolean; // 種ポケモン（これ以上進化前がない）
 };
 
 export const FIELD_NAMES = ${JSON.stringify(fields, null, 4)};
