@@ -5,6 +5,31 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.0] - 2026-07-01
+
+### Added
+- **レアリティ5（★5）対応**:
+  - 寝顔スタイルにレアリティ5（★5）を追加
+  - レアリティ範囲を `lib/rarity.ts` に集約（`MIN` / `MAX` / `RARITY_LEVELS`）し、各所のハードコード（1〜4）を定数参照へ置換
+  - グリッド表示に★5列、フィルタに★5、管理画面の編集に★5選択肢を追加
+  - グリッド列をインラインスタイル化して可変レアリティ列に対応
+  - 保存時の入力バリデーションを★5まで許可
+- **種ポケモン（進化前なし）対応**:
+  - `Pokemon` 型に `isSpecies` フラグを追加し、読み込み・保存・dump の各経路に反映
+  - 管理画面の個別編集にチェックボックスを追加し、「種ポケモン一括設定」タブを新設
+  - フィルタ「種ポケモンのみ」を追加（設定は Firestore に永続化）
+  - カード表示・グリッド表示に「種」バッジを表示
+  - `useFilters` に種ポケモンフィルタのユニットテストを追加
+- **Firestore → mockData.ts 書き出しスクリプト**:
+  - `scripts/dump-firestore-to-ts.js` を追加（`seed-firestore.js` の逆向き処理）
+  - `npm run dump:firestore` / `dump:firestore:staging` コマンドを追加
+  - 管理画面で更新した最新データを `data/mockData.ts`（モックデータ）へ反映
+
+### Fixed
+- **グリッド表示のポケモン名列の省略を修正**:
+  - ★5対応でレアリティ列が増えた影響で名前列が圧迫され、4文字目以降が省略されていた問題を修正
+  - 名前列に最小幅 6.5rem（全角6文字分）を確保し、ヘッダー・行で重複していた列定義を `GRID_TEMPLATE_COLUMNS` に一元化
+
 ## [1.7.1] - 2026-04-18
 
 ### Added
